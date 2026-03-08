@@ -7,18 +7,30 @@
 
 <style>
 :root{
-  --navy:#042340;   /* Pantone 289 C */
-  --sand:#C69B7A;
+  --navy:#050052;          /* main brand navy */
+  --navy-soft:#0c0c6a;     /* slightly lighter navy for gradients */
+  --navy-light:#1b1b8a;    /* hover / accents */
+
+  --sand:#D5AA6D;
   --paper:#F8F8F8;
+
+  --text-dark:#050052;
+  --text-muted:rgba(5,0,82,.75);
+
   --max:1120px;
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 
-body,
-h1,h2,h3,p,a,div,span{
-  font-family:"Book Antiqua","Palatino Linotype",Palatino,Georgia,serif;
+body{
+  font-family:"Noto Sans", sans-serif;
+}
+
+h1,h2,h3{
+  font-family:"Noto Serif Display", serif;
+  font-weight:500;
+  letter-spacing:-0.01em;
 }
 
 body{
@@ -59,7 +71,7 @@ header{
   box-shadow:0 0 0 6px rgba(198,155,122,.16);
 }
 
-nav{display:flex;gap:10px}
+nav{display:flex;gap:10px;align-items:center}
 nav a{
   font-size:13px;
   padding:8px 10px;
@@ -68,15 +80,36 @@ nav a{
 }
 
 .btn{
-  padding:10px 14px;
+  display:inline-flex;        /* instead of inline-block */
+  align-items:center;         /* vertical centering */
+  justify-content:center;     /* horizontal centering */
+
+  padding:16px 30px;
   border-radius:999px;
   border:1px solid rgba(255,255,255,.22);
   background:rgba(255,255,255,.06);
-  font-size:13px;
+
+  font-size:15px;
+  letter-spacing:.02em;
+  line-height:1;
+
+  transition:all .25s ease;
 }
+
 .btn.primary{
-  background:var(--sand);
-  color:#041b30;
+  background:#D5AA6D;
+  color:#000;
+  border:none;
+}
+
+.btn.dark{
+  background:var(--navy);
+  color:#fff;
+  border:1px solid rgba(4,35,64,.25);
+}
+
+.btn.primary:hover{
+  background:#c99b5c;
 }
 
 /* HERO */
@@ -86,25 +119,78 @@ nav a{
   display:flex;
   align-items:center;
   padding:150px 0;
+  overflow:hidden;
 }
+
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(to right,
-      rgba(4,35,64,.93) 0%,
-      rgba(4,35,64,.78) 50%,
-      rgba(4,35,64,.65) 100%
+    linear-gradient(
+      to right,
+      rgba(5,0,82,.90) 0%,
+      rgba(5,0,82,.75) 50%,
+      rgba(5,0,82,.60) 100%
     ),
     url("https://i0.wp.com/www.managementnote.com/wp-content/uploads/2023/05/law.jpg?fit=1280%2C853&ssl=1")
     center/cover no-repeat;
+
   transform:scale(1.02);
 }
+
 .hero .container{
   position:relative;
   z-index:2;
   max-width:72ch;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Reserve space at the bottom of the hero */
+.hero{
+  padding:150px 0 110px; /* bottom padding makes room */
+}
+
+/* STATS — one line and pushed down */
+.hero-stats{
+  margin-top:80px;
+  display:flex;
+  justify-content:center;
+  gap:110px;
+}
+
+.hero-stat{
+  text-align:left;
+  min-width:140px;
+}
+
+.hero-stat span{
+  display:block;
+  font-size:28px;
+  font-weight:600;
+  color:var(--sand);
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.hero-stat small{
+  display:block;
+  font-size:13px;
+  color:rgba(255,255,255,.75);
+  letter-spacing:.02em;
+  line-height:1.35;
+}
+
+/* MOBILE */
+@media(max-width:980px){
+  .hero{ padding:120px 0 80px; }
+
+  .hero-stats{
+    margin-top:36px;
+    flex-wrap:wrap;                  /* allow wrap on mobile */
+    justify-content:flex-start;
+  }
 }
 
 .kicker{
@@ -158,6 +244,14 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   border:0;
   transition:transform .25s ease, background .25s ease;
   position:relative;
+
+  /* clickable */
+  cursor:pointer;
+}
+.card:focus{
+  outline:2px solid rgba(198,155,122,.55);
+  outline-offset:4px;
+  border-radius:10px;
 }
 
 .card:hover{
@@ -175,7 +269,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   border-top:1px solid rgba(4,35,64,.15);
 }
 
-/* ICON STYLE — clean, consistent set */
+/* ICON STYLE */
 .card svg{
   width:54px;
   height:54px;
@@ -198,6 +292,72 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   color:rgba(4,35,64,.78);
 }
 
+/* ABOUT */
+.about p { margin:0 0 22px; }
+.about ul li{ margin:0 0 6px; }
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  background:rgba(4,35,64,.65);
+  backdrop-filter: blur(6px);
+  z-index:9999;
+}
+.modal.open{ display:flex; }
+
+.modal-panel{
+  width:min(720px, 100%);
+  background:#fff;
+  color:var(--navy);
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  overflow:hidden;
+  transform: translateY(6px);
+}
+
+.modal-head{
+  padding:26px 26px 14px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+}
+
+.modal-title{
+  margin:0;
+  font-size:24px;
+  line-height:1.2;
+}
+
+.modal-close{
+  border:0;
+  background:transparent;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  color:rgba(4,35,64,.7);
+}
+
+.modal-body{
+  padding:0 26px 22px;
+  color:rgba(4,35,64,.82);
+  font-size:17px;
+  line-height:1.7;
+}
+
+.modal-actions{
+  padding:18px 26px 26px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  border-top:1px solid rgba(4,35,64,.12);
+}
+
 /* MOBILE */
 @media(max-width:980px){
   .cards{grid-template-columns:1fr;}
@@ -209,6 +369,1031 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     border-top:1px solid rgba(4,35,64,.15);
   }
 }
+
+/* WHY CHOOSE */
+.why{
+  background:#D5AA6D;
+  color:var(--navy);
+  padding:110px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+.why .container{
+  width:min(1320px, calc(100% - 48px));
+  position:relative;
+  z-index:2;
+}
+
+.why-kicker{
+  color:rgba(5,0,82,.55);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:12px;
+  margin:0 0 14px;
+}
+
+.why-title{
+  margin:0 0 42px;
+  font-size:42px;
+  line-height:1.08;
+  letter-spacing:-0.02em;
+  max-width:22ch;
+  color:var(--navy);
+}
+
+.why-cards{
+  display:grid;
+  grid-template-columns:repeat(5, minmax(0, 1fr));
+  gap:18px;
+  width:100%;
+  align-items:stretch;
+}
+
+.why-card{
+  position:relative;
+  padding:20px 20px 18px;
+  min-height:auto;
+  border-radius:0;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.20) 0%,
+    rgba(255,255,255,.09) 100%
+  );
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:
+    0 10px 30px rgba(5,0,82,.08),
+    inset 0 1px 0 rgba(255,255,255,.20);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease,
+    background .28s ease;
+}
+
+.why-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:0;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.18) 0%,
+    rgba(255,255,255,0) 34%
+  );
+  pointer-events:none;
+}
+
+.why-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.40);
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.26) 0%,
+    rgba(255,255,255,.12) 100%
+  );
+  box-shadow:
+    0 18px 40px rgba(5,0,82,.12),
+    inset 0 1px 0 rgba(255,255,255,.24);
+}
+
+.why-icon{
+  margin-bottom:12px;
+  display:inline-block;
+  position:relative;
+  z-index:2;
+}
+
+.why-icon svg{
+  width:22px;
+  height:22px;
+  stroke:var(--navy);
+  stroke-width:1.7;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.9;
+  transition:transform .25s ease, opacity .25s ease;
+}
+
+.why-card:hover .why-icon svg{
+  transform:translateY(-1px);
+  opacity:1;
+}
+
+.why-card h3{
+  position:relative;
+  z-index:2;
+  margin:0 0 8px;
+  font-size:17px;
+  line-height:1.35;
+  color:var(--navy);
+}
+
+.why-card p{
+  position:relative;
+  z-index:2;
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
+  color:rgba(5,0,82,.82);
+  max-width:none;
+}
+
+/* slightly highlight the free consultation card */
+.why-card:last-child{
+  border-color:rgba(255,255,255,.42);
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.28) 0%,
+    rgba(255,255,255,.14) 100%
+  );
+}
+
+@media(max-width:1180px){
+  .why-cards{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:980px){
+  .why{
+    padding:84px 0;
+  }
+
+  .why-title{
+    font-size:34px;
+    margin-bottom:32px;
+    max-width:14ch;
+  }
+
+  .why-cards{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .why-card{
+    padding:22px 20px;
+  }
+}
+
+/* HOW WE WORK (reference-style) */
+.howwork{
+  background:#fff;
+  color:var(--navy);
+  padding:120px 0;
+}
+
+.howwork-grid{
+  width:min(var(--max), calc(100% - 48px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap:64px;
+  align-items:center;
+}
+
+/* left image */
+.howwork-media{
+  position:relative;
+  border-radius:0px;
+  overflow:hidden;
+  min-height:620px;
+  background-size:cover;
+  background-position:40% center; /* adjust crop */
+  box-shadow:0 22px 60px rgba(0,0,0,.18);
+}
+
+.howwork-media::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(4,35,64,.45) 0%,
+    rgba(4,35,64,.15) 35%,
+    rgba(4,35,64,0) 65%
+  );
+}
+
+/* bottom info panel on image */
+.howwork-panel{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:22px;
+  background:var(--navy)(4,35,64,.88);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:12px;
+  padding:16px 18px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:18px;
+  color:#fff;
+  backdrop-filter: blur(6px);
+}
+
+.howwork-panel h4{
+  margin:0 0 8px;
+  font-size:14px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#D5AA6D;
+}
+
+.howwork-panel p{
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
+  color:rgba(255,255,255,.85);
+}
+
+.howwork-panel a{
+  color:#fff;
+  text-decoration:none;
+  border-bottom:1px solid rgba(198,155,122,.55);
+}
+
+/* right content */
+.howwork-right .services-label{
+  margin-bottom:14px;
+}
+
+.howwork-right h2{
+  margin:0 0 18px;
+  font-size:44px;
+  line-height:1.1;
+}
+
+.howwork-right .intro{
+  margin:0 0 28px;
+  color:rgba(4,35,64,.78);
+  line-height:1.75;
+  max-width:60ch;
+}
+
+.howwork-steps{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+  margin-top:14px;
+}
+
+.howwork-step{
+  display:grid;
+  grid-template-columns: 48px 1fr;
+  gap:18px;
+  align-items:start;
+}
+
+.howwork-num{
+  font-size:13px;
+  letter-spacing:.22em;
+  color:rgba(4,35,64,.55);
+  padding-top:4px;
+}
+
+.howwork-step h3{
+  margin:0 0 8px;
+  font-size:20px;
+  color:var(--navy);
+}
+
+.howwork-step p{
+  margin:0;
+  color:rgba(4,35,64,.70);
+  line-height:1.7;
+}
+
+/* CTA (optional) */
+.howwork-cta{
+  margin-top:36px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:center;   /* centers the buttons */
+  flex-wrap:wrap;
+}
+
+/* Mobile */
+@media(max-width:980px){
+  .howwork{ padding:90px 0; }
+  .howwork-grid{ grid-template-columns:1fr; gap:42px; }
+  .howwork-media{ min-height:520px; }
+  .howwork-panel{ grid-template-columns:1fr; }
+  .howwork-right h2{ font-size:36px; }
+}
+
+/* FAQ PREMIUM SECTION */
+/* FAQ HOVER SECTION */
+
+.faq-hover{
+  position:relative;
+  padding:120px 0;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* background image */
+
+.faq-premium-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,.90) 0%,
+      rgba(0,0,0,.70) 40%,
+      rgba(0,0,0,.88) 100%
+    ),
+    url("https://images.unsplash.com/photo-1505664194779-8beaceb93744?fm=jpg&q=60&w=3000&auto=format&fit=crop")
+    center / cover no-repeat;
+}
+
+.faq-hover-wrap{
+  position:relative;
+  z-index:2;
+  max-width:1100px;
+}
+
+/* header */
+
+.faq-hover-head{
+  max-width:720px;
+  margin-bottom:50px;
+}
+
+.faq-hover-head h2{
+  font-size:56px;
+  margin:0 0 16px;
+}
+
+.faq-hover-head p{
+  color:rgba(255,255,255,.75);
+  font-size:18px;
+}
+
+/* FAQ LIST */
+
+.faq-hover-list{
+  display:flex;
+  flex-direction:column;
+}
+
+/* ITEM */
+
+.faq-hover-item{
+  border-top:1px solid rgba(255,255,255,.15);
+  padding:28px 0;
+  position:relative;
+  min-height:80px;
+  cursor:pointer;
+}
+
+.faq-hover-item:last-child{
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+/* QUESTION */
+
+.faq-question{
+  font-size:24px;
+  transition:opacity .25s ease, transform .25s ease;
+}
+
+/* ANSWER */
+
+.faq-answer{
+  position:absolute;
+  top:28px;
+  left:0;
+  right:0;
+
+  font-size:18px;
+  line-height:1.7;
+  color:rgba(255,255,255,.85);
+
+  opacity:0;
+  transform:translateY(10px);
+  transition:all .3s ease;
+}
+
+/* HOVER SWITCH */
+
+.faq-hover-item:hover .faq-question{
+  opacity:0;
+  transform:translateY(-10px);
+}
+
+.faq-hover-item:hover .faq-answer{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+  .faq-hover{
+    padding:90px 0;
+  }
+
+  .faq-hover-head h2{
+    font-size:36px;
+  }
+
+  .faq-question{
+    font-size:20px;
+  }
+
+  .faq-answer{
+    position:relative;
+    top:auto;
+    opacity:1;
+    transform:none;
+    margin-top:10px;
+  }
+
+}
+
+.blog-section{
+  background:#fff;
+  color:var(--navy);
+  padding:120px 0;
+}
+
+.blog-head{
+  max-width:760px;
+  margin:0 auto 64px;
+  text-align:center;
+}
+
+.blog-head h2{
+  margin:0 0 18px;
+  font-size:44px;
+  line-height:1.12;
+}
+
+.blog-head p{
+  margin:0 auto;
+  max-width:640px;
+  color:rgba(4,35,64,.70);
+  font-size:18px;
+  line-height:1.7;
+}
+
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:28px;
+}
+
+.blog-card{
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+  transition:transform .28s ease, box-shadow .28s ease;
+}
+
+.blog-card:hover{
+  transform:translateY(-8px);
+}
+
+.blog-image{
+  display:block;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  margin-bottom:24px;
+}
+
+.blog-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease;
+}
+
+.blog-card:hover .blog-image img{
+  transform:scale(1.04);
+}
+
+.blog-content h3{
+  margin:0 0 16px;
+  font-size:24px;
+  line-height:1.2;
+}
+
+.blog-content h3 a{
+  color:var(--navy);
+  text-decoration:none;
+  transition:opacity .25s ease;
+}
+
+.blog-content h3 a:hover{
+  opacity:.82;
+}
+
+.blog-content p{
+  margin:0 0 24px;
+  color:rgba(4,35,64,.70);
+  font-size:17px;
+  line-height:1.7;
+}
+
+.blog-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--sand);
+  font-size:17px;
+  width:fit-content;
+  transition:color .25s ease;
+}
+
+.blog-arrow{
+  display:inline-block;
+  transition:transform .25s ease;
+}
+
+.blog-link:hover .blog-arrow{
+  transform:translateX(6px);
+}
+
+.blog-link:hover{
+  color:#b88763;
+}
+
+@media(max-width:980px){
+  .blog-section{
+    padding:90px 0;
+  }
+
+  .blog-head h2{
+    font-size:36px;
+  }
+
+  .blog-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+}
+
+/* PREMIUM PRICING SECTION */
+.pricing-premium{
+  background:#fff;
+  color:var(--navy);
+  padding:120px 0;
+}
+
+.pricing-premium-head{
+  max-width:820px;
+  margin:0 auto 52px;
+  text-align:center;
+}
+
+.pricing-premium-head h2{
+  margin:0 0 18px;
+  font-size:44px;
+  line-height:1.1;
+}
+
+.pricing-premium-head p{
+  margin:0 auto;
+  max-width:720px;
+  color:rgba(4,35,64,.72);
+  font-size:18px;
+  line-height:1.75;
+}
+
+/* FREE CONSULT STRIP */
+.pricing-free{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:24px;
+  align-items:center;
+  padding:34px 36px;
+  margin-bottom:34px;
+  background:linear-gradient(135deg, rgba(213,170,109,.16) 0%, rgba(213,170,109,.06) 100%);
+  border:1px solid rgba(213,170,109,.45);
+}
+
+.pricing-free-label{
+  display:inline-block;
+  margin-bottom:10px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(4,35,64,.55);
+}
+
+.pricing-free h3{
+  margin:0 0 10px;
+  font-size:30px;
+}
+
+.pricing-free p{
+  margin:0;
+  color:rgba(4,35,64,.76);
+  line-height:1.7;
+}
+
+.pricing-free-right{
+  text-align:right;
+}
+
+.pricing-free-price{
+  font-family:"Noto Serif Display", serif;
+  font-size:54px;
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.pricing-free-note{
+  color:rgba(4,35,64,.68);
+  margin-bottom:18px;
+}
+
+/* CARDS */
+.pricing-premium-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+  margin-top:10px;
+}
+
+.pricing-premium-card{
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(4,35,64,.12);
+  padding:34px 28px 30px;
+  display:flex;
+  flex-direction:column;
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.pricing-premium-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 50px rgba(4,35,64,.10);
+}
+
+.pricing-premium-card.featured{
+  background:linear-gradient(180deg,#fff 0%,#fcf8f2 100%);
+  border:1px solid rgba(213,170,109,.55);
+  box-shadow:0 18px 45px rgba(4,35,64,.08);
+}
+
+.pricing-badge{
+  position:absolute;
+  top:-13px;
+  left:28px;
+  background:var(--sand);
+  color:#000;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.pricing-plan{
+  margin-bottom:12px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(4,35,64,.52);
+}
+
+.pricing-premium-card h3{
+  margin:0 0 14px;
+  font-size:28px;
+  line-height:1.2;
+}
+
+.pricing-amount{
+  font-family:"Noto Serif Display", serif;
+  font-size:42px;
+  line-height:1;
+  margin-bottom:14px;
+}
+
+.pricing-sub{
+  margin:0 0 22px;
+  color:rgba(4,35,64,.72);
+  line-height:1.7;
+}
+
+.pricing-points{
+  list-style:none;
+  margin:0 0 28px;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.pricing-points li{
+  position:relative;
+  padding-left:24px;
+  color:rgba(4,35,64,.80);
+  line-height:1.6;
+}
+
+.pricing-points li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10px;
+  width:9px;
+  height:9px;
+  border-radius:999px;
+  background:var(--sand);
+  box-shadow:0 0 0 5px rgba(213,170,109,.16);
+}
+
+.pricing-premium-card .btn{
+  margin-top:auto;
+  width:100%;
+}
+
+/* COMPARISON */
+.pricing-compare-smart{
+  margin-top:58px;
+  padding:38px;
+  background:var(--navy);
+  color:#fff;
+}
+
+.pricing-compare-intro{
+  max-width:760px;
+  margin:0 auto 24px;
+  text-align:center;
+}
+
+.pricing-compare-intro h3{
+  margin:0 0 10px;
+  font-size:34px;
+  line-height:1.15;
+}
+
+.pricing-compare-intro p{
+  margin:0 auto;
+  max-width:680px;
+  color:rgba(255,255,255,.74);
+  line-height:1.7;
+}
+
+.pricing-compare-table{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.pricing-compare-col{
+  padding:24px 24px 22px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.03);
+  box-shadow:none;
+}
+
+.pricing-compare-col.mine{
+  background:rgba(255,255,255,.03);
+  border-color:rgba(255,255,255,.14);
+}
+
+.compare-top{
+  margin-bottom:12px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.68);
+}
+
+.compare-price{
+  font-family:"Noto Serif Display", serif;
+  font-size:32px;
+  line-height:1.1;
+  margin-bottom:16px;
+  color:#fff;
+}
+
+.pricing-compare-col ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.pricing-compare-col li{
+  position:relative;
+  padding-left:20px;
+  color:rgba(255,255,255,.82);
+  line-height:1.6;
+}
+
+.pricing-compare-col li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10px;
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:rgba(255,255,255,.65);
+}
+
+.pricing-market-note{
+  margin:20px auto 0;
+  max-width:900px;
+  color:rgba(255,255,255,.62);
+  line-height:1.7;
+  font-size:15px;
+  text-align:center;
+}
+
+@media(max-width:980px){
+  .pricing-premium{
+    padding:90px 0;
+  }
+
+  .pricing-premium-head h2{
+    font-size:36px;
+  }
+
+  .pricing-free{
+    grid-template-columns:1fr;
+    padding:28px 22px;
+  }
+
+  .pricing-free-right{
+    text-align:left;
+  }
+
+  .pricing-free-price{
+    font-size:42px;
+  }
+
+  .pricing-premium-grid{
+    grid-template-columns:1fr;
+  }
+
+  .pricing-compare-smart{
+    padding:28px 22px;
+  }
+
+  .pricing-compare-intro h3{
+    font-size:30px;
+  }
+
+  .pricing-compare-table{
+    grid-template-columns:1fr;
+  }
+}
+
+/* TESTIMONIAL SPLIT SECTION */
+.testimonials-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  width:100%;
+  min-height:520px;
+}
+
+.testimonials-split-left{
+  background:var(--sand);
+  color:var(--navy);
+  display:flex;
+  align-items:center;
+}
+
+.testimonials-split-right{
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+}
+
+.testimonials-inner{
+  width:min(560px, calc(100% - 56px));
+  margin:0 auto;
+  padding:90px 0;
+}
+
+.testimonials-inner.right{
+  width:min(520px, calc(100% - 56px));
+}
+
+.testimonials-split h2{
+  margin:0 0 30px;
+  font-size:40px;
+  line-height:1.1;
+}
+
+.testimonials-split h3{
+  margin:0 0 20px;
+  font-size:34px;
+  line-height:1.15;
+  color:#fff;
+}
+
+.testimonials-split-right p{
+  margin:0 0 18px;
+  color:rgba(255,255,255,.82);
+  font-size:17px;
+  line-height:1.75;
+}
+
+.testimonial-slider{
+  position:relative;
+  min-height:260px;
+}
+
+.testimonial-slide{
+  display:none;
+}
+
+.testimonial-slide.active{
+  display:block;
+}
+
+.testimonial-text{
+  margin:0 0 26px;
+  font-size:22px;
+  line-height:1.75;
+  font-style:italic;
+  color:var(--navy);
+}
+
+.testimonial-author strong{
+  display:block;
+  font-size:17px;
+  line-height:1.4;
+  color:var(--navy);
+}
+
+.testimonial-author span{
+  display:block;
+  margin-top:4px;
+  font-size:15px;
+  color:rgba(5,0,82,.72);
+}
+
+.testimonial-controls{
+  margin-top:10px;
+}
+
+.testimonial-next{
+  width:52px;
+  height:52px;
+  border-radius:999px;
+  border:1px solid rgba(5,0,82,.28);
+  background:transparent;
+  color:var(--navy);
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+
+.testimonial-next:hover{
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy);
+}
+
+@media(max-width:980px){
+  .testimonials-split{
+    grid-template-columns:1fr;
+  }
+
+  .testimonials-inner{
+    width:min(100%, calc(100% - 48px));
+    padding:70px 0;
+  }
+
+  .testimonials-split h2{
+    font-size:34px;
+  }
+
+  .testimonials-split h3{
+    font-size:30px;
+  }
+
+  .testimonial-slider{
+    min-height:auto;
+  }
+
+  .testimonial-text{
+    font-size:20px;
+  }
+}
+
 </style>
 </head>
 
@@ -224,6 +1409,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       <nav>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
+        <a class="btn primary" href="booking.html" target="_blank" rel="noopener">Pay / Book</a>
       </nav>
     </div>
   </div>
@@ -237,7 +1423,71 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       Visas, Anmeldung, registrations, documents and practical legal guidance —
       for clients from Latin America, Eastern Europe, and worldwide.
     </p>
+    <div class="hero-stats">
+
+  <div class="hero-stat">
+    <span>6+</span>
+    <small>years legal education</small>
   </div>
+
+  <div class="hero-stat">
+    <span>24+</span>
+    <small>consultations completed</small>
+  </div>
+
+  <div class="hero-stat">
+    <span>5+</span>
+    <small>years migrant experience</small>
+  </div>
+
+  <div class="hero-stat">
+    <span>5</span>
+    <small>languages</small>
+  </div>
+
+</div>
+  </div>
+</section>
+
+<section class="about" style="background:#ffffff;color:var(--navy);padding:120px 0;">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;">
+
+    <!-- Photo Placeholder -->
+    <div>
+  <img 
+    src="img/my_photo.jpg"
+    alt="Consultant portrait"
+    style="
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      border-radius:0px;
+      display:block;
+    "
+  >
+</div>
+
+    <!-- Text Content -->
+    <div>
+      <div class="services-label" style="text-align:left;">About</div>
+      <h2 style="margin:0 0 28px;font-size:34px;">About Me</h2>
+
+      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
+        I provide structured relocation and administrative support in Switzerland, based in Zürich.
+      </p>
+
+      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
+        My background includes legal education and professional experience in a law firm specializing in migration matters. During this time, I was involved in residence permit applications, administrative procedures, case preparation and client communication. This experience enables me to approach each matter with a clear understanding of regulatory requirements and procedural standards.
+      </p>
+
+      <p style="margin-bottom:40px;line-height:1.7;color:rgba(4,35,64,.85);">
+        In addition to my professional training, I have personally navigated the Swiss migration system. This allows me to combine formal legal knowledge with practical insight into the realities of relocation and integration.
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
 <section class="services" id="services">
@@ -249,7 +1499,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   <div class="cards">
 
     <!-- Visas & Residence -->
-    <div class="card">
+    <div class="card" tabindex="0"
+      data-title="Visas & Residence"
+      data-desc="Support with residence permits and migration procedures: case review, document checklist, form preparation guidance, and step-by-step coordination for submissions and follow-up.">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <rect x="4" y="3" width="16" height="18" rx="2"/>
@@ -263,7 +1515,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     </div>
 
     <!-- Registration & Authorities -->
-    <div class="card">
+    <div class="card" tabindex="0"
+      data-title="Registration & Authorities"
+      data-desc="Gemeinde registration and administrative coordination: Anmeldung preparation, appointment readiness, required documents checklist, and structured communication with local offices.">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 10h16"/>
@@ -280,7 +1534,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     </div>
 
     <!-- Documents & Correspondence -->
-    <div class="card">
+    <div class="card" tabindex="0"
+      data-title="Documents & Correspondence"
+      data-desc="Drafting and reviewing official letters and emails: clear structure, correct tone, and precise wording for authorities, landlords, employers, insurance, and administrative requests.">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="5" width="18" height="14" rx="2"/>
@@ -292,7 +1548,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     </div>
 
     <!-- Employment -->
-    <div class="card">
+    <div class="card" tabindex="0"
+      data-title="Employment"
+      data-desc="CV and job application support plus contract review: Swiss-style CV structure, cover letters, and a clear check of employment terms (role, salary, notice periods, clauses).">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <rect x="4" y="7" width="16" height="12" rx="2"/>
@@ -305,7 +1563,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     </div>
 
     <!-- Insurance -->
-    <div class="card">
+    <div class="card" tabindex="0"
+      data-title="Insurance"
+      data-desc="Health insurance setup and clarification: registration steps, deadlines, obligations, and practical guidance to understand coverage and administrative requirements.">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4Z"/>
@@ -317,10 +1577,12 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     </div>
 
     <!-- Family Matters -->
-    <div class="card">
+    <div class="card" tabindex="0"
+      data-title="Family Matters"
+      data-desc="Marriage procedures and family reunification support: document preparation, administrative steps, and structured guidance for residence options for family members.">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 0 0 0 0-7.8Z"/>
         </g>
       </svg>
       <h3>Family Matters</h3>
@@ -330,42 +1592,511 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   </div>
 </section>
 
-<section class="about" style="background:#ffffff;color:#042340;padding:120px 0;">
-  <div class="container" style="display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;">
-    
-    <!-- Photo Placeholder -->
-    <div>
-      <div style="width:100%;aspect-ratio:4/5;background:#eaeaea;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;">
-        Your Photo
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-kicker">Why choose us</div>
+    <h2 class="why-title">Why clients trust us for relocation support</h2>
+
+    <div class="why-cards">
+
+      <div class="why-card">
+        <div class="why-icon">
+          <!-- diamond -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3 20 9l-8 12L4 9l8-6Z"/>
+            <path d="M4 9h16"/>
+          </svg>
+        </div>
+        <h3>Legal background</h3>
+        <p>Legal education and experience in a migration-focused law firm—structured, accurate and procedure-aware.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <!-- paper plane -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 2 11 13"/>
+            <path d="M22 2 15 22l-4-9-9-4 20-7Z"/>
+          </svg>
+        </div>
+        <h3>Clear communication</h3>
+        <p>Professional letters and administrative messaging in the correct Swiss tone—so your requests are taken seriously.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <!-- globe -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M3 12h18"/>
+            <path d="M12 3c3 3.5 3 14.5 0 18"/>
+            <path d="M12 3c-3 3.5-3 14.5 0 18"/>
+          </svg>
+        </div>
+        <h3>Cost-efficient support</h3>
+        <p>More accessible than traditional legal representation while maintaining
+    a structured and professional approach</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">
+          <!-- headset -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 12a8 8 0 0 1 16 0"/>
+            <path d="M4 12v5a2 2 0 0 0 2 2h2v-7H6a2 2 0 0 0-2 2Z"/>
+            <path d="M20 12v5a2 2 0 0 1-2 2h-2v-7h2a2 2 0 0 1 2 2Z"/>
+            <path d="M12 19v2"/>
+          </svg>
+        </div>
+        <h3>Intensive support</h3>
+        <p>Fast, hands-on guidance at accessible pricing—and collaboration with trusted lawyers when formal representation is needed.</p>
+      </div>
+
+      <div class="why-card">
+  <div class="why-icon">
+    <!-- calendar icon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="16" rx="2"/>
+      <path d="M16 3v4M8 3v4M3 10h18"/>
+    </svg>
+  </div>
+
+  <h3>Free first consultation</h3>
+
+  <p>
+    A short initial conversation to understand your situation
+    and clarify the next steps before choosing a support package.
+  </p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<section class="howwork" id="process">
+  <div class="howwork-grid">
+
+    <!-- LEFT: image -->
+    <div class="howwork-media"
+      style="background-image:url('https://assets-eu-01.kc-usercontent.com/81b3452f-5056-01c8-b2c8-1c901bd27e20/8f56e561-3c00-48e4-a978-fe0dcf2f1ef5/Legal%20services%20page.png?auto=format&q=80&fit=crop&w=1660');">
+
+      <!-- bottom info panel -->
+      <div class="howwork-panel">
+        <div>
+          <h4>Consultations</h4>
+          <p>
+            Online or in-person in Zürich.<br>
+            Answer within 24 hours.</a>
+          </p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>
+            Email: <a href="mailto:hello@example.com">polina.kravtsova@uzh.ch</a><br>
+            WhatsApp: <a href="#">+41 76 449 75 81</a>
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- Text Content -->
-    <div>
-      <div class="services-label" style="text-align:left;">About</div>
-      <h2 style="margin:0 0 28px;font-size:34px;">About Me</h2>
-      
-      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
-        I provide structured relocation and administrative support in Switzerland, based in Zürich.
+    <!-- RIGHT: text -->
+    <div class="howwork-right">
+      <div class="services-label" style="text-align:left;">Process</div>
+      <h2>How we work</h2>
+      <p class="intro">
+        A structured approach designed to reduce uncertainty and keep every step clear:
+        we review your situation, prepare documents and communication, and support follow-ups
+        until the administrative step is completed.
       </p>
 
-      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
-        My background includes legal education and professional experience in a law firm specializing in migration matters. During this time, I was involved in residence permit applications, administrative procedures, case preparation and client communication. This experience enables me to approach each matter with a clear understanding of regulatory requirements and procedural standards.
+      <div class="howwork-steps">
+        <div class="howwork-step">
+          <div class="howwork-num">01</div>
+          <div>
+            <h3>Initial consultation</h3>
+            <p>We clarify your situation, timeline, risks, and required documents.</p>
+          </div>
+        </div>
+
+        <div class="howwork-step">
+          <div class="howwork-num">02</div>
+          <div>
+            <h3>Checklist & strategy</h3>
+            <p>You receive a structured checklist and the correct administrative route.</p>
+          </div>
+        </div>
+
+        <div class="howwork-step">
+          <div class="howwork-num">03</div>
+          <div>
+            <h3>Documents & communication</h3>
+            <p>Drafting and reviewing letters/emails in the correct Swiss administrative tone.</p>
+          </div>
+        </div>
+
+        <div class="howwork-step">
+          <div class="howwork-num">04</div>
+          <div>
+            <h3>Submission & follow-up</h3>
+            <p>Preparation support and follow-ups until the procedure is completed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="howwork-cta">
+        <a class="btn primary" href="booking.html" target="_blank" rel="noopener">Book Consultation</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="testimonials-split" id="testimonials">
+  <div class="testimonials-split-left">
+    <div class="testimonials-inner">
+
+      <div class="services-label" style="text-align:left;">Client feedback</div>
+      <h2>What clients say</h2>
+
+      <div class="testimonial-slider">
+        <div class="testimonial-slide active">
+          <p class="testimonial-text">
+            I was completely confused when I arrived in Zürich. I did not know where to go first,
+            what papers I needed, or how the registration worked. After the consultation,
+            everything finally felt clear and much less stressful.
+          </p>
+          <div class="testimonial-author">
+            <strong>Maria S.</strong>
+            <span>Moved from Brazil</span>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            I was worried about my permit and some letters from the authorities.
+            Everything was explained to me in a very simple way, and I felt much calmer after that.
+          </p>
+          <div class="testimonial-author">
+            <strong>Olena K.</strong>
+            <span>Moved from Ukraine</span>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <p class="testimonial-text">
+            What helped me most was that I could ask normal questions and get clear answers.
+            I did not feel rushed, and I finally understood what to do next.
+          </p>
+          <div class="testimonial-author">
+            <strong>David R.</strong>
+            <span>Moved from Spain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-controls">
+        <button type="button" class="testimonial-next" aria-label="Next testimonial">
+          →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="testimonials-split-right">
+    <div class="testimonials-inner right">
+      <div class="services-label" style="text-align:left;color:rgba(255,255,255,.65);">
+        Why clients start here
+      </div>
+
+      <h3>Practical support before unnecessary costs</h3>
+
+      <p>
+        Many people first need clarity, structure, and help with documents or communication —
+        not a full legal mandate from the beginning.
       </p>
 
-      <p style="margin-bottom:40px;line-height:1.7;color:rgba(4,35,64,.85);">
-        In addition to my professional training, I have personally navigated the Swiss migration system. This allows me to combine formal legal knowledge with practical insight into the realities of relocation and integration.
+      <p>
+        A short consultation can often save time, reduce stress, and help you avoid
+        expensive mistakes or delays.
       </p>
 
-      <h3 style="margin:0 0 18px;font-size:22px;">Why Choose This Practice</h3>
-      
-      <ul style="padding:0;margin:0;list-style:none;color:rgba(4,35,64,.85);line-height:1.8;">
-        <li>• Legal education and experience in migration law practice</li>
-        <li>• Personal understanding of the relocation process</li>
-        <li>• Structured, precise and confidential communication</li>
-        <li>• Intensive support beyond purely legal formalities</li>
-        <li>• Collaboration with trusted and experienced legal professionals when required</li>
-      </ul>
+      <a class="btn primary" href="#contact">Request consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-premium" id="pricing">
+  <div class="container">
+
+    <div class="pricing-premium-head">
+      <div class="services-label">Pricing</div>
+      <h2>Start with clarity — not with a large legal bill</h2>
+      <p>
+        For many relocation and administrative matters, you may not need full legal
+        representation from the beginning. Start with a free first consultation,
+        understand your route, and choose the level of support that fits your case.
+      </p>
+    </div>
+
+    <!-- PACKAGE CARDS -->
+    <div class="pricing-premium-grid">
+
+      <article class="pricing-premium-card">
+        <div class="pricing-plan">Essential</div>
+        <h3>Single consultation</h3>
+        <div class="pricing-amount">CHF 59</div>
+        <p class="pricing-sub">
+          For clients who need one clear answer, orientation, and next steps.
+        </p>
+
+        <ul class="pricing-points">
+          <li>30-minute consultation</li>
+          <li>Case overview</li>
+          <li>Required documents explained</li>
+          <li>Clear next-step guidance</li>
+        </ul>
+
+        <a class="btn dark" href="booking.html" target="_blank" rel="noopener">
+          Book consultation
+        </a>
+      </article>
+
+      <article class="pricing-premium-card featured">
+        <div class="pricing-badge">Most requested</div>
+        <div class="pricing-plan">Practical</div>
+        <h3>Consultation + document review</h3>
+        <div class="pricing-amount">CHF 129</div>
+        <p class="pricing-sub">
+          For clients who want guidance plus help checking paperwork before taking action.
+        </p>
+
+        <ul class="pricing-points">
+          <li>60-minute consultation</li>
+          <li>Review of your documents</li>
+          <li>Personal checklist</li>
+          <li>Written follow-up summary</li>
+          <li>Administrative route explained</li>
+        </ul>
+
+        <a class="btn primary" href="booking.html" target="_blank" rel="noopener">
+          Book package
+        </a>
+      </article>
+
+      <article class="pricing-premium-card">
+        <div class="pricing-plan">Complete</div>
+        <h3>Relocation support package</h3>
+        <div class="pricing-amount">from CHF 290</div>
+        <p class="pricing-sub">
+          For more complex situations involving several steps, forms, authorities, or letters.
+        </p>
+
+        <ul class="pricing-points">
+          <li>Full case review</li>
+          <li>Document preparation support</li>
+          <li>Letter / email drafting help</li>
+          <li>Anmeldung / authority preparation</li>
+          <li>Follow-up guidance during the process</li>
+        </ul>
+
+        <a class="btn dark" href="#contact">
+          Request details
+        </a>
+      </article>
+
+    </div>
+
+    <!-- COMPARISON BLOCK -->
+    <div class="pricing-compare-smart">
+      <div class="pricing-compare-intro">
+        <div class="services-label">Why start here</div>
+        <h3>A smarter first step for practical migration matters</h3>
+        <p>
+          Many people first need clarity, structure, documents, and the right communication —
+          not necessarily a full lawyer mandate.
+        </p>
+      </div>
+
+      <div class="pricing-compare-table">
+        <div class="pricing-compare-col mine">
+          <div class="compare-top">This service</div>
+          <div class="compare-price">CHF 0 – 290+</div>
+          <ul>
+            <li>Free first consultation</li>
+            <li>Accessible support for everyday migration steps</li>
+            <li>Help with documents, letters, checklists, preparation</li>
+            <li>Clear and practical administrative guidance</li>
+            <li>Referral to a lawyer when formal representation is needed</li>
+          </ul>
+        </div>
+
+        <div class="pricing-compare-col market">
+          <div class="compare-top">Typical lawyer pricing</div>
+          <div class="compare-price">CHF 250 – 500/hour</div>
+          <ul>
+            <li>Often billed hourly</li>
+            <li>Some initial consultations around CHF 300–330</li>
+            <li>Best for disputes, appeals, and formal legal representation</li>
+            <li>Can be more than needed for mainly administrative matters</li>
+            <li>Important when the case becomes legally complex</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="pricing-market-note">
+        Publicly posted examples in Switzerland show migration/legal consultations around CHF 300–330,
+        hourly lawyer fees around CHF 250 and up to CHF 350–500 or more, while low-cost advisory centres
+        can be much cheaper in specific settings.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="faq-hover" id="faq">
+  <div class="faq-premium-bg"></div>
+
+  <div class="container faq-hover-wrap">
+
+    <div class="faq-hover-head">
+      <div class="faq-premium-kicker">FAQ</div>
+      <h2>Find answers to your most common questions</h2>
+      <p>
+        Clear information about consultations, support, and the scope of assistance.
+      </p>
+    </div>
+
+    <div class="faq-hover-list">
+
+      <div class="faq-hover-item">
+        <div class="faq-question">
+          Is the first consultation free of charge?
+        </div>
+        <div class="faq-answer">
+          Yes. The first consultation is free of charge. During this initial
+          conversation we briefly analyse your case and discuss the possible
+          next steps.
+        </div>
+      </div>
+
+      <div class="faq-hover-item">
+        <div class="faq-question">
+          Do you provide legal representation?
+        </div>
+        <div class="faq-answer">
+          No. I provide structured guidance, administrative support and
+          document preparation. Where formal representation is required,
+          I can refer clients to licensed lawyers.
+        </div>
+      </div>
+
+      <div class="faq-hover-item">
+        <div class="faq-question">
+          Are consultations available online or in person?
+        </div>
+        <div class="faq-answer">
+          Both options are available. Consultations can take place online
+          or in person in Zürich depending on your preference.
+        </div>
+      </div>
+
+      <div class="faq-hover-item">
+        <div class="faq-question">
+          Do you only work with migration matters?
+        </div>
+        <div class="faq-answer">
+          Migration and relocation matters are the main focus. In some cases
+          related administrative questions can also be addressed, while
+          specialised areas may require referral to a qualified lawyer.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-premium-item').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        document.querySelectorAll('.faq-premium-item').forEach(other => {
+          if (other !== item) {
+            other.removeAttribute('open');
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<section class="blog-section" id="blog">
+  <div class="container">
+    <div class="blog-head">
+      <div class="services-label">Insights</div>
+      <h2>Practical guides for moving and settling in Switzerland</h2>
+      <p>
+        Clear articles on permits, registration, insurance, employment,
+        and everyday administrative steps in Switzerland.
+      </p>
+    </div>
+
+    <div class="blog-grid">
+
+      <article class="blog-card">
+        <a href="#contact" class="blog-image">
+          <img src="https://static.wixstatic.com/media/db2996_c496b5c9866343fdabafa13d0ddee158~mv2.jpg/v1/fill/w_800,h_613,al_c,q_85,enc_avif,quality_auto/db2996_c496b5c9866343fdabafa13d0ddee158~mv2.jpg" alt="Residence permits in Switzerland">
+        </a>
+        <div class="blog-content">
+          <h3>
+            <a href="#contact">Residence permits in Switzerland: where to start</a>
+          </h3>
+          <p>
+            A practical overview of the first steps, required documents,
+            and common mistakes when applying for a permit.
+          </p>
+          <a href="#contact" class="blog-link">
+            Read more <span class="blog-arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <a href="#contact" class="blog-image">
+          <img src="https://res.cloudinary.com/deep-impact-ag/image/upload/c_fill,w_1200,dpr_1/q_auto/fl_progressive/f_auto/v1664285682/insideit/henrique-ferreira-IT-Budget_Kanton_Zürich-1000_600unsplash_smq9yq" alt="Registration in Zürich">
+        </a>
+        <div class="blog-content">
+          <h3>
+            <a href="#contact">Anmeldung in Zürich: what you need to prepare</a>
+          </h3>
+          <p>
+            Learn what to bring, how the process works, and how to avoid delays
+            when registering with the local authorities.
+          </p>
+          <a href="#contact" class="blog-link">
+            Read more <span class="blog-arrow">→</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <a href="#contact" class="blog-image">
+          <img src="https://today.uconn.edu/wp-content/uploads/2017/04/shutterstock_373492012-health-insurance-e1491415000969.jpg" alt="Swiss health insurance guide">
+        </a>
+        <div class="blog-content">
+          <h3>
+            <a href="#contact">Health insurance in Switzerland: deadlines and obligations</a>
+          </h3>
+          <p>
+            Understand the legal requirements, time limits, and the basics of
+            choosing coverage after your arrival.
+          </p>
+          <a href="#contact" class="blog-link">
+            Read more <span class="blog-arrow">→</span>
+          </a>
+        </div>
+      </article>
 
     </div>
   </div>
@@ -378,6 +2109,84 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     <p class="lead" style="margin:0;">Email: hello@example.com</p>
   </div>
 </section>
+
+<!-- MODAL -->
+<div class="modal" id="serviceModal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 class="modal-title" id="modalTitle">Service</h3>
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modalDesc">Description</div>
+    <div class="modal-actions">
+      <a class="btn primary" id="modalPay" href="booking.html" target="_blank" rel="noopener">Pay / Book</a>
+      <a class="btn dark" href="#contact" id="modalContact">Contact</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const booking = "booking.html"; // <-- put your real payment link here
+
+  const modal = document.getElementById("serviceModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalClose = document.getElementById("modalClose");
+  const modalPay = document.getElementById("modalPay");
+
+  function openModal(title, desc){
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    modalPay.href = booking.html;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+  }
+
+  function closeModal(){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+  }
+
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      openModal(card.dataset.title || "Service", card.dataset.desc || "");
+    });
+    card.addEventListener("keydown", (e) => {
+      if(e.key === "Enter") openModal(card.dataset.title || "Service", card.dataset.desc || "");
+    });
+  });
+
+  modalClose.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if(e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
+  });
+  
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const section = document.querySelector(".testimonials-split");
+  if (!section) return;
+
+  const slides = section.querySelectorAll(".testimonial-slide");
+  const nextBtn = section.querySelector(".testimonial-next");
+
+  if (!slides.length || !nextBtn) return;
+
+  let current = 0;
+
+  nextBtn.addEventListener("click", function () {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  });
+});
+</script>
 
 </body>
 </html>

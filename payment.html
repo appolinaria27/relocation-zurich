@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Payment</title>
+
+  <style>
+    :root{
+      --navy:#050052;
+      --sand:#D5AA6D;
+      --paper:#F7F6F3;
+      --white:#ffffff;
+      --text:rgba(5,0,82,.82);
+      --muted:rgba(5,0,82,.58);
+      --line:rgba(5,0,82,.14);
+      --shadow:0 18px 45px rgba(5,0,82,.08);
+      --max:900px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+
+    body{
+      font-family:"Noto Sans", sans-serif;
+      background-image:url("img/zurich-picture.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      color:var(--navy);
+      line-height:1.6;
+    }
+
+    h1,h2,h3{
+      font-family:"Noto Serif Display", serif;
+      font-weight:500;
+      letter-spacing:-0.01em;
+      margin:0;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      min-height:100vh;
+      padding:56px 24px 80px;
+      background:rgba(247,246,243,.88);
+    }
+
+    .wrap{
+      width:min(var(--max), 100%);
+      margin:0 auto;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      margin-bottom:30px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      color:var(--navy);
+    }
+
+    .dot{
+      width:12px;
+      height:12px;
+      border-radius:999px;
+      background:var(--sand);
+      box-shadow:0 0 0 6px rgba(213,170,109,.18);
+      flex:0 0 auto;
+    }
+
+    .back-link{
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+    }
+
+    .card{
+      background:var(--white);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      padding:32px 30px;
+    }
+
+    .kicker{
+      margin:0 0 12px;
+      font-size:13px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--sand);
+      font-weight:700;
+    }
+
+    .title{
+      font-size:40px;
+      line-height:1.08;
+      margin-bottom:12px;
+    }
+
+    .subtitle{
+      margin:0;
+      color:var(--text);
+      font-size:17px;
+    }
+
+    .summary-box{
+      margin-top:24px;
+      padding:20px;
+      border:1px solid var(--line);
+      background:rgba(213,170,109,.12);
+    }
+
+    .package-name{
+      font-family:"Noto Serif Display", serif;
+      font-size:28px;
+      line-height:1.15;
+      margin-bottom:6px;
+    }
+
+    .price{
+      font-size:18px;
+      font-weight:700;
+      color:var(--navy);
+    }
+
+    .details{
+      display:grid;
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .detail{
+      border-bottom:1px solid var(--line);
+      padding-bottom:12px;
+    }
+
+    .detail:last-child{
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    .label{
+      display:block;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+
+    .value{
+      font-size:16px;
+      color:var(--navy);
+      word-break:break-word;
+    }
+
+    .payment-card h2{
+      font-size:30px;
+      line-height:1.12;
+      margin-bottom:10px;
+    }
+
+    .payment-card p{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .total{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      margin:18px 0 24px;
+      gap:20px;
+    }
+
+    .total span:first-child{
+      font-size:15px;
+      color:var(--muted);
+    }
+
+    .total strong{
+      font-size:28px;
+      color:var(--navy);
+      font-family:"Noto Serif Display", serif;
+      font-weight:500;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:56px;
+      padding:16px 24px;
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:16px;
+      line-height:1;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .btn.primary{
+      background:var(--sand);
+      color:#000;
+      box-shadow:0 12px 24px rgba(213,170,109,.28);
+    }
+
+    .btn.secondary{
+      background:transparent;
+      color:var(--navy);
+      border:1px solid rgba(5,0,82,.22);
+      margin-top:12px;
+    }
+
+    .small{
+      margin-top:16px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    @media(max-width:860px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .title{
+        font-size:34px;
+      }
+    }
+
+    @media(max-width:640px){
+      .page{
+        padding:28px 18px 60px;
+      }
+
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .card{
+        padding:24px 20px;
+      }
+
+      .title{
+        font-size:30px;
+      }
+
+      .payment-card h2{
+        font-size:26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="wrap">
+
+      <div class="topbar">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Relocation & Legal Support Zürich</span>
+        </div>
+        <a class="back-link" href="booking.html">← Back to booking</a>
+      </div>
+
+      <div class="grid">
+        <section class="card">
+          <p class="kicker">Booking summary</p>
+          <h1 class="title">Review your consultation before payment</h1>
+          <p class="subtitle">
+            Please confirm your selected package and your details below.
+          </p>
+
+          <div class="summary-box">
+            <div id="packageName" class="package-name"></div>
+            <div id="packagePrice" class="price"></div>
+          </div>
+
+          <div class="details">
+            <div class="detail">
+              <span class="label">Full name</span>
+              <div id="customerName" class="value"></div>
+            </div>
+
+            <div class="detail">
+              <span class="label">Email</span>
+              <div id="customerEmail" class="value"></div>
+            </div>
+
+            <div class="detail">
+              <span class="label">Phone / WhatsApp</span>
+              <div id="customerPhone" class="value"></div>
+            </div>
+
+            <div class="detail">
+              <span class="label">Current location</span>
+              <div id="customerLocation" class="value"></div>
+            </div>
+
+            <div class="detail">
+              <span class="label">Preferred format</span>
+              <div id="customerPreferred" class="value"></div>
+            </div>
+
+            <div class="detail">
+              <span class="label">Short description</span>
+              <div id="customerMessage" class="value"></div>
+            </div>
+          </div>
+
+          <div class="total">
+            <span>Total due</span>
+            <strong id="summaryTotalPrice"></strong>
+          </div>
+        </section>
+
+        <aside class="card payment-card">
+          <p class="kicker">Payment</p>
+          <h2>Continue to secure payment</h2>
+          <p>
+            When you click the button below, you can continue with your payment setup.
+          </p>
+
+          <div class="total">
+            <span>Total due</span>
+            <strong id="paymentTotalPrice"></strong>
+          </div>
+
+          <a id="payNowLink" href="#" class="btn primary">
+  Pay now
+</a>
+
+          <a class="btn secondary" href="booking.html">Edit booking</a>
+
+          <p class="small">
+            Payment confirms your consultation request. If your matter requires formal
+            legal representation, you may be referred to a licensed lawyer where appropriate.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+
+    const packageValue = params.get("package");
+    const customerName = params.get("name");
+    const customerEmail = params.get("email");
+    const customerPhone = params.get("phone");
+    const customerLocation = params.get("location");
+    const customerPreferred = params.get("preferred");
+    const customerMessage = params.get("message");
+
+    const packageData = {
+      initial: {
+        name: "Initial consultation",
+        price: "CHF 59"
+      },
+      review: {
+        name: "Consultation + review",
+        price: "CHF 129"
+      },
+      support: {
+        name: "Relocation support",
+        price: "CHF 290"
+      }
+    };
+
+    const selectedPackage = packageData[packageValue] || {
+      name: "No package selected",
+      price: "—"
+    };
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.textContent = value;
+      } else {
+        console.error("Missing element with id:", id);
+      }
+    }
+
+    console.log("Full URL:", window.location.href);
+    console.log("Query string:", window.location.search);
+    console.log("Package:", packageValue);
+    console.log("Name:", customerName);
+    console.log("Email:", customerEmail);
+    console.log("Phone:", customerPhone);
+    console.log("Location:", customerLocation);
+    console.log("Preferred:", customerPreferred);
+    console.log("Message:", customerMessage);
+
+    setText("packageName", selectedPackage.name);
+    setText("packagePrice", selectedPackage.price);
+    setText("summaryTotalPrice", selectedPackage.price);
+    setText("paymentTotalPrice", selectedPackage.price);
+
+    setText("customerName", customerName || "—");
+    setText("customerEmail", customerEmail || "—");
+    setText("customerPhone", customerPhone || "—");
+    setText("customerLocation", customerLocation || "—");
+    setText("customerPreferred", customerPreferred || "—");
+    setText("customerMessage", customerMessage || "—");
+  });
+</script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const packageValue = params.get("package") || "initial";
+
+    const payNowLink = document.getElementById("payNowLink");
+    if (payNowLink) {
+      payNowLink.href = "create-checkout-session.php?package=" + encodeURIComponent(packageValue);
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+
+    const packageValue = params.get("package") || "";
+    const name = params.get("name") || "";
+    const email = params.get("email") || "";
+    const phone = params.get("phone") || "";
+    const location = params.get("location") || "";
+    const preferred = params.get("preferred") || "";
+    const message = params.get("message") || "";
+
+    const payNowLink = document.getElementById("payNowLink");
+
+    const checkoutParams = new URLSearchParams({
+      package: packageValue,
+      name: name,
+      email: email,
+      phone: phone,
+      location: location,
+      preferred: preferred,
+      message: message
+    });
+
+    payNowLink.href = "create-checkout-session.php?" + checkoutParams.toString();
+  });
+</script>
+
+</body>
+</html>
