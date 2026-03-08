@@ -350,6 +350,21 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   line-height:1.7;
 }
 
+.modal-body p{
+  margin:0 0 16px;
+}
+
+.modal-body ul{
+  margin:0;
+  padding-left:22px;
+}
+
+.modal-body li{
+  margin:0 0 10px;
+  line-height:1.65;
+  color:rgba(4,35,64,.82);
+}
+
 .modal-actions{
   padding:18px 26px 26px;
   display:flex;
@@ -1821,7 +1836,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
         expensive mistakes or delays.
       </p>
 
-      <a class="btn primary" href="#contact">Request consultation</a>
+      <a class="btn primary" href="free-consultation.html">
+  Request free consultation
+</a>
     </div>
   </div>
 </section>
@@ -2117,55 +2134,139 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       <h3 class="modal-title" id="modalTitle">Service</h3>
       <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
     </div>
-    <div class="modal-body" id="modalDesc">Description</div>
+    <div class="modal-body" id="modalDesc"></div>
     <div class="modal-actions">
-      <a class="btn primary" id="modalPay" href="booking.html" target="_blank" rel="noopener">Pay / Book</a>
-      <a class="btn dark" href="#contact" id="modalContact">Contact</a>
+      <button class="btn dark" id="modalCloseBottom" type="button">Close</button>
     </div>
   </div>
 </div>
 
-<script>
-  const booking = "booking.html"; // <-- put your real payment link here
+  <script>
+  const servicesDetails = {
+    "Visas & Residence": {
+      description: "Support with residence permits and migration procedures in Switzerland.",
+      items: [
+        "Residence permit application guidance",
+        "Permit extension preparation",
+        "Status clarification",
+        "Document checklist for migration procedures",
+        "Form preparation guidance",
+        "Submission preparation",
+        "Follow-up communication support"
+      ]
+    },
+    "Registration & Authorities": {
+      description: "Support with local registration and communication with Swiss authorities.",
+      items: [
+        "Anmeldung preparation",
+        "Required document checklist",
+        "Gemeinde appointment preparation",
+        "Administrative coordination",
+        "Guidance for migration office steps",
+        "Support with authority correspondence"
+      ]
+    },
+    "Documents & Correspondence": {
+      description: "Drafting and reviewing formal letters, emails, and administrative documents.",
+      items: [
+        "Official letters to authorities",
+        "Email drafting and review",
+        "Requests to landlords or employers",
+        "Insurance correspondence",
+        "Administrative communication review",
+        "Improving wording and structure"
+      ]
+    },
+    "Employment": {
+      description: "Support with job applications and employment-related documents.",
+      items: [
+        "Swiss-style CV preparation",
+        "Cover letter drafting",
+        "Job application review",
+        "Employment contract review",
+        "Explanation of important clauses",
+        "Notice period clarification"
+      ]
+    },
+    "Insurance": {
+      description: "Practical guidance on Swiss health insurance setup and obligations.",
+      items: [
+        "Health insurance registration guidance",
+        "Explanation of legal deadlines",
+        "Clarification of obligations",
+        "Basic coverage explanation",
+        "Administrative steps overview",
+        "Support with insurance communication"
+      ]
+    },
+    "Family Matters": {
+      description: "Support with family-related migration and administrative procedures.",
+      items: [
+        "Marriage procedure guidance",
+        "Family reunification support",
+        "Document preparation overview",
+        "Residence options for relatives",
+        "Administrative process explanation",
+        "Submission and follow-up preparation"
+      ]
+    }
+  };
 
   const modal = document.getElementById("serviceModal");
   const modalTitle = document.getElementById("modalTitle");
   const modalDesc = document.getElementById("modalDesc");
   const modalClose = document.getElementById("modalClose");
-  const modalPay = document.getElementById("modalPay");
+  const modalCloseBottom = document.getElementById("modalCloseBottom");
 
-  function openModal(title, desc){
+  function openModal(title) {
+    const service = servicesDetails[title];
+    if (!service) return;
+
     modalTitle.textContent = title;
-    modalDesc.textContent = desc;
-    modalPay.href = booking.html;
+    modalDesc.innerHTML = `
+      <p>${service.description}</p>
+      <ul>
+        ${service.items.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+    `;
+
     modal.classList.add("open");
-    modal.setAttribute("aria-hidden","false");
+    modal.setAttribute("aria-hidden", "false");
   }
 
-  function closeModal(){
+  function closeModal() {
     modal.classList.remove("open");
-    modal.setAttribute("aria-hidden","true");
+    modal.setAttribute("aria-hidden", "true");
   }
 
   document.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
-      openModal(card.dataset.title || "Service", card.dataset.desc || "");
+      openModal(card.dataset.title);
     });
+
     card.addEventListener("keydown", (e) => {
-      if(e.key === "Enter") openModal(card.dataset.title || "Service", card.dataset.desc || "");
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openModal(card.dataset.title);
+      }
     });
   });
 
   modalClose.addEventListener("click", closeModal);
 
+  if (modalCloseBottom) {
+    modalCloseBottom.addEventListener("click", closeModal);
+  }
+
   modal.addEventListener("click", (e) => {
-    if(e.target === modal) closeModal();
+    if (e.target === modal) closeModal();
   });
 
   document.addEventListener("keydown", (e) => {
-    if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
+    if (e.key === "Escape" && modal.classList.contains("open")) {
+      closeModal();
+    }
   });
-  
 </script>
 
 <script>

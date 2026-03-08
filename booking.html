@@ -22,16 +22,34 @@
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
 
-    body{
-      font-family:"Noto Sans", sans-serif;
-      background-image:url("img/background_switzerland.webp");
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-attachment:fixed;
-      color:var(--navy);
-      line-height:1.6;
-    }
+   body{
+  font-family:"Noto Sans", sans-serif;
+  min-height:100vh;
+  position:relative;
+  color:var(--navy);
+  line-height:1.6;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url("img/background_switzerland.webp");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  z-index:-2;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(247,246,243,.78);
+  backdrop-filter:blur(3px);
+  z-index:-1;
+}
 
     h1,h2,h3{
       font-family:"Noto Serif Display", serif;
