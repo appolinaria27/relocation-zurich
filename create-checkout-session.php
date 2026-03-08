@@ -2,7 +2,10 @@
 
 require 'vendor/autoload.php';
 
-\Stripe\Stripe::setApiKey('YOUR_SECRET_KEY');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+\Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET_KEY']);
 
 $package = $_GET['package'] ?? 'initial';
 $name = $_GET['name'] ?? '';
