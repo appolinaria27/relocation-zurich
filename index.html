@@ -49,7 +49,9 @@ a{text-decoration:none;color:inherit}
 /* HEADER */
 header{
   position:fixed;
-  top:0;left:0;right:0;
+  top:12px;
+  left:0;
+  right:0;
   z-index:100;
   background:transparent;
 }
@@ -58,25 +60,79 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:16px 0;
-  gap:16px;
-  flex-wrap:wrap;
+  gap:40px;
+  padding:10px 0;
 }
 
-.brand{display:flex;align-items:center;gap:12px}
+.nav-right{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:28px;
+  flex:1;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-shrink:0;
+}
 
 .dot{
-  width:12px;height:12px;border-radius:999px;
+  width:12px;
+  height:12px;
+  border-radius:999px;
   background:var(--sand);
   box-shadow:0 0 0 6px rgba(198,155,122,.16);
 }
 
-nav{display:flex;gap:10px;align-items:center}
+nav{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-left:auto;
+}
+
 nav a{
   font-size:13px;
   padding:8px 10px;
   border-radius:999px;
   color:rgba(255,255,255,.85);
+  text-decoration:none;
+}
+
+.brand-text{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  color:#fff;
+}
+
+.brand-text strong{
+  font-size:18px;
+  font-weight:700;
+  line-height:1;
+}
+
+.brand-sub{
+  font-size:14px;
+  opacity:.9;
+  line-height:1;
+}
+
+.btn-book{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 28px;
+  border-radius:999px;
+  background:var(--sand);
+  color:var(--navy);
+  text-decoration:none;
+  font-size:15px;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 
 .btn{
@@ -395,9 +451,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 }
 
 .why .container{
-  width:min(1320px, calc(100% - 48px));
-  position:relative;
-  z-index:2;
+  width:100%;
+  padding:0 40px;
 }
 
 .why-kicker{
@@ -406,15 +461,17 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   text-transform:uppercase;
   font-size:12px;
   margin:0 0 14px;
+  text-align:center;
 }
 
 .why-title{
-  margin:0 0 42px;
+  margin:0 auto 42px;
   font-size:42px;
   line-height:1.08;
   letter-spacing:-0.02em;
   max-width:22ch;
   color:var(--navy);
+  text-align:center;
 }
 
 .why-cards{
@@ -427,51 +484,18 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
 .why-card{
   position:relative;
-  padding:20px 20px 18px;
-  min-height:auto;
-  border-radius:0;
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,.20) 0%,
-    rgba(255,255,255,.09) 100%
-  );
-  border:1px solid rgba(255,255,255,.28);
-  box-shadow:
-    0 10px 30px rgba(5,0,82,.08),
-    inset 0 1px 0 rgba(255,255,255,.20);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  transition:
-    transform .28s ease,
-    box-shadow .28s ease,
-    border-color .28s ease,
-    background .28s ease;
+  padding:24px 24px;
+  background:#D5AA6D;
+  border:1px solid rgba(5,0,82,.08);
+  box-shadow:0 8px 26px rgba(5,0,82,.08);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 
-.why-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:0;
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.18) 0%,
-    rgba(255,255,255,0) 34%
-  );
-  pointer-events:none;
-}
+
 
 .why-card:hover{
   transform:translateY(-6px);
-  border-color:rgba(255,255,255,.40);
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,.26) 0%,
-    rgba(255,255,255,.12) 100%
-  );
-  box-shadow:
-    0 18px 40px rgba(5,0,82,.12),
-    inset 0 1px 0 rgba(255,255,255,.24);
+  box-shadow:0 16px 40px rgba(5,0,82,.14);
 }
 
 .why-icon{
@@ -517,14 +541,11 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   max-width:none;
 }
 
-/* slightly highlight the free consultation card */
+/* highlight the free consultation card */
 .why-card:last-child{
-  border-color:rgba(255,255,255,.42);
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,.28) 0%,
-    rgba(255,255,255,.14) 100%
-  );
+  border:1px solid rgba(5,0,82,.08);
+  background:#D5AA6D;
+  box-shadow:0 14px 36px rgba(5,0,82,.14);
 }
 
 @media(max-width:1180px){
@@ -1417,20 +1438,32 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 <header>
   <div class="container">
     <div class="nav">
+      
       <div class="brand">
         <span class="dot"></span>
-        <div><b>Relocation & Legal Support Zürich</b></div>
+        <div class="brand-text">
+          <strong>Polina Kravtsova</strong>
+          <span class="brand-sub">Legal Advisory</span>
+        </div>
       </div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a class="btn primary" href="booking.html" target="_blank" rel="noopener">Pay / Book</a>
-      </nav>
+
+      <div class="nav-right">
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#booking" class="btn-book">Pay / Book</a>
+      </div>
+
     </div>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
   <div class="container">
     <div class="kicker">Zürich • Online / In-person</div>
     <h1>Clear support for settling in Switzerland</h1>
@@ -1464,7 +1497,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   </div>
 </section>
 
-<section class="about" style="background:#ffffff;color:var(--navy);padding:120px 0;">
+<section class="about" style="background:#ffffff;color:var(--navy);padding:120px 0;" id="about">
   <div class="container" style="display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;">
 
     <!-- Photo Placeholder -->
@@ -1488,7 +1521,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       <h2 style="margin:0 0 28px;font-size:34px;">About Me</h2>
 
       <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
-        I provide structured relocation and administrative support in Switzerland, based in Zürich.
+        I am Polina Kravtsova. I provide structured relocation and administrative support in Switzerland, based in Zürich.
       </p>
 
       <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
@@ -1759,7 +1792,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       </div>
 
       <div class="howwork-cta">
-        <a class="btn primary" href="booking.html" target="_blank" rel="noopener">Book Consultation</a>
+        <a class="btn primary" href="free-consultation.html" target="_blank" rel="noopener">Book Consultation</a>
       </div>
     </div>
 
@@ -1875,7 +1908,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
         </ul>
 
         <a class="btn dark" href="booking.html" target="_blank" rel="noopener">
-          Book consultation
+          Book package
         </a>
       </article>
 
@@ -1917,8 +1950,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <li>Follow-up guidance during the process</li>
         </ul>
 
-        <a class="btn dark" href="#contact">
-          Request details
+        <a class="btn dark" href="booking.html">
+          Book package
         </a>
       </article>
 
@@ -2062,54 +2095,54 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     <div class="blog-grid">
 
       <article class="blog-card">
-        <a href="#contact" class="blog-image">
+        <a href="blog.html#permits" class="blog-image">
           <img src="https://static.wixstatic.com/media/db2996_c496b5c9866343fdabafa13d0ddee158~mv2.jpg/v1/fill/w_800,h_613,al_c,q_85,enc_avif,quality_auto/db2996_c496b5c9866343fdabafa13d0ddee158~mv2.jpg" alt="Residence permits in Switzerland">
         </a>
         <div class="blog-content">
           <h3>
-            <a href="#contact">Residence permits in Switzerland: where to start</a>
+            <a href="blog.html#permits">Residence permits in Switzerland: where to start</a>
           </h3>
           <p>
             A practical overview of the first steps, required documents,
             and common mistakes when applying for a permit.
           </p>
-          <a href="#contact" class="blog-link">
+          <a href="blog.html#permits" class="blog-link">
             Read more <span class="blog-arrow">→</span>
           </a>
         </div>
       </article>
 
       <article class="blog-card">
-        <a href="#contact" class="blog-image">
+        <a href="blog.html#anmeldung" class="blog-image">
           <img src="https://res.cloudinary.com/deep-impact-ag/image/upload/c_fill,w_1200,dpr_1/q_auto/fl_progressive/f_auto/v1664285682/insideit/henrique-ferreira-IT-Budget_Kanton_Zürich-1000_600unsplash_smq9yq" alt="Registration in Zürich">
         </a>
         <div class="blog-content">
           <h3>
-            <a href="#contact">Anmeldung in Zürich: what you need to prepare</a>
+            <a href="blog.html#anmeldung">Anmeldung in Zürich: what you need to prepare</a>
           </h3>
           <p>
             Learn what to bring, how the process works, and how to avoid delays
             when registering with the local authorities.
           </p>
-          <a href="#contact" class="blog-link">
+          <a href="blog.html#anmeldung" class="blog-link">
             Read more <span class="blog-arrow">→</span>
           </a>
         </div>
       </article>
 
       <article class="blog-card">
-        <a href="#contact" class="blog-image">
+        <a href="blog.html#insurance" class="blog-image">
           <img src="https://today.uconn.edu/wp-content/uploads/2017/04/shutterstock_373492012-health-insurance-e1491415000969.jpg" alt="Swiss health insurance guide">
         </a>
         <div class="blog-content">
           <h3>
-            <a href="#contact">Health insurance in Switzerland: deadlines and obligations</a>
+            <a href="blog.html#insurance">Health insurance in Switzerland: deadlines and obligations</a>
           </h3>
           <p>
             Understand the legal requirements, time limits, and the basics of
             choosing coverage after your arrival.
           </p>
-          <a href="#contact" class="blog-link">
+          <a href="blog.html#insurance" class="blog-link">
             Read more <span class="blog-arrow">→</span>
           </a>
         </div>
@@ -2120,10 +2153,61 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 </section>
 
 <section id="contact" style="padding:110px 0;">
-  <div class="container" style="max-width:72ch;">
-    <div class="kicker">Contact</div>
-    <h1 style="font-size:32px;margin:0 0 10px;">Send a short request</h1>
-    <p class="lead" style="margin:0;">Email: hello@example.com</p>
+  <div class="container" style="max-width:1000px;margin:auto;padding:0 20px;">
+
+    <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+
+      <!-- LEFT -->
+      <div style="flex:1;min-width:280px;">
+        <div class="kicker">Contact</div>
+
+        <h1 style="font-size:32px;margin:0 0 14px;">
+          Send a short request
+        </h1>
+
+        <p class="lead" style="margin:0;line-height:1.6;">
+          Feel free to reach out for collaborations, research discussions,
+          or project opportunities.
+        </p>
+      </div>
+
+      <!-- RIGHT -->
+      <div style="flex:1;min-width:260px;line-height:1.9;font-size:16px;">
+
+        <div>
+          <strong>Email</strong><br>
+          <a href="mailto:polina.kravtsova@uzh.ch">
+            poling.kravtsova@uzh.ch
+          </a>
+        </div>
+
+        <div style="margin-top:14px;">
+          <strong>Phone</strong><br>
+          <a href="tel:+41764497581">
+            +41 76 449 75 81
+          </a>
+        </div>
+
+        <div style="margin-top:14px;">
+          <strong>Location</strong><br>
+          Zurich, Switzerland
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div style="
+      margin-top:70px;
+      padding-top:20px;
+      border-top:1px solid #eee;
+      font-size:14px;
+      color:#777;
+      text-align:center;">
+      © 2026 Poling Kravtsova — All rights reserved.
+    </div>
+
   </div>
 </section>
 
@@ -2286,6 +2370,20 @@ document.addEventListener("DOMContentLoaded", function () {
     current = (current + 1) % slides.length;
     slides[current].classList.add("active");
   });
+});
+</script>
+
+<script>
+window.addEventListener("load", function() {
+  if (window.location.hash) {
+    const element = document.querySelector(window.location.hash);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  }
 });
 </script>
 

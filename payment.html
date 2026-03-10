@@ -80,21 +80,37 @@ body::after{
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:700;
-      color:var(--navy);
-    }
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-    .dot{
-      width:12px;
-      height:12px;
-      border-radius:999px;
-      background:var(--sand);
-      box-shadow:0 0 0 6px rgba(213,170,109,.18);
-      flex:0 0 auto;
-    }
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:999px;
+  background:var(--sand);
+  box-shadow:0 0 0 6px rgba(198,155,122,.16);
+}
+
+.brand-text{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  color:#fff;
+}
+
+.brand-text strong{
+  font-size:18px;
+  font-weight:700;
+  line-height:1;
+}
+
+.brand-sub{
+  font-size:14px;
+  opacity:.9;
+  line-height:1;
+}
 
     .back-link{
       font-size:14px;
@@ -301,10 +317,15 @@ body::after{
     <div class="wrap">
 
       <div class="topbar">
-        <div class="brand">
-          <span class="dot"></span>
-          <span>Relocation & Legal Support Zürich</span>
-        </div>
+  <a href="index.html" class="brand">
+    <span class="dot"></span>
+
+    <span class="brand-text">
+      <strong>Polina Kravtsova</strong>
+      <span class="brand-sub">Legal Advisory</span>
+    </span>
+  </a>
+
         <a class="back-link" href="booking.html">← Back to booking</a>
       </div>
 

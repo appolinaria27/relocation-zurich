@@ -38,6 +38,30 @@ try {
 
     $filename = 'bookings/booking-' . time() . '-' . preg_replace('/[^a-zA-Z0-9_-]/', '', $session->id) . '.json';
     file_put_contents($filename, json_encode($bookingData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+    $to = $_ENV['ADMIN_EMAIL'];
+    $subject = 'New paid booking: ' . ($bookingData['package_name'] ?: 'Consultation');
+
+    $message = "
+New paid booking received
+
+Package: {$bookingData['package_name']}
+Price: CHF {$bookingData['price_chf']}
+Name: {$bookingData['name']}
+Email: {$bookingData['email']}
+Phone: {$bookingData['phone']}
+Location: {$bookingData['location']}
+Preferred format: {$bookingData['preferred']}
+Message: {$bookingData['message']}
+Stripe session ID: {$bookingData['stripe_session_id']}
+Created at: {$bookingData['created_at']}
+";
+
+    $headers = "From: " . $_ENV['MAIL_FROM'] . "\r\n";
+    $headers .= "Reply-To: " . ($bookingData['email'] ?: $_ENV['MAIL_FROM']) . "\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    @mail($to, $subject, $message, $headers);
   }
 } catch (Exception $e) {
   die('Error retrieving Stripe session: ' . $e->getMessage());
