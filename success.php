@@ -2,6 +2,9 @@
 
 require 'vendor/autoload.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -31,38 +34,67 @@ try {
     'created_at' => date('Y-m-d H:i:s'),
   ];
 
+  $emailSent = false;
+  $emailError = '';
+
   if ($session->payment_status === 'paid') {
     if (!is_dir('bookings')) {
       mkdir('bookings', 0777, true);
     }
 
-    $filename = 'bookings/booking-' . time() . '-' . preg_replace('/[^a-zA-Z0-9_-]/', '', $session->id) . '.json';
-    file_put_contents($filename, json_encode($bookingData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    $safeSessionId = preg_replace('/[^a-zA-Z0-9_-]/', '', $session->id);
+    $filename = 'bookings/booking-' . time() . '-' . $safeSessionId . '.json';
 
-    $to = $_ENV['ADMIN_EMAIL'];
-    $subject = 'New paid booking: ' . ($bookingData['package_name'] ?: 'Consultation');
+    if (!file_exists($filename)) {
+      file_put_contents(
+        $filename,
+        json_encode($bookingData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+      );
+    }
 
-    $message = "
-New paid booking received
+    $mail = new PHPMailer(true);
 
-Package: {$bookingData['package_name']}
-Price: CHF {$bookingData['price_chf']}
-Name: {$bookingData['name']}
-Email: {$bookingData['email']}
-Phone: {$bookingData['phone']}
-Location: {$bookingData['location']}
-Preferred format: {$bookingData['preferred']}
-Message: {$bookingData['message']}
-Stripe session ID: {$bookingData['stripe_session_id']}
-Created at: {$bookingData['created_at']}
-";
+    try {
+      $mail->isSMTP();
+      $mail->Host = $_ENV['SMTP_HOST'];
+      $mail->SMTPAuth = true;
+      $mail->Username = $_ENV['SMTP_USER'];
+      $mail->Password = $_ENV['SMTP_PASS'];
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = (int) $_ENV['SMTP_PORT'];
+      $mail->CharSet = 'UTF-8';
 
-    $headers = "From: " . $_ENV['MAIL_FROM'] . "\r\n";
-    $headers .= "Reply-To: " . ($bookingData['email'] ?: $_ENV['MAIL_FROM']) . "\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+      $mail->setFrom($_ENV['MAIL_FROM'], 'Polina Kravtsova Legal Advisory');
+      $mail->addAddress($_ENV['ADMIN_EMAIL']);
 
-    @mail($to, $subject, $message, $headers);
+      if (!empty($bookingData['email'])) {
+        $mail->addReplyTo($bookingData['email'], $bookingData['name'] ?: 'Client');
+      }
+
+      $mail->Subject = 'New Paid Booking Received';
+
+      $mail->Body =
+        "A new paid consultation booking has been received.\n\n" .
+        "Package: {$bookingData['package_name']}\n" .
+        "Price: CHF {$bookingData['price_chf']}\n" .
+        "Name: {$bookingData['name']}\n" .
+        "Email: {$bookingData['email']}\n" .
+        "Phone / WhatsApp: {$bookingData['phone']}\n" .
+        "Current location: {$bookingData['location']}\n" .
+        "Preferred consultation format: {$bookingData['preferred']}\n\n" .
+        "Message:\n{$bookingData['message']}\n\n" .
+        "Stripe session ID: {$bookingData['stripe_session_id']}\n" .
+        "Payment status: {$bookingData['payment_status']}\n" .
+        "Submitted at: {$bookingData['created_at']}\n";
+
+      $mail->send();
+      $emailSent = true;
+
+    } catch (Exception $e) {
+      $emailError = $mail->ErrorInfo;
+    }
   }
+
 } catch (Exception $e) {
   die('Error retrieving Stripe session: ' . $e->getMessage());
 }
@@ -78,5 +110,9 @@ Created at: {$bookingData['created_at']}
   <h1>Payment successful</h1>
   <p>Your consultation request has been received.</p>
   <p>Thank you for your booking.</p>
+
+  <?php if (!$emailSent && !empty($emailError)): ?>
+    <p style="color:#a00;">Booking saved, but notification email failed: <?= htmlspecialchars($emailError) ?></p>
+  <?php endif; ?>
 </body>
 </html>
