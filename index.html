@@ -1579,48 +1579,51 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 <section class="about" style="background:#ffffff;color:var(--navy);padding:120px 0;" id="about">
   <div class="container" style="display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;">
 
-    <!-- Photo Placeholder -->
     <div>
-  <img 
-    src="img/my_photo.jpg"
-    alt="Consultant portrait"
-    style="
-      width:100%;
-      aspect-ratio:4/5;
-      object-fit:cover;
-      border-radius:0px;
-      display:block;
-    "
-  >
-</div>
+      <img 
+        src="img/my_photo.jpg"
+        alt="Consultant portrait"
+        style="
+          width:100%;
+          aspect-ratio:4/5;
+          object-fit:cover;
+          border-radius:0px;
+          display:block;
+        "
+      >
+    </div>
 
-    <!-- Text Content -->
     <div>
-      <div class="services-label" style="text-align:left;">About</div>
-      <h2 style="margin:0 0 28px;font-size:34px;">About Me</h2>
+      <div class="services-label" style="text-align:left;" data-i18n="about_label">About</div>
 
-      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
+      <h2 style="margin:0 0 28px;font-size:34px;" data-i18n="about_title">
+        About Me
+      </h2>
+
+      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);" data-i18n="about_p1">
         I am Polina Kravtsova. I provide structured relocation and administrative support in Switzerland, based in Zürich.
       </p>
 
-      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);">
+      <p style="margin-bottom:22px;line-height:1.7;color:rgba(4,35,64,.85);" data-i18n="about_p2">
         My background includes legal education and professional experience in a law firm specializing in migration matters. During this time, I was involved in residence permit applications, administrative procedures, case preparation and client communication. This experience enables me to approach each matter with a clear understanding of regulatory requirements and procedural standards.
       </p>
 
-      <p style="margin-bottom:40px;line-height:1.7;color:rgba(4,35,64,.85);">
+      <p style="margin-bottom:40px;line-height:1.7;color:rgba(4,35,64,.85);" data-i18n="about_p3">
         In addition to my professional training, I have personally navigated the Swiss migration system. This allows me to combine formal legal knowledge with practical insight into the realities of relocation and integration.
       </p>
-
     </div>
 
   </div>
-
 </section>
 
 <section class="services" id="services">
   <div class="services-head">
-    <div class="services-label">Services</div>
-    <h2>What I can help with</h2>
+    <div class="services-label" data-i18n="services_label">Services</div>
+
+<h2 data-i18n="services_title">
+  What I can help with
+</h2>
+
   </div>
 
   <div class="cards">
@@ -1637,8 +1640,10 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <circle cx="17" cy="16" r="2.2"/>
         </g>
       </svg>
-      <h3>Visas & Residence</h3>
-      <p>Permits, extensions, status clarification and migration procedures.</p>
+      <h3 data-i18n="service_permits_title">
+      Residence permits
+      </h3>
+      <p data-i18n="service_permits_text">Permits, extensions, status clarification and migration procedures.</p>
     </div>
 
     <!-- Registration & Authorities -->
@@ -1656,8 +1661,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <path d="M5 10 12 4l7 6"/>
         </g>
       </svg>
-      <h3>Registration & Authorities</h3>
-      <p>Gemeinde registration, coordination with migration and administrative offices.</p>
+      <h3 data-i18n="service_registration_title">Registration & Authorities</h3>
+      <p data-i18n="service_registration_text">Gemeinde registration, coordination with migration and administrative offices.</p>
     </div>
 
     <!-- Documents & Correspondence -->
@@ -1670,8 +1675,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <path d="M3 7l9 6 9-6"/>
         </g>
       </svg>
-      <h3>Documents & Correspondence</h3>
-      <p>Official letters, formal communication, document drafting and review.</p>
+      <h3 data-i18n="service_documents_title">Documents & Correspondence</h3>
+      <p data-i18n="service_documents_text">Official letters, formal communication, document drafting and review.</p>
     </div>
 
     <!-- Employment -->
@@ -1685,8 +1690,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <line x1="4" y1="13" x2="20" y2="13"/>
         </g>
       </svg>
-      <h3>Employment</h3>
-      <p>CV preparation, job applications and employment contract review.</p>
+      <h3 data-i18n="service_employment_title">Employment</h3>
+      <p data-i18n="service_employment_text">CV preparation, job applications and employment contract review.</p>
     </div>
 
     <!-- Insurance -->
@@ -1699,8 +1704,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <path d="M9 12h6"/>
         </g>
       </svg>
-      <h3>Insurance</h3>
-      <p>Health insurance setup, legal obligations and clarification of coverage.</p>
+      <h3 data-i18n="service_insurance_title">Insurance</h3>
+      <p data-i18n="service_insurance_text">Health insurance setup, legal obligations and clarification of coverage.</p>
     </div>
 
     <!-- Family Matters -->
@@ -1712,8 +1717,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 0 0 0 0-7.8Z"/>
         </g>
       </svg>
-      <h3>Family Matters</h3>
-      <p>Marriage procedures, family reunification and residence for relatives.</p>
+      <h3 data-i18n="service_family_title">Family Matters</h3>
+      <p data-i18n="service_family_text">Marriage procedures, family reunification and residence for relatives.</p>
     </div>
 
   </div>
@@ -1721,8 +1726,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
 <section class="why" id="why">
   <div class="container">
-    <div class="why-kicker">Why choose us</div>
-    <h2 class="why-title">Why clients trust us for relocation support</h2>
+    <div class="why-kicker" data-i18n="why_label">Why choose us</div>
+    <h2 class="why-title" data-i18n="why_title">Why clients trust us for relocation support</h2>
 
     <div class="why-cards">
 
@@ -1734,8 +1739,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
             <path d="M4 9h16"/>
           </svg>
         </div>
-        <h3>Legal background</h3>
-        <p>Legal education and experience in a migration-focused law firm—structured, accurate and procedure-aware.</p>
+        <h3 data-i18n="why_legal_title">Legal background</h3>
+        <p data-i18n="why_legal_text">Legal education and experience in a migration-focused law firm—structured, accurate and procedure-aware.</p>
       </div>
 
       <div class="why-card">
@@ -1746,8 +1751,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
             <path d="M22 2 15 22l-4-9-9-4 20-7Z"/>
           </svg>
         </div>
-        <h3>Clear communication</h3>
-        <p>Professional letters and administrative messaging in the correct Swiss tone—so your requests are taken seriously.</p>
+        <h3 data-i18n="why_comm_title">Clear communication</h3>
+        <p data-i18n="why_comm_text">Professional letters and administrative messaging in the correct Swiss tone—so your requests are taken seriously.</p>
       </div>
 
       <div class="why-card">
@@ -1760,8 +1765,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
             <path d="M12 3c-3 3.5-3 14.5 0 18"/>
           </svg>
         </div>
-        <h3>Cost-efficient support</h3>
-        <p>More accessible than traditional legal representation while maintaining
+        <h3 data-i18n="why_cost_title">Cost-efficient support</h3>
+        <p data-i18n="why_cost_text">More accessible than traditional legal representation while maintaining
     a structured and professional approach</p>
       </div>
 
@@ -1775,8 +1780,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
             <path d="M12 19v2"/>
           </svg>
         </div>
-        <h3>Intensive support</h3>
-        <p>Fast, hands-on guidance at accessible pricing—and collaboration with trusted lawyers when formal representation is needed.</p>
+        <h3 data-i18n="why_support_title">Intensive support</h3>
+        <p data-i18n="why_support_text">Fast, hands-on guidance at accessible pricing—and collaboration with trusted lawyers when formal representation is needed.</p>
       </div>
 
       <div class="why-card">
@@ -1788,9 +1793,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     </svg>
   </div>
 
-  <h3>Free first consultation</h3>
+  <h3 data-i18n="why_consult_title">Free first consultation</h3>
 
-  <p>
+  <p data-i18n="why_consult_text">
     A short initial conversation to understand your situation
     and clarify the next steps before choosing a support package.
   </p>
@@ -1810,27 +1815,30 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       <!-- bottom info panel -->
       <div class="howwork-panel">
         <div>
-          <h4>Consultations</h4>
-          <p>
+          <h4 data-i18n="process_consult_title">Consultations</h4>
+          <p data-i18n="process_consult_text">
             Online or in-person in Zürich.<br>
-            Answer within 24 hours.</a>
+            Answer within 24 hours.
           </p>
         </div>
         <div>
-          <h4>Contact</h4>
+          <h4 data-i18n="process_contact_title">Contact</h4>
           <p>
-            Email: <a href="mailto:hello@example.com">polina.kravtsova@uzh.ch</a><br>
-            WhatsApp: <a href="#">+41 76 449 75 81</a>
-          </p>
+  <span data-i18n="process_email_label">Email:</span>
+  <a href="mailto:hello@example.com">polina.kravtsova@uzh.ch</a><br>
+
+  <span data-i18n="process_whatsapp_label">WhatsApp:</span>
+  <a href="#">+41 76 449 75 81</a>
+</p>
         </div>
       </div>
     </div>
 
     <!-- RIGHT: text -->
     <div class="howwork-right">
-      <div class="services-label" style="text-align:left;">Process</div>
-      <h2>How we work</h2>
-      <p class="intro">
+      <div class="services-label" style="text-align:left;" data-i18n="process_label">Process</div>
+      <h2 data-i18n="process_title">How we work</h2>
+      <p class="intro" data-i18n="process_intro">
         A structured approach designed to reduce uncertainty and keep every step clear:
         we review your situation, prepare documents and communication, and support follow-ups
         until the administrative step is completed.
@@ -1840,38 +1848,38 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
         <div class="howwork-step">
           <div class="howwork-num">01</div>
           <div>
-            <h3>Initial consultation</h3>
-            <p>We clarify your situation, timeline, risks, and required documents.</p>
+            <h3 data-i18n="process_step1_title">Initial consultation</h3>
+            <p data-i18n="process_step1_text">We clarify your situation, timeline, risks, and required documents.</p>
           </div>
         </div>
 
         <div class="howwork-step">
           <div class="howwork-num">02</div>
           <div>
-            <h3>Checklist & strategy</h3>
-            <p>You receive a structured checklist and the correct administrative route.</p>
+            <h3 data-i18n="process_step2_title">Checklist & strategy</h3>
+            <p data-i18n="process_step2_text">You receive a structured checklist and the correct administrative route.</p>
           </div>
         </div>
 
         <div class="howwork-step">
           <div class="howwork-num">03</div>
           <div>
-            <h3>Documents & communication</h3>
-            <p>Drafting and reviewing letters/emails in the correct Swiss administrative tone.</p>
+            <h3 data-i18n="process_step3_title">Documents & communication</h3>
+            <p data-i18n="process_step3_text">Drafting and reviewing letters/emails in the correct Swiss administrative tone.</p>
           </div>
         </div>
 
         <div class="howwork-step">
           <div class="howwork-num">04</div>
           <div>
-            <h3>Submission & follow-up</h3>
-            <p>Preparation support and follow-ups until the procedure is completed.</p>
+            <h3 data-i18n="process_step4_title">Submission & follow-up</h3>
+            <p data-i18n="process_step4_text">Preparation support and follow-ups until the procedure is completed.</p>
           </div>
         </div>
       </div>
 
       <div class="howwork-cta">
-        <a class="btn primary" href="free-consultation.html" target="_blank" rel="noopener">Book Consultation</a>
+        <a class="btn primary" href="free-consultation.html" target="_blank" rel="noopener" data-i18n="process_cta">Book Consultation</a>
       </div>
     </div>
 
@@ -1882,41 +1890,41 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   <div class="testimonials-split-left">
     <div class="testimonials-inner">
 
-      <div class="services-label" style="text-align:left;">Client feedback</div>
-      <h2>What clients say</h2>
+      <div class="services-label" style="text-align:left;" data-i18n="testimonials_label">Client feedback</div>
+      <h2 data-i18n="testimonials_title">What clients say</h2>
 
       <div class="testimonial-slider">
         <div class="testimonial-slide active">
-          <p class="testimonial-text">
+          <p class="testimonial-text" data-i18n="testimonial_1_text">
             I was completely confused when I arrived in Zürich. I did not know where to go first,
             what papers I needed, or how the registration worked. After the consultation,
             everything finally felt clear and much less stressful.
           </p>
           <div class="testimonial-author">
             <strong>Maria S.</strong>
-            <span>Moved from Brazil</span>
+            <span data-i18n="testimonial_1_from">Moved from Brazil</span>
           </div>
         </div>
 
         <div class="testimonial-slide">
-          <p class="testimonial-text">
+          <p class="testimonial-text" data-i18n="testimonial_2_text">
             I was worried about my permit and some letters from the authorities.
             Everything was explained to me in a very simple way, and I felt much calmer after that.
           </p>
           <div class="testimonial-author">
             <strong>Olena K.</strong>
-            <span>Moved from Ukraine</span>
+            <span data-i18n="testimonial_2_from">Moved from Ukraine</span>
           </div>
         </div>
 
         <div class="testimonial-slide">
-          <p class="testimonial-text">
+          <p class="testimonial-text" data-i18n="testimonial_3_text">
             What helped me most was that I could ask normal questions and get clear answers.
             I did not feel rushed, and I finally understood what to do next.
           </p>
           <div class="testimonial-author">
             <strong>David R.</strong>
-            <span>Moved from Spain</span>
+            <span data-i18n="testimonial_2_from">Moved from Spain</span>
           </div>
         </div>
       </div>
@@ -1932,23 +1940,23 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
   <div class="testimonials-split-right">
     <div class="testimonials-inner right">
-      <div class="services-label" style="text-align:left;color:rgba(255,255,255,.65);">
+      <div class="services-label" style="text-align:left;color:rgba(255,255,255,.65);" data-i18n="testimonials_why_label">
         Why clients start here
       </div>
 
-      <h3>Practical support before unnecessary costs</h3>
+      <h3 data-i18n="testimonials_why_label">Practical support before unnecessary costs</h3>
 
-      <p>
+      <p data-i18n="testimonials_why_p1">
         Many people first need clarity, structure, and help with documents or communication —
         not a full legal mandate from the beginning.
       </p>
 
-      <p>
+      <p data-i18n="testimonials_why_p2">
         A short consultation can often save time, reduce stress, and help you avoid
         expensive mistakes or delays.
       </p>
 
-      <a class="btn primary" href="free-consultation.html">
+      <a class="btn primary" href="free-consultation.html" data-i18n="testimonials_cta">
   Request free consultation
 </a>
     </div>
@@ -1959,9 +1967,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   <div class="container">
 
     <div class="pricing-premium-head">
-      <div class="services-label">Pricing</div>
-      <h2>Start with clarity — not with a large legal bill</h2>
-      <p>
+      <div class="services-label" data-i18n="pricing_label">Pricing</div>
+      <h2 data-i18n="pricing_title">Start with clarity — not with a large legal bill</h2>
+      <p data-i18n="pricing_intro">
         For many relocation and administrative matters, you may not need full legal
         representation from the beginning. Start with a free first consultation,
         understand your route, and choose the level of support that fits your case.
@@ -1972,64 +1980,64 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     <div class="pricing-premium-grid">
 
       <article class="pricing-premium-card">
-        <div class="pricing-plan">Essential</div>
-        <h3>Single consultation</h3>
-        <div class="pricing-amount">CHF 59</div>
-        <p class="pricing-sub">
+        <div class="pricing-plan" data-i18n="pricing_card1_plan">Essential</div>
+        <h3 data-i18n="pricing_card1_title">Single consultation</h3>
+        <div class="pricing-amount" data-i18n="pricing_card1_price">CHF 59</div>
+        <p class="pricing-sub" data-i18n="pricing_card1_sub">
           For clients who need one clear answer, orientation, and next steps.
         </p>
 
         <ul class="pricing-points">
-          <li>30-minute consultation</li>
-          <li>Case overview</li>
-          <li>Required documents explained</li>
-          <li>Clear next-step guidance</li>
+          <li data-i18n="pricing_card1_point1">30-minute consultation</li>
+          <li data-i18n="pricing_card1_point2">Case overview</li>
+          <li data-i18n="pricing_card1_point3">Required documents explained</li>
+          <li data-i18n="pricing_card1_point4">Clear next-step guidance</li>
         </ul>
 
-        <a class="btn dark" href="booking.html" target="_blank" rel="noopener">
+        <a class="btn dark" href="booking.html" target="_blank" rel="noopener" data-i18n="pricing_card1_cta">
           Book package
         </a>
       </article>
 
       <article class="pricing-premium-card featured">
-        <div class="pricing-badge">Most requested</div>
-        <div class="pricing-plan">Practical</div>
-        <h3>Consultation + document review</h3>
-        <div class="pricing-amount">CHF 129</div>
-        <p class="pricing-sub">
+        <div class="pricing-badge" data-i18n="pricing_card2_badge">Most requested</div>
+        <div class="pricing-plan" data-i18n="pricing_card2_plan">Practical</div>
+        <h3 data-i18n="pricing_card2_title">Consultation + document review</h3>
+        <div class="pricing-amount" data-i18n="pricing_card2_price">CHF 129</div>
+        <p class="pricing-sub" data-i18n="pricing_card2_sub">
           For clients who want guidance plus help checking paperwork before taking action.
         </p>
 
         <ul class="pricing-points">
-          <li>60-minute consultation</li>
-          <li>Review of your documents</li>
-          <li>Personal checklist</li>
-          <li>Written follow-up summary</li>
-          <li>Administrative route explained</li>
+          <li data-i18n="pricing_card2_point1">60-minute consultation</li>
+          <li data-i18n="pricing_card2_point2">Review of your documents</li>
+          <li data-i18n="pricing_card2_point3">Personal checklist</li>
+          <li data-i18n="pricing_card2_point4">Written follow-up summary</li>
+          <li data-i18n="pricing_card2_point5">Administrative route explained</li>
         </ul>
 
-        <a class="btn primary" href="booking.html" target="_blank" rel="noopener">
+        <a class="btn primary" href="booking.html" target="_blank" rel="noopener" data-i18n="pricing_card2_cta">
           Book package
         </a>
       </article>
 
       <article class="pricing-premium-card">
-        <div class="pricing-plan">Complete</div>
-        <h3>Relocation support package</h3>
-        <div class="pricing-amount">from CHF 290</div>
-        <p class="pricing-sub">
+        <div class="pricing-plan" data-i18n="pricing_card3_plan">Complete</div>
+        <h3 data-i18n="pricing_card3_title">Relocation support package</h3>
+        <div class="pricing-amount" data-i18n="pricing_card3_price">from CHF 290</div>
+        <p class="pricing-sub" data-i18n="pricing_card3_sub">
           For more complex situations involving several steps, forms, authorities, or letters.
         </p>
 
         <ul class="pricing-points">
-          <li>Full case review</li>
-          <li>Document preparation support</li>
-          <li>Letter / email drafting help</li>
-          <li>Anmeldung / authority preparation</li>
-          <li>Follow-up guidance during the process</li>
+          <li data-i18n="pricing_card3_point1">Full case review</li>
+          <li data-i18n="pricing_card3_point2">Document preparation support</li>
+          <li data-i18n="pricing_card3_point3">Letter / email drafting help</li>
+          <li data-i18n="pricing_card3_point4">Anmeldung / authority preparation</li>
+          <li data-i18n="pricing_card3_point5">Follow-up guidance during the process</li>
         </ul>
 
-        <a class="btn dark" href="booking.html">
+        <a class="btn dark" href="booking.html" data-i18n="pricing_card3_cta">
           Book package
         </a>
       </article>
@@ -2039,9 +2047,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     <!-- COMPARISON BLOCK -->
     <div class="pricing-compare-smart">
       <div class="pricing-compare-intro">
-        <div class="services-label">Why start here</div>
-        <h3>A smarter first step for practical migration matters</h3>
-        <p>
+        <div class="services-label" data-i18n="pricing_compare_label">Why start here</div>
+        <h3 data-i18n="pricing_compare_title">A smarter first step for practical migration matters</h3>
+        <p data-i18n="pricing_compare_intro">
           Many people first need clarity, structure, documents, and the right communication —
           not necessarily a full lawyer mandate.
         </p>
@@ -2049,31 +2057,31 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
       <div class="pricing-compare-table">
         <div class="pricing-compare-col mine">
-          <div class="compare-top">This service</div>
-          <div class="compare-price">CHF 0 – 290+</div>
+          <div class="compare-top" data-i18n="pricing_compare_mine_title">This service</div>
+          <div class="compare-price" data-i18n="pricing_compare_mine_price">CHF 0 – 290+</div>
           <ul>
-            <li>Free first consultation</li>
-            <li>Accessible support for everyday migration steps</li>
-            <li>Help with documents, letters, checklists, preparation</li>
-            <li>Clear and practical administrative guidance</li>
-            <li>Referral to a lawyer when formal representation is needed</li>
+            <li data-i18n="pricing_compare_mine_point1">Free first consultation</li>
+            <li data-i18n="pricing_compare_mine_point2">Accessible support for everyday migration steps</li>
+            <li data-i18n="pricing_compare_mine_point3">Help with documents, letters, checklists, preparation</li>
+            <li data-i18n="pricing_compare_mine_point4">Clear and practical administrative guidance</li>
+            <li data-i18n="pricing_compare_mine_point5">Referral to a lawyer when formal representation is needed</li>
           </ul>
         </div>
 
         <div class="pricing-compare-col market">
-          <div class="compare-top">Typical lawyer pricing</div>
-          <div class="compare-price">CHF 250 – 500/hour</div>
+          <div class="compare-top" data-i18n="pricing_compare_market_title">Typical lawyer pricing</div>
+          <div class="compare-price" data-i18n="pricing_compare_market_price">CHF 250 – 500/hour</div>
           <ul>
-            <li>Often billed hourly</li>
-            <li>Some initial consultations around CHF 300–330</li>
-            <li>Best for disputes, appeals, and formal legal representation</li>
-            <li>Can be more than needed for mainly administrative matters</li>
-            <li>Important when the case becomes legally complex</li>
+            <li data-i18n="pricing_compare_market_point1">Often billed hourly</li>
+            <li data-i18n="pricing_compare_market_point2">Some initial consultations around CHF 300–330</li>
+            <li data-i18n="pricing_compare_market_point3">Best for disputes, appeals, and formal legal representation</li>
+            <li data-i18n="pricing_compare_market_point4">Can be more than needed for mainly administrative matters</li>
+            <li data-i18n="pricing_compare_market_point5">Important when the case becomes legally complex</li>
           </ul>
         </div>
       </div>
 
-      <p class="pricing-market-note">
+      <p class="pricing-market-note" data-i18n="pricing_market_note">
         Publicly posted examples in Switzerland show migration/legal consultations around CHF 300–330,
         hourly lawyer fees around CHF 250 and up to CHF 350–500 or more, while low-cost advisory centres
         can be much cheaper in specific settings.
@@ -2089,9 +2097,9 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   <div class="container faq-hover-wrap">
 
     <div class="faq-hover-head">
-      <div class="faq-premium-kicker">FAQ</div>
-      <h2>Find answers to your most common questions</h2>
-      <p>
+      <div class="faq-premium-kicker" data-i18n="faq_label">FAQ</div>
+      <h2 data-i18n="faq_label">Find answers to your most common questions</h2>
+      <p data-i18n="faq_intro">
         Clear information about consultations, support, and the scope of assistance.
       </p>
     </div>
@@ -2099,10 +2107,10 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     <div class="faq-hover-list">
 
       <div class="faq-hover-item">
-        <div class="faq-question">
+        <div class="faq-question" data-i18n="faq_q1">
           Is the first consultation free of charge?
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq_a1">
           Yes. The first consultation is free of charge. During this initial
           conversation we briefly analyse your case and discuss the possible
           next steps.
@@ -2110,10 +2118,10 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       </div>
 
       <div class="faq-hover-item">
-        <div class="faq-question">
+        <div class="faq-question" data-i18n="faq_q2">
           Do you provide legal representation?
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq_a2">
           No. I provide structured guidance, administrative support and
           document preparation. Where formal representation is required,
           I can refer clients to licensed lawyers.
@@ -2121,20 +2129,20 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
       </div>
 
       <div class="faq-hover-item">
-        <div class="faq-question">
+        <div class="faq-question" data-i18n="faq_q3">
           Are consultations available online or in person?
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq_a3">
           Both options are available. Consultations can take place online
           or in person in Zürich depending on your preference.
         </div>
       </div>
 
       <div class="faq-hover-item">
-        <div class="faq-question">
+        <div class="faq-question" data-i18n="faq_q4">
           Do you only work with migration matters?
         </div>
-        <div class="faq-answer">
+        <div class="faq-answer" data-i18n="faq_a4">
           Migration and relocation matters are the main focus. In some cases
           related administrative questions can also be addressed, while
           specialised areas may require referral to a qualified lawyer.
