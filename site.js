@@ -188,6 +188,101 @@ faq_a3: "Both options are available. Consultations can take place online or in p
 faq_q4: "Do you only work with migration matters?",
 faq_a4: "Migration and relocation matters are the main focus. In some cases related administrative questions can also be addressed, while specialised areas may require referral to a qualified lawyer.",
 
+blog_label: "Insights",
+blog_title: "Practical guides for moving and settling in Switzerland",
+blog_intro: "Clear articles on permits, registration, insurance, employment, and everyday administrative steps in Switzerland.",
+
+blog_card1_title: "Residence permits in Switzerland: where to start",
+blog_card1_text: "A practical overview of the first steps, required documents, and common mistakes when applying for a permit.",
+blog_card1_link: "Read more",
+
+blog_card2_title: "Anmeldung in Zürich: what you need to prepare",
+blog_card2_text: "Learn what to bring, how the process works, and how to avoid delays when registering with the local authorities.",
+blog_card2_link: "Read more",
+
+blog_card3_title: "Health insurance in Switzerland: deadlines and obligations",
+blog_card3_text: "Understand the legal requirements, time limits, and the basics of choosing coverage after your arrival.",
+blog_card3_link: "Read more",
+
+contact_label: "Contact",
+contact_title: "Send a short request",
+contact_text: "Feel free to reach out for consultations, document support, or relocation questions in Switzerland.",
+contact_email_label: "Email",
+contact_phone_label: "Phone",
+contact_location_label: "Location",
+contact_location_value: "Zurich, Switzerland",
+footer_copyright: "© 2026 Polina Kravtsova — All rights reserved.",
+
+booking_back: "← Back to homepage",
+
+booking_kicker: "Booking",
+booking_title: "Book your consultation",
+booking_intro: "Choose the package that fits your situation, leave a short description, and continue to payment. The process is clear, simple, and designed to save you time.",
+
+booking_next_title: "What happens next",
+booking_next_text: "After payment, your request is received and reviewed. You will then be contacted to confirm the consultation format and next steps.",
+booking_next_1: "Online or in-person in Zürich",
+booking_next_2: "Structured practical guidance",
+booking_next_3: "Reply within 24 hours",
+
+booking_details_label: "Client details",
+booking_details_title: "Select your package and fill in your details",
+booking_details_text: "Choose one option below and provide the key information needed to prepare your booking.",
+
+booking_pack1_name: "Initial consultation",
+booking_pack1_desc: "A focused consultation for first questions and orientation.",
+
+booking_pack2_name: "Consultation + review",
+booking_pack2_desc: "Consultation plus document review and more detailed preparation.",
+
+booking_pack3_name: "Relocation support",
+booking_pack3_desc: "For more involved cases with several steps, forms, or authority contact.",
+
+booking_name: "Full name",
+booking_email: "Email",
+booking_phone: "Phone / WhatsApp",
+booking_location: "Current location",
+booking_message: "Short description of your situation",
+booking_format: "Preferred consultation format",
+
+booking_format_online: "Online",
+booking_format_inperson: "In person in Zürich",
+booking_format_any: "No preference",
+
+booking_note: "Payment confirms your request. If your matter requires formal legal representation, you may be referred to a licensed lawyer where appropriate.",
+
+booking_continue: "Continue to payment",
+booking_back_button: "Back",
+
+booking_trust1_title: "Clear process",
+booking_trust1_text: "Choose a package, provide your details, and continue to payment.",
+
+booking_trust2_title: "Quick contact",
+booking_trust2_text: "Your request is reviewed and answered within 24 hours.",
+
+booking_trust3_title: "Practical support",
+booking_trust3_text: "Structured guidance for permits, registrations, and administrative steps.",
+
+payment_back: "← Back to booking",
+payment_summary_kicker: "Booking summary",
+payment_title: "Review your consultation before payment",
+payment_subtitle: "Please confirm your selected package and your details below.",
+
+payment_name: "Full name",
+payment_email: "Email",
+payment_phone: "Phone / WhatsApp",
+payment_location: "Current location",
+payment_format: "Preferred format",
+payment_message: "Short description",
+payment_total: "Total due",
+
+payment_kicker: "Payment",
+payment_right_title: "Continue to secure payment",
+payment_right_text: "When you click the button below, you can continue with your payment setup.",
+payment_pay_now: "Pay now",
+payment_edit: "Edit booking",
+payment_note: "Payment confirms your consultation request. If your matter requires formal legal representation, you may be referred to a licensed lawyer where appropriate.",
+
   },
 
   es: {
@@ -379,7 +474,103 @@ faq_a3: "Ambas opciones están disponibles. Las consultas pueden realizarse en l
 
 faq_q4: "¿Trabaja solo con asuntos migratorios?",
 faq_a4: "Los asuntos de migración y reubicación son el enfoque principal. En algunos casos también pueden abordarse cuestiones administrativas relacionadas, mientras que las áreas más especializadas pueden requerir la derivación a un abogado cualificado.",
-  },
+
+blog_label: "Guías",
+blog_title: "Guías prácticas para mudarse y establecerse en Suiza",
+blog_intro: "Artículos claros sobre permisos, registro, seguro, empleo y los pasos administrativos cotidianos en Suiza.",
+
+blog_card1_title: "Permisos de residencia en Suiza: por dónde empezar",
+blog_card1_text: "Una visión práctica de los primeros pasos, los documentos necesarios y los errores comunes al solicitar un permiso.",
+blog_card1_link: "Leer más",
+
+blog_card2_title: "Anmeldung en Zúrich: qué necesitas preparar",
+blog_card2_text: "Descubre qué debes llevar, cómo funciona el proceso y cómo evitar retrasos al registrarte ante las autoridades locales.",
+blog_card2_link: "Leer más",
+
+blog_card3_title: "Seguro médico en Suiza: plazos y obligaciones",
+blog_card3_text: "Comprende los requisitos legales, los plazos y los aspectos básicos para elegir la cobertura después de tu llegada.",
+blog_card3_link: "Leer más",
+
+contact_label: "Contacto",
+contact_title: "Envíe una breve solicitud",
+contact_text: "No dude en ponerse en contacto para consultas, apoyo con documentos o preguntas sobre reubicación en Suiza.",
+contact_email_label: "Correo electrónico",
+contact_phone_label: "Teléfono",
+contact_location_label: "Ubicación",
+contact_location_value: "Zúrich, Suiza",
+footer_copyright: "© 2026 Polina Kravtsova — Todos los derechos reservados.",
+
+booking_back: "← Volver a la página principal",
+
+booking_kicker: "Reserva",
+booking_title: "Reservar una consulta",
+booking_intro: "Elija el paquete que mejor se adapte a su situación, deje una breve descripción y continúe con el pago. El proceso es claro, sencillo y está diseñado para ahorrarle tiempo.",
+
+booking_next_title: "Qué sucede después",
+booking_next_text: "Después del pago, su solicitud será revisada. Luego será contactado para confirmar el formato de la consulta y los siguientes pasos.",
+booking_next_1: "Online o presencial en Zúrich",
+booking_next_2: "Orientación práctica estructurada",
+booking_next_3: "Respuesta en 24 horas",
+
+booking_details_label: "Datos del cliente",
+booking_details_title: "Seleccione su paquete y complete sus datos",
+booking_details_text: "Elija una opción a continuación y proporcione la información necesaria para preparar su reserva.",
+
+booking_pack1_name: "Consulta inicial",
+booking_pack1_desc: "Una consulta enfocada para preguntas iniciales y orientación.",
+
+booking_pack2_name: "Consulta + revisión",
+booking_pack2_desc: "Consulta con revisión de documentos y preparación más detallada.",
+
+booking_pack3_name: "Apoyo de relocación",
+booking_pack3_desc: "Para casos más complejos con varios pasos, formularios o contacto con autoridades.",
+
+booking_name: "Nombre completo",
+booking_email: "Correo electrónico",
+booking_phone: "Teléfono / WhatsApp",
+booking_location: "Ubicación actual",
+booking_message: "Breve descripción de su situación",
+booking_format: "Formato de consulta preferido",
+
+booking_format_online: "Online",
+booking_format_inperson: "Presencial en Zúrich",
+booking_format_any: "Sin preferencia",
+
+booking_note: "El pago confirma su solicitud. Si su caso requiere representación legal formal, puede ser referido a un abogado autorizado.",
+
+booking_continue: "Continuar al pago",
+booking_back_button: "Volver",
+
+booking_trust1_title: "Proceso claro",
+booking_trust1_text: "Elija un paquete, complete sus datos y continúe con el pago.",
+
+booking_trust2_title: "Contacto rápido",
+booking_trust2_text: "Su solicitud será revisada y respondida en 24 horas.",
+
+booking_trust3_title: "Apoyo práctico",
+booking_trust3_text: "Orientación estructurada para permisos, registros y trámites administrativos.",
+
+payment_back: "← Volver a la reserva",
+payment_summary_kicker: "Resumen de la reserva",
+payment_title: "Revise su consulta antes del pago",
+payment_subtitle: "Por favor confirme a continuación el paquete seleccionado y sus datos.",
+
+payment_name: "Nombre completo",
+payment_email: "Correo electrónico",
+payment_phone: "Teléfono / WhatsApp",
+payment_location: "Ubicación actual",
+payment_format: "Formato preferido",
+payment_message: "Descripción breve",
+payment_total: "Total a pagar",
+
+payment_kicker: "Pago",
+payment_right_title: "Continuar al pago seguro",
+payment_right_text: "Cuando haga clic en el botón de abajo, podrá continuar con su proceso de pago.",
+payment_pay_now: "Pagar ahora",
+payment_edit: "Editar reserva",
+payment_note: "El pago confirma su solicitud de consulta. Si su caso requiere representación legal formal, puede ser referido a un abogado autorizado.",
+
+},
 
   de: {
     nav_home: "Startseite",
@@ -570,6 +761,102 @@ faq_a3: "Beides ist möglich. Beratungen können je nach Ihrer Präferenz online
 
 faq_q4: "Arbeiten Sie nur mit Migrationsangelegenheiten?",
 faq_a4: "Migrations- und Relocation-Angelegenheiten sind der Hauptfokus. In einigen Fällen können auch damit verbundene administrative Fragen behandelt werden, während spezialisierte Bereiche eine Weitervermittlung an eine qualifizierte Anwältin oder einen qualifizierten Anwalt erfordern können.",
+
+blog_label: "Einblicke",
+blog_title: "Praktische Leitfäden für den Umzug und das Einleben in der Schweiz",
+blog_intro: "Klare Artikel zu Bewilligungen, Anmeldung, Versicherung, Arbeit und administrativen Alltagsschritten in der Schweiz.",
+
+blog_card1_title: "Aufenthaltsbewilligungen in der Schweiz: wo man beginnt",
+blog_card1_text: "Ein praktischer Überblick über die ersten Schritte, notwendige Unterlagen und häufige Fehler bei der Beantragung einer Bewilligung.",
+blog_card1_link: "Mehr lesen",
+
+blog_card2_title: "Anmeldung in Zürich: was Sie vorbereiten müssen",
+blog_card2_text: "Erfahren Sie, was Sie mitbringen müssen, wie der Ablauf funktioniert und wie Sie Verzögerungen bei der Anmeldung bei den Behörden vermeiden.",
+blog_card2_link: "Mehr lesen",
+
+blog_card3_title: "Krankenversicherung in der Schweiz: Fristen und Pflichten",
+blog_card3_text: "Verstehen Sie die gesetzlichen Anforderungen, Fristen und die Grundlagen der Wahl des richtigen Versicherungsschutzes nach Ihrer Ankunft.",
+blog_card3_link: "Mehr lesen",
+
+contact_label: "Kontakt",
+contact_title: "Senden Sie eine kurze Anfrage",
+contact_text: "Kontaktieren Sie mich gern für Beratungen, Unterstützung bei Dokumenten oder Fragen zum Umzug in die Schweiz.",
+contact_email_label: "E-Mail",
+contact_phone_label: "Telefon",
+contact_location_label: "Standort",
+contact_location_value: "Zürich, Schweiz",
+footer_copyright: "© 2026 Polina Kravtsova — Alle Rechte vorbehalten.",
+
+booking_back: "← Zurück zur Startseite",
+
+booking_kicker: "Buchung",
+booking_title: "Beratung buchen",
+booking_intro: "Wählen Sie das Paket, das zu Ihrer Situation passt, hinterlassen Sie eine kurze Beschreibung und fahren Sie mit der Zahlung fort. Der Prozess ist klar, einfach und darauf ausgelegt, Zeit zu sparen.",
+
+booking_next_title: "Wie es weitergeht",
+booking_next_text: "Nach der Zahlung wird Ihre Anfrage geprüft. Anschließend werden Sie kontaktiert, um das Beratungsformat und die nächsten Schritte zu bestätigen.",
+booking_next_1: "Online oder persönlich in Zürich",
+booking_next_2: "Strukturierte praktische Beratung",
+booking_next_3: "Antwort innerhalb von 24 Stunden",
+
+booking_details_label: "Kundendaten",
+booking_details_title: "Wählen Sie Ihr Paket und geben Sie Ihre Daten ein",
+booking_details_text: "Wählen Sie unten eine Option und geben Sie die wichtigsten Informationen an, damit Ihre Buchung vorbereitet werden kann.",
+
+booking_pack1_name: "Erstberatung",
+booking_pack1_desc: "Eine fokussierte Beratung für erste Fragen und Orientierung.",
+
+booking_pack2_name: "Beratung + Dokumentenprüfung",
+booking_pack2_desc: "Beratung mit Prüfung von Dokumenten und detaillierter Vorbereitung.",
+
+booking_pack3_name: "Relocation-Unterstützung",
+booking_pack3_desc: "Für komplexere Fälle mit mehreren Schritten, Formularen oder Behördenkontakt.",
+
+booking_name: "Vollständiger Name",
+booking_email: "E-Mail",
+booking_phone: "Telefon / WhatsApp",
+booking_location: "Aktueller Standort",
+booking_message: "Kurze Beschreibung Ihrer Situation",
+booking_format: "Bevorzugtes Beratungsformat",
+
+booking_format_online: "Online",
+booking_format_inperson: "Persönlich in Zürich",
+booking_format_any: "Keine Präferenz",
+
+booking_note: "Die Zahlung bestätigt Ihre Anfrage. Wenn eine formelle rechtliche Vertretung erforderlich ist, kann eine Weitervermittlung an einen zugelassenen Anwalt erfolgen.",
+
+booking_continue: "Weiter zur Zahlung",
+booking_back_button: "Zurück",
+
+booking_trust1_title: "Klarer Ablauf",
+booking_trust1_text: "Paket auswählen, Daten eingeben und zur Zahlung weitergehen.",
+
+booking_trust2_title: "Schnelle Antwort",
+booking_trust2_text: "Ihre Anfrage wird innerhalb von 24 Stunden geprüft und beantwortet.",
+
+booking_trust3_title: "Praktische Unterstützung",
+booking_trust3_text: "Strukturierte Beratung zu Bewilligungen, Anmeldung und administrativen Schritten.",
+
+payment_back: "← Zurück zur Buchung",
+payment_summary_kicker: "Buchungsübersicht",
+payment_title: "Prüfen Sie Ihre Beratung vor der Zahlung",
+payment_subtitle: "Bitte bestätigen Sie unten Ihr gewähltes Paket und Ihre Angaben.",
+
+payment_name: "Vollständiger Name",
+payment_email: "E-Mail",
+payment_phone: "Telefon / WhatsApp",
+payment_location: "Aktueller Standort",
+payment_format: "Bevorzugtes Format",
+payment_message: "Kurze Beschreibung",
+payment_total: "Gesamtbetrag",
+
+payment_kicker: "Zahlung",
+payment_right_title: "Weiter zur sicheren Zahlung",
+payment_right_text: "Wenn Sie auf die Schaltfläche unten klicken, können Sie mit Ihrer Zahlung fortfahren.",
+payment_pay_now: "Jetzt bezahlen",
+payment_edit: "Buchung bearbeiten",
+payment_note: "Die Zahlung bestätigt Ihre Beratungsanfrage. Wenn eine formelle rechtliche Vertretung erforderlich ist, kann eine Weitervermittlung an einen zugelassenen Anwalt erfolgen.",
+
   },
 
   uk: {
@@ -761,6 +1048,102 @@ faq_a3: "Доступні обидва варіанти. Консультаці�
 
 faq_q4: "Чи працюєте ви лише з міграційними питаннями?",
 faq_a4: "Основний фокус — це питання міграції та релокації. У деяких випадках також можуть розглядатися пов’язані адміністративні питання, тоді як для більш спеціалізованих сфер може знадобитися направлення до кваліфікованого адвоката.",
+
+blog_label: "Корисні матеріали",
+blog_title: "Практичні гіди для переїзду та облаштування у Швейцарії",
+blog_intro: "Зрозумілі статті про дозволи, реєстрацію, страхування, працевлаштування та щоденні адміністративні кроки у Швейцарії.",
+
+blog_card1_title: "Дозволи на проживання у Швейцарії: з чого почати",
+blog_card1_text: "Практичний огляд перших кроків, необхідних документів і типових помилок під час подання на дозвіл.",
+blog_card1_link: "Читати далі",
+
+blog_card2_title: "Anmeldung у Цюриху: що потрібно підготувати",
+blog_card2_text: "Дізнайтеся, що потрібно взяти з собою, як проходить процес і як уникнути затримок під час реєстрації в місцевих органах.",
+blog_card2_link: "Читати далі",
+
+blog_card3_title: "Медичне страхування у Швейцарії: строки та обов’язки",
+blog_card3_text: "Зрозумійте юридичні вимоги, строки та основи вибору страхового покриття після приїзду.",
+blog_card3_link: "Читати далі",
+
+contact_label: "Контакти",
+contact_title: "Надішліть короткий запит",
+contact_text: "Звертайтеся щодо консультацій, допомоги з документами або питань переїзду до Швейцарії.",
+contact_email_label: "Електронна пошта",
+contact_phone_label: "Телефон",
+contact_location_label: "Місцезнаходження",
+contact_location_value: "Цюрих, Швейцарія",
+footer_copyright: "© 2026 Polina Kravtsova — Усі права захищено.",
+
+booking_back: "← Повернутися на головну сторінку",
+
+booking_kicker: "Бронювання",
+booking_title: "Забронювати консультацію",
+booking_intro: "Оберіть пакет, що відповідає вашій ситуації, залиште короткий опис і перейдіть до оплати. Процес простий, зрозумілий і створений для економії вашого часу.",
+
+booking_next_title: "Що відбувається далі",
+booking_next_text: "Після оплати ваш запит буде отримано та розглянуто. Після цього з вами зв’яжуться, щоб підтвердити формат консультації та наступні кроки.",
+booking_next_1: "Онлайн або особисто в Цюриху",
+booking_next_2: "Структурована практична консультація",
+booking_next_3: "Відповідь протягом 24 годин",
+
+booking_details_label: "Дані клієнта",
+booking_details_title: "Оберіть пакет і заповніть свої дані",
+booking_details_text: "Оберіть один із варіантів нижче та надайте основну інформацію для підготовки вашого бронювання.",
+
+booking_pack1_name: "Початкова консультація",
+booking_pack1_desc: "Консультація для перших запитань і орієнтації.",
+
+booking_pack2_name: "Консультація + перевірка документів",
+booking_pack2_desc: "Консультація з перевіркою документів і більш детальною підготовкою.",
+
+booking_pack3_name: "Підтримка релокації",
+booking_pack3_desc: "Для складніших випадків із кількома кроками, формами або контактом з органами влади.",
+
+booking_name: "Повне ім’я",
+booking_email: "Електронна пошта",
+booking_phone: "Телефон / WhatsApp",
+booking_location: "Поточне місцезнаходження",
+booking_message: "Короткий опис вашої ситуації",
+booking_format: "Бажаний формат консультації",
+
+booking_format_online: "Онлайн",
+booking_format_inperson: "Особисто в Цюриху",
+booking_format_any: "Без різниці",
+
+booking_note: "Оплата підтверджує ваш запит. Якщо потрібне формальне юридичне представництво, вас можуть направити до ліцензованого адвоката.",
+
+booking_continue: "Перейти до оплати",
+booking_back_button: "Назад",
+
+booking_trust1_title: "Зрозумілий процес",
+booking_trust1_text: "Оберіть пакет, введіть свої дані та перейдіть до оплати.",
+
+booking_trust2_title: "Швидкий контакт",
+booking_trust2_text: "Ваш запит буде розглянуто та отримано відповідь протягом 24 годин.",
+
+booking_trust3_title: "Практична допомога",
+booking_trust3_text: "Структурована консультація щодо дозволів, реєстрації та адміністративних процедур.",
+
+payment_back: "← Повернутися до бронювання",
+payment_summary_kicker: "Підсумок бронювання",
+payment_title: "Перевірте вашу консультацію перед оплатою",
+payment_subtitle: "Будь ласка, підтвердьте вибраний пакет і ваші дані нижче.",
+
+payment_name: "Повне ім’я",
+payment_email: "Електронна пошта",
+payment_phone: "Телефон / WhatsApp",
+payment_location: "Поточне місцезнаходження",
+payment_format: "Бажаний формат",
+payment_message: "Короткий опис",
+payment_total: "До сплати",
+
+payment_kicker: "Оплата",
+payment_right_title: "Перейти до безпечної оплати",
+payment_right_text: "Коли ви натиснете кнопку нижче, зможете продовжити налаштування оплати.",
+payment_pay_now: "Оплатити зараз",
+payment_edit: "Редагувати бронювання",
+payment_note: "Оплата підтверджує ваш запит на консультацію. Якщо потрібне формальне юридичне представництво, вас можуть направити до ліцензованого адвоката.",
+
   }
 };
 
@@ -790,7 +1173,8 @@ function setLanguage(lang) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("siteLanguage") || "en";
+  const lang = localStorage.getItem("siteLanguage") || "en";
+
   setLanguage(saved);
 
   document.querySelectorAll(".lang-toggle").forEach((toggle) => {

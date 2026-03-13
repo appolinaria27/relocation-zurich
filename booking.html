@@ -123,6 +123,62 @@ body::after{
       opacity:.75;
     }
 
+    .topbar-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* language switch */
+.lang-dropdown{
+  position:relative;
+}
+
+.lang-toggle{
+  border:none;
+  background:rgba(255,255,255,.78);
+  color:var(--navy);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.lang-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 10px 24px rgba(0,0,0,.12);
+  padding:6px;
+  min-width:160px;
+  z-index:100;
+}
+
+.lang-menu button{
+  display:block;
+  width:100%;
+  border:none;
+  background:none;
+  text-align:left;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.lang-menu button:hover{
+  background:#f3f3f7;
+}
+
+.lang-dropdown.open .lang-menu{
+  display:block;
+}
+
+
     .hero{
       display:grid;
       grid-template-columns:1fr .9fr;
@@ -532,21 +588,37 @@ body::after{
       <div class="topbar">
   <a href="index.html" class="brand">
     <span class="dot"></span>
-
     <span class="brand-text">
       <strong>Polina Kravtsova</strong>
       <span class="brand-sub">Legal Advisory</span>
     </span>
   </a>
 
-  <a class="back-link" href="index.html">← Back to homepage</a>
+  <div class="topbar-right">
+
+    <div class="lang-dropdown">
+      <button class="lang-toggle" type="button">English ▾</button>
+      <div class="lang-menu">
+        <button type="button" data-lang="en">English</button>
+        <button type="button" data-lang="es">Español</button>
+        <button type="button" data-lang="de">Deutsch</button>
+        <button type="button" data-lang="uk">Українська</button>
+      </div>
+
+      <a class="back-link" href="index.html" data-i18n="booking_back">← Back to homepage</a>
+      
+    </div>
+  </div>
 </div>
+
+
+
 
       <section class="hero">
         <div class="hero-card">
-          <p class="hero-kicker">Booking</p>
-          <h1>Book your consultation</h1>
-          <p>
+          <p class="hero-kicker" data-i18n="booking_kicker">Booking</p>
+          <h1 data-i18n="booking_title">Book your consultation</h1>
+          <p data-i18n="booking_intro">
             Choose the package that fits your situation, leave a short description,
             and continue to payment. The process is clear, simple, and designed
             to save you time.
@@ -555,8 +627,8 @@ body::after{
 
         <aside class="info-card">
           <div>
-            <h2>What happens next</h2>
-            <p>
+            <h2 data-i18n="booking_next_title">What happens next</h2>
+            <p data-i18n="booking_next_text">
               After payment, your request is received and reviewed. You will then
               be contacted to confirm the consultation format and next steps.
             </p>
@@ -565,15 +637,15 @@ body::after{
           <div class="info-list">
             <div class="info-item">
               <span class="info-bullet"></span>
-              <span>Online or in-person in Zürich</span>
+              <span data-i18n="booking_next_1">Online or in-person in Zürich</span>
             </div>
             <div class="info-item">
               <span class="info-bullet"></span>
-              <span>Structured practical guidance</span>
+              <span data-i18n="booking_next_2">Structured practical guidance</span>
             </div>
             <div class="info-item">
               <span class="info-bullet"></span>
-              <span>Reply within 24 hours</span>
+              <span data-i18n="booking_next_3">Reply within 24 hours</span>
             </div>
           </div>
         </aside>
@@ -581,9 +653,9 @@ body::after{
 
       <section class="form-card">
         <div class="form-head">
-          <p class="section-label">Client details</p>
-          <h2>Select your package and fill in your details</h2>
-          <p>
+          <p class="section-label" data-i18n="booking_details_label">Client details</p>
+          <h2 data-i18n="booking_details_title">Select your package and fill in your details</h2>
+          <p data-i18n="booking_details_text">
             Choose one option below and provide the key information needed to prepare
             your booking.
           </p>
@@ -594,103 +666,124 @@ body::after{
             <label class="package-option">
               <input type="radio" name="package" value="initial" checked>
               <span class="package-card">
-                <span class="package-name">Initial consultation</span>
+                <span class="package-name" data-i18n="booking_pack1_name">Initial consultation</span>
                 <span class="package-price">CHF 59</span>
-                <span class="package-desc">A focused consultation for first questions and orientation.</span>
+                <span class="package-desc" data-i18n="booking_pack1_desc">A focused consultation for first questions and orientation.</span>
               </span>
             </label>
 
             <label class="package-option">
               <input type="radio" name="package" value="review">
               <span class="package-card">
-                <span class="package-name">Consultation + review</span>
+                <span class="package-name" data-i18n="booking_pack2_name">Consultation + review</span>
                 <span class="package-price">CHF 129</span>
-                <span class="package-desc">Consultation plus document review and more detailed preparation.</span>
+                <span class="package-desc" data-i18n="booking_pack2_desc">Consultation plus document review and more detailed preparation.</span>
               </span>
             </label>
 
             <label class="package-option">
               <input type="radio" name="package" value="support">
               <span class="package-card">
-                <span class="package-name">Relocation support</span>
+                <span class="package-name" data-i18n="booking_pack3_name">Relocation support</span>
                 <span class="package-price">CHF 290</span>
-                <span class="package-desc">For more involved cases with several steps, forms, or authority contact.</span>
-              </span>
+                <span class="package-desc" data-i18n="booking_pack3_desc">For more involved cases with several steps, forms, or authority contact.</span>
+
             </label>
           </div>
 
           <div class="form-grid">
             <div class="field">
-              <label for="name">Full name</label>
+              <label for="name" data-i18n="booking_name">Full name</label>
               <input id="name" name="name" type="text" placeholder="Your full name" required>
             </div>
 
             <div class="field">
-              <label for="email">Email</label>
+              <label for="email" data-i18n="booking_email">Email</label>
               <input id="email" name="email" type="email" placeholder="your@email.com" required>
             </div>
 
             <div class="field">
-              <label for="phone">Phone / WhatsApp</label>
+              <label for="phone" data-i18n="booking_phone">Phone / WhatsApp</label>
               <input id="phone" name="phone" type="text" placeholder="+41 ...">
             </div>
 
             <div class="field">
-              <label for="location">Current location</label>
+              <label for="location" data-i18n="booking_location">Current location</label>
               <input id="location" name="location" type="text" placeholder="Zürich / abroad / your city">
             </div>
 
             <div class="field full">
-              <label for="message">Short description of your situation</label>
+              <label for="message" data-i18n="booking_message">Short description of your situation</label>
               <textarea id="message" name="message" placeholder="Tell briefly what you need help with"></textarea>
             </div>
 
             <div class="field full">
-              <label for="preferred">Preferred consultation format</label>
+              <label for="preferred" data-i18n="booking_format">Preferred consultation format</label>
               <select id="preferred" name="preferred">
-                <option value="Online">Online</option>
-                <option value="In person in Zürich">In person in Zürich</option>
-                <option value="No preference">No preference</option>
+                <option value="Online" data-i18n="booking_format_online">Online</option>
+                <option value="In person in Zürich" data-i18n="booking_format_inperson">In person in Zürich</option>
+                <option value="No preference" data-i18n="booking_format_any">No preference</option>
               </select>
             </div>
           </div>
 
-          <p class="note">
+          <p class="note" data-i18n="booking_note">
             Payment confirms your request. If your matter requires formal legal representation,
             you may be referred to a licensed lawyer where appropriate.
           </p>
 
           <div class="actions">
-            <button class="btn primary" type="submit">Continue to payment</button>
-            <a class="btn secondary" href="index.html">Back</a>
+            <button class="btn primary" type="submit" data-i18n="booking_continue">Continue to payment</button>
+            <a class="btn secondary" href="index.html" data-i18n="booking_back_button">Back</a>
           </div>
         </form>
       </section>
 
       <div class="trust-row">
         <div class="trust-box">
-          <strong>Clear process</strong>
-          Choose a package, provide your details, and continue to payment.
+          <strong data-i18n="booking_trust1_title">Clear process</strong>
+          <span data-i18n="booking_trust1_text">
+Choose a package, provide your details, and continue to payment.
+</span>
         </div>
         <div class="trust-box">
-          <strong>Quick contact</strong>
-          Your request is reviewed and answered within 24 hours.
+          <strong data-i18n="booking_trust2_title">Quick contact</strong>
+          <span data-i18n="booking_trust2_text">
+Your request is reviewed and answered within 24 hours.
+</span>
         </div>
         <div class="trust-box">
-          <strong>Practical support</strong>
-          Structured guidance for permits, registrations, and administrative steps.
+          <strong data-i18n="booking_trust3_title">Practical support</strong>
+          <span data-i18n="booking_trust3_text">
+Structured guidance for permits, registrations, and administrative steps.
+</span>
         </div>
       </div>
 
     </div>
   </div>
 
-  <script>
-  document.querySelector("form").addEventListener("submit", function (e) {
-    const formData = new FormData(this);
-    const params = new URLSearchParams(formData);
-    alert("Going to:\n" + this.action + "?" + params.toString());
+  <script src="site.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".lang-toggle");
+    const dropdown = document.querySelector(".lang-dropdown");
+
+    if (toggle && dropdown) {
+      toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle("open");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove("open");
+        }
+      });
+    }
   });
 </script>
+
+
 </body>
 </html>

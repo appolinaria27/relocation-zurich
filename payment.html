@@ -79,6 +79,61 @@ body::after{
       margin-bottom:30px;
     }
 
+    .topbar-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.lang-dropdown{
+  position:relative;
+}
+
+.lang-toggle{
+  border:none;
+  background:rgba(255,255,255,.78);
+  color:var(--navy);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.lang-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 10px 24px rgba(0,0,0,.12);
+  padding:6px;
+  min-width:160px;
+  z-index:100;
+}
+
+.lang-menu button{
+  display:block;
+  width:100%;
+  border:none;
+  background:none;
+  text-align:left;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.lang-menu button:hover{
+  background:#f3f3f7;
+}
+
+.lang-menu.show{
+  display:block;
+}
+
+
     .brand{
   display:flex;
   align-items:center;
@@ -354,21 +409,36 @@ body::after{
       <div class="topbar">
   <a href="index.html" class="brand">
     <span class="dot"></span>
-
     <span class="brand-text">
       <strong>Polina Kravtsova</strong>
       <span class="brand-sub">Legal Advisory</span>
     </span>
   </a>
 
-        <a class="back-link" href="booking.html">← Back to booking</a>
+  <div class="topbar-right">
+    
+
+    <div class="lang-dropdown">
+      <button class="lang-toggle" type="button">English ▾</button>
+      <div class="lang-menu">
+        <button type="button" data-lang="en">English</button>
+        <button type="button" data-lang="es">Español</button>
+        <button type="button" data-lang="de">Deutsch</button>
+        <button type="button" data-lang="uk">Українська</button>
       </div>
+
+      <a class="back-link" href="booking.html" data-i18n="payment_back">← Back to booking</a>
+
+    </div>
+  </div>
+</div>
+
 
       <div class="grid">
         <section class="card">
-          <p class="kicker">Booking summary</p>
-          <h1 class="title">Review your consultation before payment</h1>
-          <p class="subtitle">
+          <p class="kicker" data-i18n="payment_summary_kicker">Booking summary</p>
+          <h1 class="title" data-i18n="payment_title">Review your consultation before payment</h1>
+          <p class="subtitle" data-i18n="payment_subtitle">
             Please confirm your selected package and your details below.
           </p>
 
@@ -379,61 +449,61 @@ body::after{
 
           <div class="details">
             <div class="detail">
-              <span class="label">Full name</span>
+              <span class="label" data-i18n="payment_name">Full name</span>
               <div id="customerName" class="value"></div>
             </div>
 
             <div class="detail">
-              <span class="label">Email</span>
+              <span class="label" data-i18n="payment_email">Email</span>
               <div id="customerEmail" class="value"></div>
             </div>
 
             <div class="detail">
-              <span class="label">Phone / WhatsApp</span>
+              <span class="label" data-i18n="payment_phone">Phone / WhatsApp</span>
               <div id="customerPhone" class="value"></div>
             </div>
 
             <div class="detail">
-              <span class="label">Current location</span>
+              <span class="label" data-i18n="payment_location">Current location</span>
               <div id="customerLocation" class="value"></div>
             </div>
 
             <div class="detail">
-              <span class="label">Preferred format</span>
+              <span class="label" data-i18n="payment_format">Preferred format</span>
               <div id="customerPreferred" class="value"></div>
             </div>
 
             <div class="detail">
-              <span class="label">Short description</span>
+              <span class="label" data-i18n="payment_message">Short description</span>
               <div id="customerMessage" class="value"></div>
             </div>
           </div>
 
           <div class="total">
-            <span>Total due</span>
+            <span data-i18n="payment_total">Total due</span>
             <strong id="summaryTotalPrice"></strong>
           </div>
         </section>
 
         <aside class="card payment-card">
-          <p class="kicker">Payment</p>
-          <h2>Continue to secure payment</h2>
-          <p>
+          <p class="kicker" data-i18n="payment_kicker">Payment</p>
+          <h2 data-i18n="payment_right_title">Continue to secure payment</h2>
+          <p data-i18n="payment_right_text">
             When you click the button below, you can continue with your payment setup.
           </p>
 
           <div class="total">
-            <span>Total due</span>
+            <span data-i18n="payment_total">Total due</span>
             <strong id="paymentTotalPrice"></strong>
           </div>
 
-          <a id="payNowLink" href="#" class="btn primary">
+          <a id="payNowLink" href="#" class="btn primary" data-i18n="payment_pay_now">
   Pay now
 </a>
 
-          <a class="btn secondary" href="booking.html">Edit booking</a>
+          <a class="btn secondary" href="booking.html" data-i18n="payment_edit">Edit booking</a>
 
-          <p class="small">
+          <p class="small" data-i18n="payment_note">
             Payment confirms your consultation request. If your matter requires formal
             legal representation, you may be referred to a licensed lawyer where appropriate.
           </p>
@@ -443,109 +513,238 @@ body::after{
   </div>
 
   <script>
-  window.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-
-    const packageValue = params.get("package");
-    const customerName = params.get("name");
-    const customerEmail = params.get("email");
-    const customerPhone = params.get("phone");
-    const customerLocation = params.get("location");
-    const customerPreferred = params.get("preferred");
-    const customerMessage = params.get("message");
-
-    const packageData = {
-      initial: {
-        name: "Initial consultation",
-        price: "CHF 59"
-      },
-      review: {
-        name: "Consultation + review",
-        price: "CHF 129"
-      },
-      support: {
-        name: "Relocation support",
-        price: "CHF 290"
-      }
-    };
-
-    const selectedPackage = packageData[packageValue] || {
-      name: "No package selected",
-      price: "—"
-    };
-
-    function setText(id, value) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.textContent = value;
-      } else {
-        console.error("Missing element with id:", id);
-      }
+document.addEventListener("DOMContentLoaded", function () {
+  const translations = {
+    en: {
+      payment_back: "← Back to booking",
+      payment_summary_kicker: "Booking summary",
+      payment_title: "Review your consultation before payment",
+      payment_subtitle: "Please confirm your selected package and your details below.",
+      payment_name: "Full name",
+      payment_email: "Email",
+      payment_phone: "Phone / WhatsApp",
+      payment_location: "Current location",
+      payment_format: "Preferred format",
+      payment_message: "Short description",
+      payment_total: "Total due",
+      payment_kicker: "Payment",
+      payment_right_title: "Continue to secure payment",
+      payment_right_text: "When you click the button below, you can continue with your payment setup.",
+      payment_pay_now: "Pay now",
+      payment_edit: "Edit booking",
+      payment_note: "Payment confirms your consultation request. If your matter requires formal legal representation, you may be referred to a licensed lawyer where appropriate."
+    },
+    de: {
+      payment_back: "← Zurück zur Buchung",
+      payment_summary_kicker: "Buchungsübersicht",
+      payment_title: "Prüfen Sie Ihre Beratung vor der Zahlung",
+      payment_subtitle: "Bitte bestätigen Sie unten Ihr ausgewähltes Paket und Ihre Angaben.",
+      payment_name: "Vollständiger Name",
+      payment_email: "E-Mail",
+      payment_phone: "Telefon / WhatsApp",
+      payment_location: "Aktueller Wohnort",
+      payment_format: "Bevorzugtes Format",
+      payment_message: "Kurze Beschreibung",
+      payment_total: "Gesamtbetrag",
+      payment_kicker: "Zahlung",
+      payment_right_title: "Weiter zur sicheren Zahlung",
+      payment_right_text: "Wenn Sie auf die Schaltfläche unten klicken, können Sie mit der Zahlung fortfahren.",
+      payment_pay_now: "Jetzt bezahlen",
+      payment_edit: "Buchung bearbeiten",
+      payment_note: "Die Zahlung bestätigt Ihre Beratungsanfrage. Falls Ihr Fall eine formelle rechtliche Vertretung erfordert, können Sie gegebenenfalls an einen zugelassenen Anwalt verwiesen werden."
+    },
+    es: {
+      payment_back: "← Volver a la reserva",
+      payment_summary_kicker: "Resumen de la reserva",
+      payment_title: "Revise su consulta antes del pago",
+      payment_subtitle: "Confirme abajo el paquete seleccionado y sus datos.",
+      payment_name: "Nombre completo",
+      payment_email: "Correo electrónico",
+      payment_phone: "Teléfono / WhatsApp",
+      payment_location: "Ubicación actual",
+      payment_format: "Formato preferido",
+      payment_message: "Descripción breve",
+      payment_total: "Total a pagar",
+      payment_kicker: "Pago",
+      payment_right_title: "Continuar al pago seguro",
+      payment_right_text: "Cuando haga clic en el botón de abajo, podrá continuar con el pago.",
+      payment_pay_now: "Pagar ahora",
+      payment_edit: "Editar reserva",
+      payment_note: "El pago confirma su solicitud de consulta. Si su asunto requiere representación legal formal, podrá ser remitido a un abogado autorizado cuando corresponda."
+    },
+    uk: {
+      payment_back: "← Назад до бронювання",
+      payment_summary_kicker: "Підсумок бронювання",
+      payment_title: "Перевірте вашу консультацію перед оплатою",
+      payment_subtitle: "Будь ласка, підтвердьте вибраний пакет і ваші дані нижче.",
+      payment_name: "Повне ім’я",
+      payment_email: "Електронна пошта",
+      payment_phone: "Телефон / WhatsApp",
+      payment_location: "Поточне місце проживання",
+      payment_format: "Бажаний формат",
+      payment_message: "Короткий опис",
+      payment_total: "До сплати",
+      payment_kicker: "Оплата",
+      payment_right_title: "Перейти до безпечної оплати",
+      payment_right_text: "Коли ви натиснете кнопку нижче, зможете продовжити налаштування оплати.",
+      payment_pay_now: "Оплатити зараз",
+      payment_edit: "Редагувати бронювання",
+      payment_note: "Оплата підтверджує ваш запит на консультацію. Якщо потрібне формальне юридичне представництво, вас можуть направити до ліцензованого адвоката."
     }
+  };
 
-    console.log("Full URL:", window.location.href);
-    console.log("Query string:", window.location.search);
-    console.log("Package:", packageValue);
-    console.log("Name:", customerName);
-    console.log("Email:", customerEmail);
-    console.log("Phone:", customerPhone);
-    console.log("Location:", customerLocation);
-    console.log("Preferred:", customerPreferred);
-    console.log("Message:", customerMessage);
-
-    setText("packageName", selectedPackage.name);
-    setText("packagePrice", selectedPackage.price);
-    setText("summaryTotalPrice", selectedPackage.price);
-    setText("paymentTotalPrice", selectedPackage.price);
-
-    setText("customerName", customerName || "—");
-    setText("customerEmail", customerEmail || "—");
-    setText("customerPhone", customerPhone || "—");
-    setText("customerLocation", customerLocation || "—");
-    setText("customerPreferred", customerPreferred || "—");
-    setText("customerMessage", customerMessage || "—");
-  });
-</script>
-
-<script>
-  window.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const packageValue = params.get("package") || "initial";
-
-    const payNowLink = document.getElementById("payNowLink");
-    if (payNowLink) {
-      payNowLink.href = "create-checkout-session.php?package=" + encodeURIComponent(packageValue);
+  const packageNames = {
+    en: {
+      initial: "Initial consultation",
+      review: "Consultation + review",
+      support: "Relocation support",
+      none: "No package selected"
+    },
+    de: {
+      initial: "Erstberatung",
+      review: "Beratung + Dokumentenprüfung",
+      support: "Relocation-Unterstützung",
+      none: "Kein Paket ausgewählt"
+    },
+    es: {
+      initial: "Consulta inicial",
+      review: "Consulta + revisión",
+      support: "Apoyo de reubicación",
+      none: "Ningún paquete seleccionado"
+    },
+    uk: {
+      initial: "Початкова консультація",
+      review: "Консультація + перевірка документів",
+      support: "Підтримка релокації",
+      none: "Пакет не вибрано"
     }
-  });
-</script>
+  };
 
-<script>
-  window.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
+  const packagePrices = {
+    initial: "CHF 59",
+    review: "CHF 129",
+    support: "CHF 290"
+  };
 
-    const packageValue = params.get("package") || "";
-    const name = params.get("name") || "";
-    const email = params.get("email") || "";
-    const phone = params.get("phone") || "";
-    const location = params.get("location") || "";
-    const preferred = params.get("preferred") || "";
-    const message = params.get("message") || "";
+  const params = new URLSearchParams(window.location.search);
 
-    const payNowLink = document.getElementById("payNowLink");
+  const packageValue = params.get("package") || "";
+  const customerName = params.get("name") || "—";
+  const customerEmail = params.get("email") || "—";
+  const customerPhone = params.get("phone") || "—";
+  const customerLocation = params.get("location") || "—";
+  const customerPreferred = params.get("preferred") || "—";
+  const customerMessage = params.get("message") || "—";
 
+  const payNowLink = document.getElementById("payNowLink");
+  if (payNowLink) {
     const checkoutParams = new URLSearchParams({
       package: packageValue,
-      name: name,
-      email: email,
-      phone: phone,
-      location: location,
-      preferred: preferred,
-      message: message
+      name: customerName === "—" ? "" : customerName,
+      email: customerEmail === "—" ? "" : customerEmail,
+      phone: customerPhone === "—" ? "" : customerPhone,
+      location: customerLocation === "—" ? "" : customerLocation,
+      preferred: customerPreferred === "—" ? "" : customerPreferred,
+      message: customerMessage === "—" ? "" : customerMessage
     });
 
     payNowLink.href = "create-checkout-session.php?" + checkoutParams.toString();
+  }
+
+  function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  function updateToggleText(lang) {
+    const toggle = document.querySelector(".lang-toggle");
+    if (!toggle) return;
+
+    const labels = {
+      en: "English ▾",
+      de: "Deutsch ▾",
+      es: "Español ▾",
+      uk: "Українська ▾"
+    };
+
+    toggle.textContent = labels[lang] || labels.en;
+  }
+
+  function updatePackage(lang) {
+    const packageName =
+      (packageNames[lang] && packageNames[lang][packageValue]) ||
+      packageNames.en[packageValue] ||
+      packageNames[lang]?.none ||
+      packageNames.en.none;
+
+    const packagePrice = packagePrices[packageValue] || "—";
+
+    setText("packageName", packageName);
+    setText("packagePrice", packagePrice);
+    setText("summaryTotalPrice", packagePrice);
+    setText("paymentTotalPrice", packagePrice);
+
+    setText("customerName", customerName);
+    setText("customerEmail", customerEmail);
+    setText("customerPhone", customerPhone);
+    setText("customerLocation", customerLocation);
+    setText("customerPreferred", customerPreferred);
+    setText("customerMessage", customerMessage);
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem("siteLanguage", lang);
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      const key = el.getAttribute("data-i18n");
+      if (translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+
+    updateToggleText(lang);
+    updatePackage(lang);
+
+    document.querySelectorAll(".lang-menu").forEach(function (menu) {
+      menu.classList.remove("show");
+    });
+  }
+
+  const savedLang = localStorage.getItem("siteLanguage") || "en";
+  setLanguage(savedLang);
+
+  document.querySelectorAll(".lang-toggle").forEach(function (toggle) {
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const menu = this.nextElementSibling;
+      if (menu && menu.classList.contains("lang-menu")) {
+        menu.classList.toggle("show");
+      }
+    });
   });
+
+  document.querySelectorAll(".lang-menu button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const lang = this.getAttribute("data-lang");
+      if (lang) {
+        setLanguage(lang);
+      }
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    document.querySelectorAll(".lang-dropdown").forEach(function (dropdown) {
+      if (!dropdown.contains(e.target)) {
+        const menu = dropdown.querySelector(".lang-menu");
+        if (menu) {
+          menu.classList.remove("show");
+        }
+      }
+    });
+  });
+});
 </script>
+
 
 </body>
 </html>
