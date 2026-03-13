@@ -513,238 +513,130 @@ body::after{
   </div>
 
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const translations = {
-    en: {
-      payment_back: "← Back to booking",
-      payment_summary_kicker: "Booking summary",
-      payment_title: "Review your consultation before payment",
-      payment_subtitle: "Please confirm your selected package and your details below.",
-      payment_name: "Full name",
-      payment_email: "Email",
-      payment_phone: "Phone / WhatsApp",
-      payment_location: "Current location",
-      payment_format: "Preferred format",
-      payment_message: "Short description",
-      payment_total: "Total due",
-      payment_kicker: "Payment",
-      payment_right_title: "Continue to secure payment",
-      payment_right_text: "When you click the button below, you can continue with your payment setup.",
-      payment_pay_now: "Pay now",
-      payment_edit: "Edit booking",
-      payment_note: "Payment confirms your consultation request. If your matter requires formal legal representation, you may be referred to a licensed lawyer where appropriate."
-    },
-    de: {
-      payment_back: "← Zurück zur Buchung",
-      payment_summary_kicker: "Buchungsübersicht",
-      payment_title: "Prüfen Sie Ihre Beratung vor der Zahlung",
-      payment_subtitle: "Bitte bestätigen Sie unten Ihr ausgewähltes Paket und Ihre Angaben.",
-      payment_name: "Vollständiger Name",
-      payment_email: "E-Mail",
-      payment_phone: "Telefon / WhatsApp",
-      payment_location: "Aktueller Wohnort",
-      payment_format: "Bevorzugtes Format",
-      payment_message: "Kurze Beschreibung",
-      payment_total: "Gesamtbetrag",
-      payment_kicker: "Zahlung",
-      payment_right_title: "Weiter zur sicheren Zahlung",
-      payment_right_text: "Wenn Sie auf die Schaltfläche unten klicken, können Sie mit der Zahlung fortfahren.",
-      payment_pay_now: "Jetzt bezahlen",
-      payment_edit: "Buchung bearbeiten",
-      payment_note: "Die Zahlung bestätigt Ihre Beratungsanfrage. Falls Ihr Fall eine formelle rechtliche Vertretung erfordert, können Sie gegebenenfalls an einen zugelassenen Anwalt verwiesen werden."
-    },
-    es: {
-      payment_back: "← Volver a la reserva",
-      payment_summary_kicker: "Resumen de la reserva",
-      payment_title: "Revise su consulta antes del pago",
-      payment_subtitle: "Confirme abajo el paquete seleccionado y sus datos.",
-      payment_name: "Nombre completo",
-      payment_email: "Correo electrónico",
-      payment_phone: "Teléfono / WhatsApp",
-      payment_location: "Ubicación actual",
-      payment_format: "Formato preferido",
-      payment_message: "Descripción breve",
-      payment_total: "Total a pagar",
-      payment_kicker: "Pago",
-      payment_right_title: "Continuar al pago seguro",
-      payment_right_text: "Cuando haga clic en el botón de abajo, podrá continuar con el pago.",
-      payment_pay_now: "Pagar ahora",
-      payment_edit: "Editar reserva",
-      payment_note: "El pago confirma su solicitud de consulta. Si su asunto requiere representación legal formal, podrá ser remitido a un abogado autorizado cuando corresponda."
-    },
-    uk: {
-      payment_back: "← Назад до бронювання",
-      payment_summary_kicker: "Підсумок бронювання",
-      payment_title: "Перевірте вашу консультацію перед оплатою",
-      payment_subtitle: "Будь ласка, підтвердьте вибраний пакет і ваші дані нижче.",
-      payment_name: "Повне ім’я",
-      payment_email: "Електронна пошта",
-      payment_phone: "Телефон / WhatsApp",
-      payment_location: "Поточне місце проживання",
-      payment_format: "Бажаний формат",
-      payment_message: "Короткий опис",
-      payment_total: "До сплати",
-      payment_kicker: "Оплата",
-      payment_right_title: "Перейти до безпечної оплати",
-      payment_right_text: "Коли ви натиснете кнопку нижче, зможете продовжити налаштування оплати.",
-      payment_pay_now: "Оплатити зараз",
-      payment_edit: "Редагувати бронювання",
-      payment_note: "Оплата підтверджує ваш запит на консультацію. Якщо потрібне формальне юридичне представництво, вас можуть направити до ліцензованого адвоката."
+  window.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+
+    const packageValue = params.get("package");
+    const customerName = params.get("name");
+    const customerEmail = params.get("email");
+    const customerPhone = params.get("phone");
+    const customerLocation = params.get("location");
+    const customerPreferred = params.get("preferred");
+    const customerMessage = params.get("message");
+
+    const lang = localStorage.getItem("siteLanguage") || "en";
+
+
+    const packageNames = {
+      en: {
+        initial: "Initial consultation",
+        review: "Consultation + review",
+        support: "Relocation support",
+        none: "No package selected"
+      },
+      de: {
+        initial: "Erstberatung",
+        review: "Beratung + Dokumentenprüfung",
+        support: "Relocation-Unterstützung",
+        none: "Kein Paket ausgewählt"
+      },
+      es: {
+        initial: "Consulta inicial",
+        review: "Consulta + revisión",
+        support: "Apoyo de relocación",
+        none: "Ningún paquete seleccionado"
+      },
+      uk: {
+        initial: "Початкова консультація",
+        review: "Консультація + перевірка документів",
+        support: "Підтримка релокації",
+        none: "Пакет не вибрано"
+      }
+    };
+
+    const packagePrices = {
+      initial: "CHF 59",
+      review: "CHF 129",
+      support: "CHF 290"
+    };
+
+    const selectedPackage = {
+      name:
+        (packageNames[lang] && packageNames[lang][packageValue]) ||
+        packageNames.en[packageValue] ||
+        packageNames[lang]?.none ||
+        "—",
+      price: packagePrices[packageValue] || "—"
+    };
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
     }
-  };
 
-  const packageNames = {
-    en: {
-      initial: "Initial consultation",
-      review: "Consultation + review",
-      support: "Relocation support",
-      none: "No package selected"
-    },
-    de: {
-      initial: "Erstberatung",
-      review: "Beratung + Dokumentenprüfung",
-      support: "Relocation-Unterstützung",
-      none: "Kein Paket ausgewählt"
-    },
-    es: {
-      initial: "Consulta inicial",
-      review: "Consulta + revisión",
-      support: "Apoyo de reubicación",
-      none: "Ningún paquete seleccionado"
-    },
-    uk: {
-      initial: "Початкова консультація",
-      review: "Консультація + перевірка документів",
-      support: "Підтримка релокації",
-      none: "Пакет не вибрано"
-    }
-  };
+    setText("packageName", selectedPackage.name);
+    setText("packagePrice", selectedPackage.price);
+    setText("summaryTotalPrice", selectedPackage.price);
+    setText("paymentTotalPrice", selectedPackage.price);
 
-  const packagePrices = {
-    initial: "CHF 59",
-    review: "CHF 129",
-    support: "CHF 290"
-  };
+    setText("customerName", customerName || "—");
+    setText("customerEmail", customerEmail || "—");
+    setText("customerPhone", customerPhone || "—");
+    setText("customerLocation", customerLocation || "—");
+    setText("customerPreferred", customerPreferred || "—");
+    setText("customerMessage", customerMessage || "—");
+  });
+</script>
 
-  const params = new URLSearchParams(window.location.search);
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
 
-  const packageValue = params.get("package") || "";
-  const customerName = params.get("name") || "—";
-  const customerEmail = params.get("email") || "—";
-  const customerPhone = params.get("phone") || "—";
-  const customerLocation = params.get("location") || "—";
-  const customerPreferred = params.get("preferred") || "—";
-  const customerMessage = params.get("message") || "—";
+    const packageValue = params.get("package") || "";
+    const name = params.get("name") || "";
+    const email = params.get("email") || "";
+    const phone = params.get("phone") || "";
+    const location = params.get("location") || "";
+    const preferred = params.get("preferred") || "";
+    const message = params.get("message") || "";
 
-  const payNowLink = document.getElementById("payNowLink");
-  if (payNowLink) {
+    const payNowLink = document.getElementById("payNowLink");
+
     const checkoutParams = new URLSearchParams({
       package: packageValue,
-      name: customerName === "—" ? "" : customerName,
-      email: customerEmail === "—" ? "" : customerEmail,
-      phone: customerPhone === "—" ? "" : customerPhone,
-      location: customerLocation === "—" ? "" : customerLocation,
-      preferred: customerPreferred === "—" ? "" : customerPreferred,
-      message: customerMessage === "—" ? "" : customerMessage
+      name: name,
+      email: email,
+      phone: phone,
+      location: location,
+      preferred: preferred,
+      message: message
     });
 
     payNowLink.href = "create-checkout-session.php?" + checkoutParams.toString();
-  }
-
-  function setText(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  }
-
-  function updateToggleText(lang) {
-    const toggle = document.querySelector(".lang-toggle");
-    if (!toggle) return;
-
-    const labels = {
-      en: "English ▾",
-      de: "Deutsch ▾",
-      es: "Español ▾",
-      uk: "Українська ▾"
-    };
-
-    toggle.textContent = labels[lang] || labels.en;
-  }
-
-  function updatePackage(lang) {
-    const packageName =
-      (packageNames[lang] && packageNames[lang][packageValue]) ||
-      packageNames.en[packageValue] ||
-      packageNames[lang]?.none ||
-      packageNames.en.none;
-
-    const packagePrice = packagePrices[packageValue] || "—";
-
-    setText("packageName", packageName);
-    setText("packagePrice", packagePrice);
-    setText("summaryTotalPrice", packagePrice);
-    setText("paymentTotalPrice", packagePrice);
-
-    setText("customerName", customerName);
-    setText("customerEmail", customerEmail);
-    setText("customerPhone", customerPhone);
-    setText("customerLocation", customerLocation);
-    setText("customerPreferred", customerPreferred);
-    setText("customerMessage", customerMessage);
-  }
-
-  function setLanguage(lang) {
-    localStorage.setItem("siteLanguage", lang);
-
-    document.querySelectorAll("[data-i18n]").forEach(function (el) {
-      const key = el.getAttribute("data-i18n");
-      if (translations[lang] && translations[lang][key]) {
-        el.textContent = translations[lang][key];
-      }
-    });
-
-    updateToggleText(lang);
-    updatePackage(lang);
-
-    document.querySelectorAll(".lang-menu").forEach(function (menu) {
-      menu.classList.remove("show");
-    });
-  }
-
-  const savedLang = localStorage.getItem("siteLanguage") || "en";
-  setLanguage(savedLang);
-
-  document.querySelectorAll(".lang-toggle").forEach(function (toggle) {
-    toggle.addEventListener("click", function (e) {
-      e.stopPropagation();
-      const menu = this.nextElementSibling;
-      if (menu && menu.classList.contains("lang-menu")) {
-        menu.classList.toggle("show");
-      }
-    });
   });
-
-  document.querySelectorAll(".lang-menu button").forEach(function (button) {
-    button.addEventListener("click", function () {
-      const lang = this.getAttribute("data-lang");
-      if (lang) {
-        setLanguage(lang);
-      }
-    });
-  });
-
-  document.addEventListener("click", function (e) {
-    document.querySelectorAll(".lang-dropdown").forEach(function (dropdown) {
-      if (!dropdown.contains(e.target)) {
-        const menu = dropdown.querySelector(".lang-menu");
-        if (menu) {
-          menu.classList.remove("show");
-        }
-      }
-    });
-  });
-});
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".lang-toggle");
+    const dropdown = document.querySelector(".lang-dropdown");
+
+    if (toggle && dropdown) {
+      toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle("open");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove("open");
+        }
+      });
+    }
+  });
+</script>
+
+<script src="site.js"></script>
 
 </body>
 </html>

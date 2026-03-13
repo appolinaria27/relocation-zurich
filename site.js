@@ -1174,8 +1174,8 @@ function setLanguage(lang) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const lang = localStorage.getItem("siteLanguage") || "en";
+setLanguage(lang);
 
-  setLanguage(saved);
 
   document.querySelectorAll(".lang-toggle").forEach((toggle) => {
     toggle.addEventListener("click", function (e) {
