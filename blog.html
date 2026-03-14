@@ -131,6 +131,54 @@ header .container{
   box-shadow:0 0 0 6px rgba(198,155,122,.16);
 }
 
+.lang-dropdown{
+  position:relative;
+}
+
+.lang-toggle{
+  border:none;
+  background:rgba(255,255,255,.78);
+  color:var(--navy);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.lang-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 8px);
+  right:0;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 10px 24px rgba(0,0,0,.12);
+  padding:6px;
+  min-width:160px;
+  z-index:100;
+}
+
+.lang-menu.show{
+  display:block;
+}
+
+.lang-menu button{
+  display:block;
+  width:100%;
+  border:none;
+  background:none;
+  text-align:left;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.lang-menu button:hover{
+  background:#f3f3f7;
+}
+
 nav{
   display:flex;
   gap:10px;
@@ -613,38 +661,50 @@ nav a{
 <body>
 
   <header>
-     <div class="nav">
-      
-      <div class="brand">
-        <span class="dot"></span>
-        <div class="brand-text">
-          <strong>Polina Kravtsova</strong>
-          <span class="brand-sub">Legal Advisory</span>
+  <div class="nav">
+
+    <div class="brand">
+      <span class="dot"></span>
+      <div class="brand-text">
+        <strong>Polina Kravtsova</strong>
+        <span class="brand-sub">Legal Advisory</span>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <nav>
+        <a href="index.html" data-i18n="blog_nav_home">Home</a>
+        <a href="#permits" data-i18n="blog_nav_permits">Permits</a>
+        <a href="#anmeldung" data-i18n="blog_nav_registration">Registration</a>
+        <a href="#insurance" data-i18n="blog_nav_insurance">Insurance</a>
+        <a href="free-consultation.html" class="btn primary" data-i18n="blog_nav_book">Book consultation</a>
+      </nav>
+
+      <div class="lang-dropdown">
+        <button type="button" class="lang-toggle">English ▾</button>
+        <div class="lang-menu">
+          <button type="button" data-lang="en">English</button>
+          <button type="button" data-lang="de">Deutsch</button>
+          <button type="button" data-lang="es">Español</button>
+          <button type="button" data-lang="uk">Українська</button>
         </div>
       </div>
-
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="#permits">Permits</a>
-        <a href="#anmeldung">Registration</a>
-        <a href="#insurance">Insurance</a>
-        <a href="free-consultation.html" class="btn primary">Book consultation</a>
-      </nav>
     </div>
-    
-  </header>
+
+  </div>
+</header>
 
   <section class="blog-hero">
     <div class="container">
       <div class="breadcrumbs">
-        <a href="index.html">Home</a>
+        <a href="index.html" data-i18n="blog_breadcrumb_home">Home</a>
         <span>•</span>
-        <span>Relocation Guides</span>
+        <span data-i18n="blog_breadcrumb_guides">Relocation Guides</span>
       </div>
 
-      <div class="services-label">Insights</div>
-      <h1>Practical guides for moving and settling in Switzerland</h1>
-      <p>
+      <div class="services-label" data-i18n="blog_label">Insights</div>
+      <h1 data-i18n="blog_title">Practical guides for moving and settling in Switzerland</h1>
+      <p data-i18n="blog_intro">
         Clear, elegant articles on permits, registration, insurance, and the first administrative steps after arrival — written for people who want confidence, clarity, and less stress.
       </p>
     </div>
@@ -663,77 +723,85 @@ nav a{
 
             <div class="article-body">
               <div class="article-meta">
-                <span>Residence permits</span>
+                <span data-i18n="blog_permits_meta_category">Residence permits</span>
                 <span>•</span>
-                <span>5 min read</span>
+                <span data-i18n="blog_permits_meta_time">5 min read</span>
               </div>
 
-              <h2>Residence permits in Switzerland: where to start</h2>
+              <h2 data-i18n="blog_permits_title">Residence permits in Switzerland: where to start</h2>
 
-              <p class="article-lead">
+              <p class="article-lead" data-i18n="blog_permits_lead">
                 For many newcomers, the permit process feels opaque at first. The good news is that most cases become manageable once you understand the timeline, the required documents, and the logic behind the different permit types.
               </p>
 
-              <p>
+              <p data-i18n="blog_permits_p1">
                 If you are moving to Switzerland for work, family reasons, or a long-term stay, your residence permit is one of the first essential administrative steps. In most cases, your type of permit depends on your nationality, employment status, and expected length of stay.
               </p>
 
-              <h3>The three permit types most people hear about first</h3>
+              <h3 data-i18n="blog_permits_h3">The three permit types most people hear about first</h3>
               <ul>
-                <li><strong>L permit</strong> for shorter stays, often tied to limited contracts or temporary assignments.</li>
-                <li><strong>B permit</strong> for longer residence, commonly used for employees, family reunification, and many standard relocation cases.</li>
-                <li><strong>C permit</strong> for permanent residence after several qualifying years in Switzerland.</li>
+               <li data-i18n="blog_permits_li1">
+<strong>L permit</strong> for shorter stays, often tied to limited contracts or temporary assignments.
+</li>
+
+<li data-i18n="blog_permits_li2">
+<strong>B permit</strong> for longer residence, commonly used for employees, family reunification, and many standard relocation cases.
+</li>
+
+<li data-i18n="blog_permits_li3">
+<strong>C permit</strong> for permanent residence after several qualifying years in Switzerland.
+</li>
               </ul>
 
-              <div class="article-note">
+              <div class="article-note" data-i18n="blog_permits_note">
                 Start by checking not only the federal rules, but also the practical process in your canton and municipality. The legal structure is national, but execution often happens locally.
               </div>
 
               <div class="inline-image">
                 <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80" alt="Documents on a desk">
-                <div class="caption">A strong application usually starts with complete documentation and a clear registration timeline.</div>
+                <div class="caption" data-i18n="blog_permits_caption">A strong application usually starts with complete documentation and a clear registration timeline.</div>
               </div>
 
-              <h3>Documents you usually need early</h3>
-              <p>
+              <h3 data-i18n="blog_permits_h3_2">Documents you usually need early</h3>
+              <p data-i18n="blog_permits_p2">
                 Although requirements differ by case, people often need a valid passport or ID, proof of address, an employment contract or proof of sufficient means, and civil status documents where relevant. It is worth preparing both originals and digital copies in advance.
               </p>
 
-              <p>
+              <p data-i18n="blog_permits_p3">
                 One of the most common mistakes is assuming that the permit is handled before local registration. In reality, registration and permit processing are usually closely connected. If you delay one, you often delay both.
               </p>
 
-              <h3>How to make the process smoother</h3>
+              <h3 data-i18n="blog_permits_h3_3">How to make the process smoother</h3>
               <ul>
-                <li>Prepare documents before arrival where possible.</li>
-                <li>Check your municipality’s registration deadline immediately.</li>
-                <li>Keep copies of contracts, address confirmations, and correspondence.</li>
-                <li>Ask early if translations, apostilles, or certified copies are needed.</li>
+                <li data-i18n="blog_permits_li4">Prepare documents before arrival where possible.</li>
+              <li data-i18n="blog_permits_li5">Check your municipality’s registration deadline immediately.</li>
+              <li data-i18n="blog_permits_li6">Keep copies of contracts, address confirmations, and correspondence.</li>
+              <li data-i18n="blog_permits_li7">Ask early if translations, apostilles, or certified copies are needed.</li>
               </ul>
 
-              <p>
+              <p data-i18n="blog_permits_p4">
                 The permit process is rarely about one single form. It is about sequencing: housing, registration, insurance, and employment paperwork often interact. The earlier you organize them together, the easier your first weeks in Switzerland become.
               </p>
 
               <div class="article-footer">
                 <div class="tag-row">
-                  <span class="tag">Permits</span>
-                  <span class="tag">Arrival</span>
-                  <span class="tag">Administration</span>
+                  <span class="tag" data-i18n="blog_permits_tag1">Permits</span>
+                <span class="tag" data-i18n="blog_permits_tag2">Arrival</span>
+                <span class="tag" data-i18n="blog_permits_tag3">Administration</span>
                 </div>
-                <a href="free-consultation.html" class="btn dark">Need personal guidance?</a>
+                <a href="free-consultation.html" class="btn dark" data-i18n="blog_permits_cta">Need personal guidance?</a>
               </div>
             </div>
           </article>
 
           <div class="next-links">
             <a class="next-card" href="#anmeldung">
-              <span>Next article</span>
-              <strong>Anmeldung in Zürich: what you need to prepare</strong>
+              <span data-i18n="blog_permits_next_label">Next article</span>
+              <strong data-i18n="blog_permits_next_title">Anmeldung in Zürich: what you need to prepare</strong>
             </a>
             <a class="next-card" href="#insurance">
-              <span>Related article</span>
-              <strong>Health insurance in Switzerland: deadlines and obligations</strong>
+              <span data-i18n="blog_permits_related_label">Related article</span>
+              <strong data-i18n="blog_permits_related_title">Health insurance in Switzerland: deadlines and obligations</strong>
             </a>
           </div>
         </section>
@@ -746,78 +814,78 @@ nav a{
 
             <div class="article-body">
               <div class="article-meta">
-                <span>Registration</span>
+                <span data-i18n="blog_anmeldung_meta_category">Registration</span>
                 <span>•</span>
-                <span>4 min read</span>
+                <span data-i18n="blog_anmeldung_meta_time">4 min read</span>
               </div>
 
-              <h2>Anmeldung in Zürich: what you need to prepare</h2>
+              <h2 data-i18n="blog_anmeldung_title">Anmeldung in Zürich: what you need to prepare</h2>
 
-              <p class="article-lead">
+              <p class="article-lead" data-i18n="blog_anmeldung_lead">
                 Registration in Zürich is often one of the first official appointments after arrival. It may look simple from the outside, but having the right documents ready can save you delays, repeat visits, and unnecessary stress.
               </p>
 
-              <p>
+              <p data-i18n="blog_anmeldung_p1">
                 After moving into the city, you usually need to register your address with the local authorities within a limited time. This registration confirms your residence and is often needed for later administrative steps such as permit processing, banking, utilities, and insurance setup.
               </p>
 
-              <h3>What to bring to the appointment</h3>
+              <h3 data-i18n="blog_anmeldung_h3_1">What to bring to the appointment</h3>
               <ul>
-                <li>Valid passport or national ID card</li>
-                <li>Rental agreement or written housing confirmation</li>
-                <li>Employment contract or proof of income, if relevant</li>
-                <li>Additional civil status documents, depending on your case</li>
+                <li data-i18n="blog_anmeldung_li1">Valid passport or national ID card</li>
+                <li data-i18n="blog_anmeldung_li2">Rental agreement or written housing confirmation</li>
+                <li data-i18n="blog_anmeldung_li3">Employment contract or proof of income, if relevant</li>
+                <li data-i18n="blog_anmeldung_li4">Additional civil status documents, depending on your case</li>
               </ul>
 
               <div class="inline-image">
                 <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80" alt="City office and paperwork">
-                <div class="caption">A well-prepared registration appointment can unlock several next steps in your relocation journey.</div>
+                <div class="caption" data-i18n="blog_anmeldung_caption">A well-prepared registration appointment can unlock several next steps in your relocation journey.</div>
               </div>
 
-              <h3>Why this step matters more than people expect</h3>
-              <p>
+              <h3 data-i18n="blog_anmeldung_h3_2">Why this step matters more than people expect</h3>
+              <p data-i18n="blog_anmeldung_p2">
                 Anmeldung is not just a formality. It establishes your local presence in the system. Many downstream processes rely on it, including communications from authorities, tax administration, insurance enrollment, and in some cases permit issuance.
               </p>
 
-              <p>
+              <p data-i18n="blog_anmeldung_p3">
                 New arrivals often underestimate how important small details are, such as matching names across documents, correct move-in dates, and written confirmation from the main tenant or landlord where needed.
               </p>
 
-              <div class="article-note">
+              <div class="article-note" data-i18n="blog_anmeldung_note">
                 If your housing situation is temporary, shared, or newly arranged, double-check whether your address proof will be accepted before the appointment.
               </div>
 
-              <h3>How to avoid delays</h3>
+              <h3 data-i18n="blog_anmeldung_h3_3">How to avoid delays</h3>
               <ul>
-                <li>Book your appointment as early as possible.</li>
-                <li>Bring complete paperwork, not only screenshots.</li>
-                <li>Make sure your address format is consistent everywhere.</li>
-                <li>Keep a copy of the registration confirmation after the meeting.</li>
+                <li data-i18n="blog_anmeldung_li5">Book your appointment as early as possible.</li>
+                <li data-i18n="blog_anmeldung_li6">Bring complete paperwork, not only screenshots.</li>
+                <li data-i18n="blog_anmeldung_li7">Make sure your address format is consistent everywhere.</li>
+                <li data-i18n="blog_anmeldung_li8">Keep a copy of the registration confirmation after the meeting.</li>
               </ul>
 
-              <p>
+              <p data-i18n="blog_anmeldung_p4">
                 Once registration is complete, things tend to move faster. You have an official local reference point, and that makes every following step more straightforward.
               </p>
 
               <div class="article-footer">
                 <div class="tag-row">
-                  <span class="tag">Zürich</span>
-                  <span class="tag">Registration</span>
-                  <span class="tag">First steps</span>
+                  <span class="tag" data-i18n="blog_anmeldung_tag1">Zürich</span>
+                  <span class="tag" data-i18n="blog_anmeldung_tag2">Registration</span>
+                  <span class="tag" data-i18n="blog_anmeldung_tag3">First steps</span>
                 </div>
-                <a href="free-consultation.html" class="btn dark">Book support</a>
+                <a href="free-consultation.html" class="btn dark" data-i18n="blog_anmeldung_cta">Book support</a>
               </div>
             </div>
           </article>
 
           <div class="next-links">
             <a class="next-card" href="#permits">
-              <span>Previous article</span>
-              <strong>Residence permits in Switzerland: where to start</strong>
+              <span data-i18n="blog_anmeldung_prev_label">Previous article</span>
+              <strong data-i18n="blog_anmeldung_prev_title">Residence permits in Switzerland: where to start</strong>
             </a>
             <a class="next-card" href="#insurance">
-              <span>Next article</span>
-              <strong>Health insurance in Switzerland: deadlines and obligations</strong>
+              <span data-i18n="blog_anmeldung_next_label">Next article</span>
+              <strong data-i18n="blog_anmeldung_next_title">Health insurance in Switzerland: deadlines and obligations</strong>
             </a>
           </div>
         </section>
@@ -830,50 +898,50 @@ nav a{
 
             <div class="article-body">
               <div class="article-meta">
-                <span>Study</span>
+                <span data-i18n="blog_study_meta_category">Study</span>
                 <span>•</span>
-                <span>5 min read</span>
+                <span data-i18n="blog_study_meta_time">5 min read</span>
               </div>
 
-              <h2>Studying in Switzerland: easier than you think</h2>
+              <h2 data-i18n="blog_study_title">Studying in Switzerland: easier than you think</h2>
 
-              <p class="article-lead">
+              <p class="article-lead" data-i18n="blog_study_lead">
                 Switzerland can feel highly structured from the outside, but for many international students the process is more approachable than expected once you understand admissions, residence registration, and the basic paperwork after arrival.
               </p>
 
-              <p>
+              <p data-i18n="blog_study_p1">
                 Students choosing universities in Switzerland are often surprised by how organized the system is. Once you have your admission, the next steps usually become much clearer: securing accommodation, preparing proof of finances, arranging health insurance, and registering after arrival.
               </p>
 
-              <h3>What usually matters most</h3>
+              <h3 data-i18n="blog_study_h3_1">What usually matters most</h3>
               <ul>
-                <li>Your university admission confirmation</li>
-                <li>A valid passport or ID</li>
-                <li>Proof of accommodation</li>
-                <li>Proof that you can financially support yourself</li>
-                <li>Health insurance planning</li>
+                <li data-i18n="blog_study_li1">Your university admission confirmation</li>
+                <li data-i18n="blog_study_li2">A valid passport or ID</li>
+                <li data-i18n="blog_study_li3">Proof of accommodation</li>
+                <li data-i18n="blog_study_li4">Proof that you can financially support yourself</li>
+                <li data-i18n="blog_study_li5">Health insurance planning</li>
               </ul>
 
-              <div class="article-note">
+              <div class="article-note" data-i18n="blog_study_note_1">
                 Many students think the difficult part starts after arrival. In practice, life becomes easier once your address, permit process, and insurance are organized early.
               </div>
 
-              <p>
+              <p data-i18n="blog_study_note_2">
                 If you are studying in Zürich, Lausanne, Geneva, or another major city, demand for housing can be one of the biggest practical challenges. Starting your search early is often more important than overcomplicating the rest of the process.
               </p>
 
-              <h3>Why it may be easier than expected</h3>
-              <p>
+              <h3 data-i18n="blog_study_h3_2">Why it may be easier than expected</h3>
+              <p data-i18n="blog_study_p3">
                 Swiss administration is formal, but it is usually predictable. If your documents are complete and your deadlines are respected, the process tends to move in a logical order. That predictability is often what makes the experience easier than newcomers first imagine.
               </p>
 
               <div class="article-footer">
                 <div class="tag-row">
-                  <span class="tag">Students</span>
-                  <span class="tag">Universities</span>
-                  <span class="tag">Arrival</span>
+                  <span class="tag" data-i18n="blog_study_tag1">Students</span>
+                  <span class="tag" data-i18n="blog_study_tag2">Universities</span>
+                  <span class="tag" data-i18n="blog_study_tag3">Arrival</span>
                 </div>
-                <a href="free-consultation.html" class="btn dark">Need help planning?</a>
+                <a href="free-consultation.html" class="btn dark" data-i18n="blog_study_cta">Need help planning?</a>
               </div>
             </div>
           </article>
@@ -887,49 +955,49 @@ nav a{
 
             <div class="article-body">
               <div class="article-meta">
-                <span>Marriage</span>
+                <span data-i18n="blog_marriage_meta_category">Marriage</span>
                 <span>•</span>
-                <span>5 min read</span>
+                <span data-i18n="blog_marriage_meta_time">5 min read</span>
               </div>
 
-              <h2>Getting married in Switzerland: what international couples should know</h2>
+              <h2 data-i18n="blog_marriage_title">Getting married in Switzerland: what international couples should know</h2>
 
-              <p class="article-lead">
+              <p class="article-lead" data-i18n="blog_marriage_lead">
                 Marriage in Switzerland can be straightforward, but international couples should be ready for document checks, civil status formalities, and timing that depends heavily on preparation.
               </p>
 
-              <p>
+              <p data-i18n="blog_marriage_p1">
                 If one or both partners are foreign nationals, the process often includes submitting official identity documents, birth certificates, civil status records, and in some cases additional legalized or translated papers. The exact requirements can vary depending on nationality and personal history.
               </p>
 
-              <h3>What to prepare early</h3>
+              <h3 data-i18n="blog_marriage_h3_1">What to prepare early</h3>
               <ul>
-                <li>Valid identification for both partners</li>
-                <li>Birth certificates and civil status documents</li>
-                <li>Any required translations or certified copies</li>
-                <li>Proof of residence where relevant</li>
+                <li data-i18n="blog_marriage_li1">Valid identification for both partners</li>
+                <li data-i18n="blog_marriage_li2">Birth certificates and civil status documents</li>
+                <li data-i18n="blog_marriage_li3">Any required translations or certified copies</li>
+                <li data-i18n="blog_marriage_li4">Proof of residence where relevant</li>
               </ul>
 
-              <p>
+              <p data-i18n="blog_marriage_p2">
                 One of the main reasons couples experience delays is not the marriage appointment itself, but document preparation. Missing one formal requirement can postpone the timeline much more than expected.
               </p>
 
-              <div class="article-note">
+              <div class="article-note" data-i18n="blog_marriage_note">
                 If documents were issued abroad, check early whether apostilles, legalization, or official translations are required. This is often where the process slows down.
               </div>
 
-              <h3>Why planning matters</h3>
-              <p>
+              <h3 data-i18n="blog_marriage_h3_2">Why planning matters</h3>
+              <p data-i18n="blog_marriage_p3">
                 International marriages are usually manageable when approached as an administrative sequence rather than a single event. Civil status paperwork, local registration, and future residence planning often connect closely, especially when one spouse intends to remain in Switzerland.
               </p>
 
               <div class="article-footer">
                 <div class="tag-row">
-                  <span class="tag">Marriage</span>
-                  <span class="tag">Civil status</span>
-                  <span class="tag">Documents</span>
+                  <span class="tag" data-i18n="blog_marriage_tag1">Marriage</span>
+                  <span class="tag" data-i18n="blog_marriage_tag2">Civil status</span>
+                  <span class="tag" data-i18n="blog_marriage_tag3">Documents</span>
                 </div>
-                <a href="free-consultation.html" class="btn dark">Get personal guidance</a>
+                <a href="free-consultation.html" class="btn dark" data-i18n="blog_marriage_cta">Get personal guidance</a>
               </div>
             </div>
           </article>
@@ -943,50 +1011,50 @@ nav a{
 
             <div class="article-body">
               <div class="article-meta">
-                <span>Family reunification</span>
+                <span data-i18n="blog_family_meta_category">Family reunification</span>
                 <span>•</span>
-                <span>6 min read</span>
+                <span data-i18n="blog_family_meta_time">6 min read</span>
               </div>
 
-              <h2>Bringing your family to Switzerland: is it easier for Swiss or EU citizens?</h2>
+              <h2 data-i18n="blog_family_title">Bringing your family to Switzerland: is it easier for Swiss or EU citizens?</h2>
 
-              <p class="article-lead">
+              <p class="article-lead" data-i18n="blog_family_lead">
                 Family reunification rules in Switzerland depend strongly on nationality, permit type, housing situation, and income. In practical terms, the path may feel easier or harder depending on which legal route applies to you.
               </p>
 
-              <p>
+              <p data-i18n="blog_family_p1">
                 People often ask whether it is easier for Swiss citizens or EU citizens to bring their family members to Switzerland. The answer depends on the exact family relationship, the country of origin of the relatives, and the residence status of the person already living in Switzerland.
               </p>
 
-              <h3>What authorities often look at</h3>
+              <h3 data-i18n="blog_family_h3_1">What authorities often look at</h3>
               <ul>
-                <li>Your nationality and residence status</li>
-                <li>Your type of permit or citizenship status</li>
-                <li>Whether you have suitable accommodation</li>
-                <li>Whether financial support requirements are met</li>
-                <li>The relationship to the family member joining you</li>
+                <li data-i18n="blog_family_li1">Your nationality and residence status</li>
+                <li data-i18n="blog_family_li2">Your type of permit or citizenship status</li>
+                <li data-i18n="blog_family_li3">Whether you have suitable accommodation</li>
+                <li data-i18n="blog_family_li4">Whether financial support requirements are met</li>
+                <li data-i18n="blog_family_li5">The relationship to the family member joining you</li>
               </ul>
 
-              <p>
+              <p data-i18n="blog_family_p2">
                 In practice, EU-related mobility rights can make some cases more flexible, while Swiss citizens may be dealing with a different legal framework. That is why two families with seemingly similar situations can face different document requirements and timelines.
               </p>
 
-              <div class="article-note">
+              <div class="article-note" data-i18n="blog_family_note">
                 The fastest way to reduce uncertainty is to define the case very clearly first: who is joining, from where, under which status, and on what timeline.
               </div>
 
-              <h3>How to prepare a strong case</h3>
-              <p>
+              <h3 data-i18n="blog_family_h3_2">How to prepare a strong case</h3>
+              <p data-i18n="blog_family_p3">
                 Start with complete personal documents, proof of relationship, proof of housing, and proof of financial stability where required. Many delays happen because families start the process emotionally, but not structurally. A good document strategy makes the process much easier.
               </p>
 
               <div class="article-footer">
                 <div class="tag-row">
-                  <span class="tag">Family</span>
-                  <span class="tag">Relocation</span>
-                  <span class="tag">Permits</span>
+                  <span class="tag" data-i18n="blog_family_tag1">Family</span>
+                  <span class="tag" data-i18n="blog_family_tag2">Relocation</span>
+                  <span class="tag" data-i18n="blog_family_tag3">Permits</span>
                 </div>
-                <a href="free-consultation.html" class="btn dark">Ask about your case</a>
+                <a href="free-consultation.html" class="btn dark" data-i18n="blog_family_cta">Ask about your case</a>
               </div>
             </div>
           </article>
@@ -1000,77 +1068,77 @@ nav a{
 
             <div class="article-body">
               <div class="article-meta">
-                <span>Health insurance</span>
+                <span data-i18n="blog_insurance_meta_category">Health insurance</span>
                 <span>•</span>
-                <span>6 min read</span>
+                <span data-i18n="blog_insurance_meta_time">6 min read</span>
               </div>
 
-              <h2>Health insurance in Switzerland: deadlines and obligations</h2>
+              <h2 data-i18n="blog_insurance_title">Health insurance in Switzerland: deadlines and obligations</h2>
 
-              <p class="article-lead">
+              <p class="article-lead" data-i18n="blog_insurance_lead">
                 Swiss health insurance is mandatory, private, and highly structured. For newcomers, the challenge is rarely understanding that it is required — it is understanding when to act, what to choose, and how to avoid paying more than necessary.
               </p>
 
-              <p>
+              <p data-i18n="blog_insurance_p1">
                 After arriving in Switzerland, you generally have a limited period to enroll in health insurance. Basic coverage is compulsory, and it applies even when people are still settling in, comparing providers, or waiting for other paperwork to be completed.
               </p>
 
-              <h3>The three decisions most newcomers need to make</h3>
+              <h3 data-i18n="blog_insurance_h3_1">The three decisions most newcomers need to make</h3>
               <ul>
-                <li>Which provider to choose</li>
-                <li>Which deductible level fits their budget and situation</li>
-                <li>Which insurance model makes sense for their lifestyle</li>
+                <li data-i18n="blog_insurance_li1">Which provider to choose</li>
+                <li data-i18n="blog_insurance_li2">Which deductible level fits their budget and situation</li>
+                <li data-i18n="blog_insurance_li3">Which insurance model makes sense for their lifestyle</li>
               </ul>
 
-              <p>
+              <p data-i18n="blog_insurance_p2">
                 Premiums can vary significantly, but the cheapest option is not always the best one. People with families, regular medical needs, or a preference for maximum flexibility may value different features than someone who wants the lowest monthly premium.
               </p>
 
               <div class="inline-image">
                 <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1400&q=80" alt="Medical insurance planning">
-                <div class="caption">Choosing coverage is about balancing legal compliance, monthly premiums, deductible, and convenience.</div>
+                <div class="caption" data-i18n="blog_insurance_caption">Choosing coverage is about balancing legal compliance, monthly premiums, deductible, and convenience.</div>
               </div>
 
-              <h3>Deadlines matter</h3>
-              <p>
+              <h3 data-i18n="blog_insurance_h3_2">Deadlines matter</h3>
+              <p data-i18n="blog_insurance_p3">
                 One of the most important details is timing. If you miss the enrollment window, the authorities may assign a provider on your behalf. That usually means less control, less optimization, and potentially higher costs than if you had chosen carefully yourself.
               </p>
 
-              <div class="article-note">
+              <div class="article-note" data-i18n="blog_insurance_note">
                 Insurance should not be treated as a final step after everything else. It is one of the core arrival tasks and works best when handled alongside registration and permit planning.
               </div>
 
-              <h3>A smart way to compare options</h3>
+              <h3 data-i18n="blog_insurance_h3_3">A smart way to compare options</h3>
               <ul>
-                <li>Estimate how often you realistically expect to use healthcare.</li>
-                <li>Compare deductible impact, not only monthly premium.</li>
-                <li>Check whether telemedicine or family-doctor models suit you.</li>
-                <li>Review whether supplementary insurance is actually necessary.</li>
+                <li data-i18n="blog_insurance_li4">Estimate how often you realistically expect to use healthcare.</li>
+                <li data-i18n="blog_insurance_li5">Compare deductible impact, not only monthly premium.</li>
+                <li data-i18n="blog_insurance_li6">Check whether telemedicine or family-doctor models suit you.</li>
+                <li data-i18n="blog_insurance_li7">Review whether supplementary insurance is actually necessary.</li>
               </ul>
 
-              <p>
+              <p data-i18n="blog_insurance_p4">
                 A good setup is not just compliant. It should also feel sustainable. The right insurance choice gives you peace of mind, protects your budget, and avoids expensive corrections later.
               </p>
 
               <div class="article-footer">
                 <div class="tag-row">
-                  <span class="tag">Insurance</span>
-                  <span class="tag">Deadlines</span>
-                  <span class="tag">Budget</span>
+                  <span class="tag" data-i18n="blog_insurance_tag1">Insurance</span>
+                  <span class="tag" data-i18n="blog_insurance_tag2">Deadlines</span>
+                  <span class="tag" data-i18n="blog_insurance_tag3">Budget</span>
                 </div>
-                <a href="free-consultation.html" class="btn dark">Get help choosing</a>
+                <a href="free-consultation.html" class="btn dark" data-i18n="blog_insurance_cta">Get help choosing</a>
               </div>
             </div>
           </article>
 
           <div class="next-links">
             <a class="next-card" href="#anmeldung">
-              <span>Previous article</span>
-              <strong>Anmeldung in Zürich: what you need to prepare</strong>
+              <span data-i18n="blog_insurance_prev_label">Previous article</span>
+              <strong data-i18n="blog_insurance_prev_title">Anmeldung in Zürich: what you need to prepare</strong>
             </a>
             <a class="next-card" href="#permits">
-              <span>Back to start</span>
-              <strong>Residence permits in Switzerland: where to start</strong>
+              <span data-i18n="blog_insurance_back_label">Back to start</span>
+              <strong data-i18n="blog_insurance_back_title">Residence permits in Switzerland: where to start</strong>
             </a>
           </div>
         </section>
@@ -1079,45 +1147,48 @@ nav a{
 
       <aside class="sidebar">
         <div class="side-card">
-          <div class="services-label">On this page</div>
-          <h3>Table of contents</h3>
+          <div class="services-label" data-i18n="sidebar_on_page_label">On this page</div>
+          <h3 data-i18n="sidebar_toc_title">Table of contents</h3>
           <div class="toc">
-            <a href="#permits">Residence permits in Switzerland</a>
-            <a href="#anmeldung">Anmeldung in Zürich</a>
-            <a href="#insurance">Health insurance in Switzerland</a>
-            <a href="#study">Studying in Switzerland</a>
-            <a href="#marriage">Getting married in Switzerland</a>
-            <a href="#family-reunification">Bringing your family to Switzerland</a>
+            <a href="#permits" data-i18n="sidebar_toc_permits">Residence permits in Switzerland</a>
+            <a href="#anmeldung" data-i18n="sidebar_toc_anmeldung">Anmeldung in Zürich</a>
+            <a href="#insurance" data-i18n="sidebar_toc_insurance">Health insurance in Switzerland</a>
+            <a href="#study" data-i18n="sidebar_toc_study">Studying in Switzerland</a>
+            <a href="#marriage" data-i18n="sidebar_toc_marriage">Getting married in Switzerland</a>
+            <a href="#family-reunification" data-i18n="sidebar_toc_family">Bringing your family to Switzerland</a>
           </div>
         </div>
 
+
         <div class="side-card">
-  <div class="services-label">Related services</div>
-  <h3>How we can help</h3>
-  <div class="related-list">
-    <a href="index.html#process" class="related-item">
-      <span>Consultation</span>
-      <strong>Book a free consultation for your relocation plan</strong>
-    </a>
-    <a href="index.html#services" class="related-item">
-      <span>Permits</span>
-      <strong>Support with residence permits and registration steps</strong>
-    </a>
-    <a href="index.html#services" class="related-item">
-      <span>Insurance</span>
-      <strong>Get help choosing the right health insurance setup</strong>
-    </a>
-  </div>
+
+  <div class="services-label" data-i18n="sidebar_related_label">Related services</div>
+          <h3 data-i18n="sidebar_related_title">How we can help</h3>
+          <div class="related-list">
+            <a href="index.html#process" class="related-item">
+              <span data-i18n="sidebar_related_consultation_label">Consultation</span>
+              <strong data-i18n="sidebar_related_consultation_title">Book a free consultation for your relocation plan</strong>
+            </a>
+            <a href="index.html#services" class="related-item">
+              <span data-i18n="sidebar_related_permits_label">Permits</span>
+              <strong data-i18n="sidebar_related_permits_title">Support with residence permits and registration steps</strong>
+            </a>
+            <a href="index.html#services" class="related-item">
+              <span data-i18n="sidebar_related_insurance_label">Insurance</span>
+              <strong data-i18n="sidebar_related_insurance_title">Get help choosing the right health insurance setup</strong>
+            </a>
+          </div>
 </div>
 
         <div class="side-card">
-          <div class="services-label">Need support?</div>
-          <h3>Prefer personal guidance?</h3>
-          <p style="margin:0 0 16px;color:rgba(4,35,64,.74);">
+          <div class="services-label" data-i18n="sidebar_support_label">Need support?</div>
+          <h3 data-i18n="sidebar_support_title">Prefer personal guidance?</h3>
+          <p style="margin:0 0 16px;color:rgba(4,35,64,.74);" data-i18n="sidebar_support_text">
             If you want help with registration, permits, housing documents, or health insurance, book a consultation and get a clear step-by-step plan.
           </p>
-          <a href="free-consultation.html" class="btn primary">Book consultation</a>
+          <a href="free-consultation.html" class="btn primary" data-i18n="sidebar_support_cta">Book consultation</a>
         </div>
+
       </aside>
 
     </div>
@@ -1126,26 +1197,25 @@ nav a{
   <section class="cta-band">
     <div class="container">
       <div>
-        <div class="services-label">Next step</div>
-        <h2>Make your relocation easier from day one</h2>
-        <p>
+        <div class="services-label" data-i18n="cta_label">Next step</div>
+        <h2 data-i18n="cta_title">Make your relocation easier from day one</h2>
+        <p data-i18n="cta_text">
           Save time, avoid missed deadlines, and move through permits, registration, and insurance with a clear structure and personal support.
         </p>
       </div>
 
       <div class="cta-actions">
-        <a href="free-consultation.html" class="btn primary">Book consultation</a>
-        <a href="index.html" class="btn">Back to homepage</a>
+        <a href="free-consultation.html" class="btn primary" data-i18n="cta_book">Book consultation</a>
+        <a href="index.html" class="btn" data-i18n="cta_home">Back to homepage</a>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container footer-row">
-      <span>© 2026 Zurich Relocation</span>
-      <span>Practical relocation support in Switzerland</span>
+      <span data-i18n="footer_copy">© 2026 Zurich Relocation</span>
+      <span data-i18n="footer_tagline">Practical relocation support in Switzerland</span>
     </div>
   </footer>
 
-</body>
-</html>
+  <script src="site.js"></script>
