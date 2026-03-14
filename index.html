@@ -445,21 +445,25 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 }
 
 /* WHY CHOOSE */
-.why{
-  background:#D5AA6D;
-  color:var(--navy);
-  padding:110px 0;
+
+.why {
   position:relative;
+  padding:120px 0;
+  background:
+    radial-gradient(circle at top left, rgba(213,170,109,.16), transparent 32%),
+    linear-gradient(180deg, #fcfbf8 0%, #f6f3ee 100%);
+  color:var(--navy);
   overflow:hidden;
 }
 
 .why .container{
-  width:100%;
-  padding:0 40px;
+  width:min(1320px, calc(100% - 48px));
+  margin:0 auto;
+  padding:0;
 }
 
 .why-kicker{
-  color:rgba(5,0,82,.55);
+  color:rgba(5,0,82,.58);
   letter-spacing:.22em;
   text-transform:uppercase;
   font-size:12px;
@@ -468,44 +472,69 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 }
 
 .why-title{
-  margin:0 auto 42px;
-  font-size:42px;
+  margin:0 auto 54px;
+  font-size:54px;
   line-height:1.08;
   letter-spacing:-0.02em;
-  max-width:22ch;
+  max-width:20ch;   /* wider so it wraps in about 2 lines */
   color:var(--navy);
   text-align:center;
+  text-wrap:balance;
 }
 
 .why-cards{
   display:grid;
   grid-template-columns:repeat(5, minmax(0, 1fr));
-  gap:18px;
+  gap:22px;
   width:100%;
   align-items:stretch;
 }
 
 .why-card{
   position:relative;
-  padding:24px 24px;
-  background:#D5AA6D;
-  border:1px solid rgba(5,0,82,.08);
-  box-shadow:0 8px 26px rgba(5,0,82,.08);
-  transition:transform .25s ease, box-shadow .25s ease;
+  padding:28px 26px 26px;
+
+  /* sand 30% */
+  background:rgba(213,170,109,0.10);
+
+  border:1px solid rgba(213,170,109,.45);
+  border-radius:0;   /* square edges as you wanted */
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  box-shadow:
+    0 10px 28px rgba(4,35,64,.06),
+    inset 0 1px 0 rgba(255,255,255,.40);
+
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    background .28s ease,
+    border-color .28s ease;
 }
 
-
-
 .why-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 16px 40px rgba(5,0,82,.14);
+  transform:translateY(-8px);
+
+  /* slightly stronger sand on hover */
+  background:rgba(213,170,109,0.45);
+
+  box-shadow:0 22px 48px rgba(4,35,64,.12);
 }
 
 .why-icon{
-  margin-bottom:12px;
-  display:inline-block;
-  position:relative;
-  z-index:2;
+  width:46px;
+  height:46px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:16px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.24);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
 }
 
 .why-icon svg{
@@ -516,39 +545,32 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   fill:none;
   stroke-linecap:round;
   stroke-linejoin:round;
-  opacity:.9;
+  opacity:.95;
   transition:transform .25s ease, opacity .25s ease;
 }
 
 .why-card:hover .why-icon svg{
-  transform:translateY(-1px);
+  transform:scale(1.06) translateY(-1px);
   opacity:1;
 }
 
 .why-card h3{
-  position:relative;
-  z-index:2;
-  margin:0 0 8px;
-  font-size:17px;
+  margin:0 0 10px;
+  font-size:18px;
   line-height:1.35;
   color:var(--navy);
 }
 
 .why-card p{
-  position:relative;
-  z-index:2;
   margin:0;
-  font-size:14px;
-  line-height:1.55;
+  font-size:15px;
+  line-height:1.65;
   color:rgba(5,0,82,.82);
-  max-width:none;
 }
 
-/* highlight the free consultation card */
 .why-card:last-child{
-  border:1px solid rgba(5,0,82,.08);
-  background:#D5AA6D;
-  box-shadow:0 14px 36px rgba(5,0,82,.14);
+  background:rgba(213,170,109,0.10);
+  border:1px solid rgba(213,170,109,.45);
 }
 
 @media(max-width:1180px){
@@ -559,13 +581,13 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
 @media(max-width:980px){
   .why{
-    padding:84px 0;
+    padding:90px 0;
   }
 
   .why-title{
-    font-size:34px;
-    margin-bottom:32px;
-    max-width:14ch;
+    font-size:38px;
+    margin-bottom:34px;
+    max-width:13ch;
   }
 
   .why-cards{
@@ -574,7 +596,8 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   }
 
   .why-card{
-    padding:22px 20px;
+    padding:24px 20px;
+    border-radius:20px;
   }
 }
 
@@ -1162,63 +1185,88 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
 /* COMPARISON */
 .pricing-compare-smart{
-  margin-top:58px;
-  padding:38px;
-  background:var(--navy);
-  color:#fff;
+  margin-top:90px;
+  padding:110px 0;
+  background:#f3f4f8;
+  color:var(--navy);
+
+  /* full width background */
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+
+.pricing-compare-inner{
+  width:min(var(--max), calc(100% - 48px));
+  margin:0 auto;
 }
 
 .pricing-compare-intro{
   max-width:760px;
-  margin:0 auto 24px;
+  margin:0 auto 56px;
   text-align:center;
 }
 
 .pricing-compare-intro h3{
-  margin:0 0 10px;
-  font-size:34px;
-  line-height:1.15;
+  margin:0 0 16px;
+  font-size:42px;
+  line-height:1.1;
+  color:var(--navy);
 }
 
 .pricing-compare-intro p{
   margin:0 auto;
   max-width:680px;
-  color:rgba(255,255,255,.74);
+  color:rgba(4,35,64,.70);
   line-height:1.7;
+  font-size:18px;
 }
 
 .pricing-compare-table{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:28px;
 }
 
 .pricing-compare-col{
-  padding:24px 24px 22px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.03);
-  box-shadow:none;
+  background:#fff;
+  padding:38px 38px 34px;
+  border:1px solid rgba(4,35,64,.10);
+  box-shadow:0 10px 30px rgba(4,35,64,.05);
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.pricing-compare-col:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 50px rgba(4,35,64,.12);
+  border-color:rgba(4,35,64,.18);
 }
 
 .pricing-compare-col.mine{
-  background:rgba(255,255,255,.03);
-  border-color:rgba(255,255,255,.14);
+  background:#fff;
+  border:1px solid rgba(4,35,64,.10);
+}
+
+.pricing-compare-col.mine:hover{
+  transform:translateY(-8px);
+  box-shadow:0 24px 50px rgba(4,35,64,.12);
+  border-color:rgba(213,170,109,.55);
 }
 
 .compare-top{
-  margin-bottom:12px;
+  margin-bottom:14px;
   font-size:12px;
   letter-spacing:.18em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.68);
+  color:rgba(4,35,64,.50);
 }
 
 .compare-price{
   font-family:"Noto Serif Display", serif;
-  font-size:32px;
-  line-height:1.1;
-  margin-bottom:16px;
-  color:#fff;
+  font-size:36px;
+  line-height:1.08;
+  margin-bottom:20px;
+  color:var(--navy);
 }
 
 .pricing-compare-col ul{
@@ -1227,14 +1275,15 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   padding:0;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:14px;
 }
 
 .pricing-compare-col li{
   position:relative;
-  padding-left:20px;
-  color:rgba(255,255,255,.82);
-  line-height:1.6;
+  padding-left:22px;
+  color:rgba(4,35,64,.80);
+  line-height:1.65;
+  font-size:16px;
 }
 
 .pricing-compare-col li::before{
@@ -1245,55 +1294,48 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   width:7px;
   height:7px;
   border-radius:999px;
-  background:rgba(255,255,255,.65);
+  background:var(--sand);
 }
 
 .pricing-market-note{
-  margin:20px auto 0;
-  max-width:900px;
-  color:rgba(255,255,255,.62);
+  margin:28px auto 0;
+  max-width:860px;
+  color:rgba(4,35,64,.58);
   line-height:1.7;
-  font-size:15px;
+  font-size:14px;
   text-align:center;
 }
 
 @media(max-width:980px){
-  .pricing-premium{
-    padding:90px 0;
-  }
-
-  .pricing-premium-head h2{
-    font-size:36px;
-  }
-
-  .pricing-free{
-    grid-template-columns:1fr;
-    padding:28px 22px;
-  }
-
-  .pricing-free-right{
-    text-align:left;
-  }
-
-  .pricing-free-price{
-    font-size:42px;
-  }
-
-  .pricing-premium-grid{
-    grid-template-columns:1fr;
-  }
-
   .pricing-compare-smart{
-    padding:28px 22px;
+    padding:84px 0;
+  }
+
+  .pricing-compare-intro{
+    margin-bottom:36px;
   }
 
   .pricing-compare-intro h3{
-    font-size:30px;
+    font-size:34px;
+  }
+
+  .pricing-compare-intro p{
+    font-size:16px;
   }
 
   .pricing-compare-table{
     grid-template-columns:1fr;
+    gap:18px;
   }
+
+  .pricing-compare-col{
+    padding:28px 22px 24px;
+  }
+
+  .compare-price{
+    font-size:30px;
+  }
+
 }
 
 /* TESTIMONIAL SPLIT SECTION */
@@ -2208,7 +2250,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 <section class="why" id="why">
   <div class="container">
     <div class="why-kicker" data-i18n="why_label">Why choose us</div>
-    <h2 class="why-title" data-i18n="why_title">Why clients trust us for relocation support</h2>
+    <h2 class="why-title" data-i18n="why_title">Why clients trust us for support?</h2>
 
     <div class="why-cards">
 
@@ -2526,48 +2568,50 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     </div>
 
     <!-- COMPARISON BLOCK -->
-    <div class="pricing-compare-smart">
-      <div class="pricing-compare-intro">
-        <div class="services-label" data-i18n="pricing_compare_label">Why start here</div>
-        <h3 data-i18n="pricing_compare_title">A smarter first step for practical migration matters</h3>
-        <p data-i18n="pricing_compare_intro">
-          Many people first need clarity, structure, documents, and the right communication —
-          not necessarily a full lawyer mandate.
-        </p>
-      </div>
+    <section class="pricing-compare-smart">
+  <div class="pricing-compare-inner">
 
-      <div class="pricing-compare-table">
-        <div class="pricing-compare-col mine">
-          <div class="compare-top" data-i18n="pricing_compare_mine_title">This service</div>
-          <div class="compare-price" data-i18n="pricing_compare_mine_price">CHF 0 – 290+</div>
-          <ul>
-            <li data-i18n="pricing_compare_mine_point1">Free first consultation</li>
-            <li data-i18n="pricing_compare_mine_point2">Accessible support for everyday migration steps</li>
-            <li data-i18n="pricing_compare_mine_point3">Help with documents, letters, checklists, preparation</li>
-            <li data-i18n="pricing_compare_mine_point4">Clear and practical administrative guidance</li>
-            <li data-i18n="pricing_compare_mine_point5">Referral to a lawyer when formal representation is needed</li>
-          </ul>
-        </div>
-
-        <div class="pricing-compare-col market">
-          <div class="compare-top" data-i18n="pricing_compare_market_title">Typical lawyer pricing</div>
-          <div class="compare-price" data-i18n="pricing_compare_market_price">CHF 250 – 500/hour</div>
-          <ul>
-            <li data-i18n="pricing_compare_market_point1">Often billed hourly</li>
-            <li data-i18n="pricing_compare_market_point2">Some initial consultations around CHF 300–330</li>
-            <li data-i18n="pricing_compare_market_point3">Best for disputes, appeals, and formal legal representation</li>
-            <li data-i18n="pricing_compare_market_point4">Can be more than needed for mainly administrative matters</li>
-            <li data-i18n="pricing_compare_market_point5">Important when the case becomes legally complex</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="pricing-market-note" data-i18n="pricing_market_note">
-        Publicly posted examples in Switzerland show migration/legal consultations around CHF 300–330,
-        hourly lawyer fees around CHF 250 and up to CHF 350–500 or more, while low-cost advisory centres
-        can be much cheaper in specific settings.
+    <div class="pricing-compare-intro">
+      <h3>A smarter first step for practical migration matters</h3>
+      <p>
+        Many people first need clarity, structure, documents and the right
+        communication — not necessarily a full lawyer mandate.
       </p>
     </div>
+
+    <div class="pricing-compare-table">
+      <div class="pricing-compare-col mine">
+        <div class="compare-top">This service</div>
+        <div class="compare-price">CHF 0 – 290+</div>
+        <ul>
+          <li>Free first consultation</li>
+          <li>Accessible support for migration steps</li>
+          <li>Help with documents and communication</li>
+          <li>Clear administrative guidance</li>
+          <li>Referral to lawyers when necessary</li>
+        </ul>
+      </div>
+
+      <div class="pricing-compare-col">
+        <div class="compare-top">Typical lawyer pricing</div>
+        <div class="compare-price">CHF 250 – 500/hour</div>
+        <ul>
+          <li>Often billed hourly</li>
+          <li>Initial consultations around CHF 300+</li>
+          <li>Best for disputes and legal representation</li>
+          <li>Often unnecessary for administrative steps</li>
+          <li>Important when cases become legally complex</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pricing-market-note">
+      For many relocation cases, practical support first can save time, reduce stress,
+      and help avoid unnecessary legal costs.
+    </p>
+
+  </div>
+</section>
 
   </div>
 </section>
