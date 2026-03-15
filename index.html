@@ -822,9 +822,12 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
 /* QUESTION */
 
-.faq-question{
-  font-size:24px;
-  transition:opacity .25s ease, transform .25s ease;
+.faq-question {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  text-align: left;
 }
 
 /* ANSWER */
@@ -1916,6 +1919,399 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 
 }
 
+/* AI CHAT ASSISTANT */
+.ai-assistant{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:99999;
+  font-family:"Noto Sans", sans-serif;
+}
+
+.ai-launcher{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:none;
+  cursor:pointer;
+  padding:14px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color:#fff;
+  box-shadow:0 18px 44px rgba(0,0,0,.25);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.ai-launcher:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 54px rgba(0,0,0,.30);
+}
+
+.ai-launcher.pulse{
+  animation:aiPulse 2s infinite;
+}
+
+@keyframes aiPulse{
+  0%{ box-shadow:0 0 0 0 rgba(27,27,138,.40), 0 18px 44px rgba(0,0,0,.22); }
+  70%{ box-shadow:0 0 0 16px rgba(27,27,138,0), 0 18px 44px rgba(0,0,0,.22); }
+  100%{ box-shadow:0 0 0 0 rgba(27,27,138,0), 0 18px 44px rgba(0,0,0,.22); }
+}
+
+.ai-launcher-icon{
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.12);
+  font-size:18px;
+  flex:0 0 auto;
+}
+
+.ai-launcher-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1.2;
+}
+
+.ai-launcher-copy strong{
+  font-size:14px;
+  font-weight:700;
+}
+
+.ai-launcher-copy span{
+  font-size:12px;
+  opacity:.82;
+}
+
+.ai-panel{
+  position:absolute;
+  right:0;
+  bottom:78px;
+  width:min(390px, calc(100vw - 32px));
+  background:#fff;
+  color:var(--navy);
+  border:1px solid rgba(4,35,64,.10);
+  box-shadow:0 28px 80px rgba(0,0,0,.24);
+  overflow:hidden;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(12px) scale(.985);
+  transition:opacity .24s ease, transform .24s ease;
+}
+
+.ai-panel.open{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+
+.ai-header{
+  padding:18px 18px 14px;
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color:#fff;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.ai-header-main h3{
+  margin:0 0 6px;
+  font-size:20px;
+  line-height:1.15;
+  font-family:"Noto Serif Display", serif;
+}
+
+.ai-header-main p{
+  margin:0;
+  font-size:13px;
+  line-height:1.55;
+  color:rgba(255,255,255,.82);
+}
+
+.ai-close{
+  border:none;
+  background:transparent;
+  color:#fff;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  padding:0;
+}
+
+.ai-body{
+  padding:16px;
+  background:#f8f8fb;
+}
+
+.ai-messages{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-height:340px;
+  overflow:auto;
+  padding-right:4px;
+}
+
+.ai-msg{
+  max-width:88%;
+  padding:12px 14px;
+  font-size:14px;
+  line-height:1.6;
+  box-shadow:0 10px 24px rgba(4,35,64,.05);
+}
+
+.ai-msg.bot{
+  background:#fff;
+  color:var(--navy);
+  align-self:flex-start;
+}
+
+.ai-msg.user{
+  background:rgba(213,170,109,.22);
+  color:var(--navy);
+  align-self:flex-end;
+}
+
+.ai-choices{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+
+.ai-chip{
+  border:1px solid rgba(4,35,64,.12);
+  background:#fff;
+  color:var(--navy);
+  border-radius:999px;
+  padding:10px 12px;
+  font-size:13px;
+  line-height:1.2;
+  cursor:pointer;
+  transition:all .18s ease;
+}
+
+.ai-chip:hover{
+  background:rgba(213,170,109,.18);
+  border-color:rgba(213,170,109,.48);
+}
+
+.ai-footer{
+  padding:14px 16px 16px;
+  background:#fff;
+  border-top:1px solid rgba(4,35,64,.08);
+}
+
+.ai-disclaimer{
+  margin:0 0 14px;
+  font-size:12px;
+  line-height:1.55;
+  color:rgba(4,35,64,.62);
+}
+
+.ai-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.ai-actions .btn{
+  flex:1 1 160px;
+  min-height:46px;
+  padding:14px 18px;
+  font-size:14px;
+}
+
+@media(max-width:700px){
+  .ai-assistant{
+    right:14px;
+    bottom:14px;
+  }
+
+  .ai-panel{
+    width:min(100vw - 20px, 390px);
+    bottom:74px;
+  }
+
+  .ai-launcher{
+    padding:12px 15px;
+  }
+
+  .ai-launcher-copy span{
+    display:none;
+  }
+}
+
+/* CLIENTS MAP */
+.clients-map{
+  background:#fff;
+  color:var(--navy);
+  padding:120px 0;
+}
+
+.clients-map-head{
+  max-width:760px;
+  margin:0 auto 54px;
+  text-align:center;
+}
+
+.clients-map-head h2{
+  margin:0 0 16px;
+  font-size:44px;
+  line-height:1.12;
+}
+
+.clients-map-head p{
+  margin:0 auto;
+  max-width:680px;
+  color:rgba(4,35,64,.72);
+  font-size:18px;
+  line-height:1.75;
+}
+
+.clients-map-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:34px;
+  align-items:center;
+}
+
+.clients-map-visual{
+  background:linear-gradient(180deg, #faf8f4 0%, #f4efe7 100%);
+  border:1px solid rgba(4,35,64,.10);
+  padding:26px;
+  box-shadow:0 18px 50px rgba(4,35,64,.07);
+}
+
+.map-wrap{
+  position:relative;
+  width:100%;
+}
+
+.map-image{
+  display:block;
+  width:100%;
+  height:auto;
+  opacity:.95;
+  filter:contrast(1.02) saturate(.92);
+}
+
+.map-pin{
+  position:absolute;
+  width:16px;
+  height:16px;
+  border:none;
+  border-radius:999px;
+  background:var(--sand);
+  box-shadow:0 0 0 8px rgba(213,170,109,.18);
+  cursor:pointer;
+  transform:translate(-50%,-50%);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.map-pin:hover{
+  transform:translate(-50%,-50%) scale(1.18);
+  box-shadow:0 0 0 12px rgba(213,170,109,.24);
+}
+
+.map-tooltip{
+  position:absolute;
+  left:0;
+  top:0;
+  transform:translate(-9999px,-9999px);
+  background:var(--navy);
+  color:#fff;
+  padding:8px 12px;
+  font-size:13px;
+  line-height:1;
+  white-space:nowrap;
+  pointer-events:none;
+  box-shadow:0 16px 36px rgba(0,0,0,.18);
+  opacity:0;
+  transition:opacity .16s ease;
+}
+
+.map-tooltip.show{
+  opacity:1;
+}
+
+.clients-map-content{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.map-stat-card{
+  padding:28px 28px 24px;
+  background:linear-gradient(135deg, rgba(213,170,109,.18), rgba(213,170,109,.06));
+  border:1px solid rgba(213,170,109,.45);
+}
+
+.map-stat-number{
+  display:block;
+  font-family:"Noto Serif Display", serif;
+  font-size:52px;
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.map-stat-label{
+  display:block;
+  color:rgba(4,35,64,.72);
+  font-size:16px;
+  line-height:1.6;
+}
+
+.map-country-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.map-country-item{
+  padding:10px 14px;
+  border:1px solid rgba(4,35,64,.12);
+  background:#fff;
+  font-size:14px;
+  line-height:1.2;
+  box-shadow:0 8px 24px rgba(4,35,64,.04);
+}
+
+.map-note{
+  margin:0;
+  color:rgba(4,35,64,.74);
+  font-size:16px;
+  line-height:1.75;
+}
+
+.map-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:980px){
+  .clients-map{
+    padding:90px 0;
+  }
+
+  .clients-map-head h2{
+    font-size:36px;
+  }
+
+  .clients-map-grid{
+    grid-template-columns:1fr;
+  }
+
+  .clients-map-visual{
+    padding:18px;
+  }
+}
+
 </style>
 </head>
 
@@ -2142,19 +2538,25 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
 <section class="services" id="services">
   <div class="services-head">
     <div class="services-label" data-i18n="services_label">Services</div>
-
-<h2 data-i18n="services_title">
-  What I can help with
-</h2>
-
+    <h2 data-i18n="services_title">What I can help with</h2>
   </div>
 
   <div class="cards">
 
-    <!-- Visas & Residence -->
+    <!-- Residence permits -->
     <div class="card" tabindex="0"
-      data-title="Visas & Residence"
-      data-desc="Support with residence permits and migration procedures: case review, document checklist, form preparation guidance, and step-by-step coordination for submissions and follow-up.">
+      data-title="Residence permits & migration"
+      data-desc="Permit support, residence questions, migration procedures and practical next-step guidance."
+      data-details='[
+        {"name":"Residence permit guidance","price":"from 49 CHF"},
+        {"name":"Residence permit extension support","price":"from 49 CHF"},
+        {"name":"Family reunification document guidance","price":"from 49 CHF"},
+        {"name":"Marriage procedure support","price":"from 49 CHF"},
+        {"name":"Document checklist for migration case","price":"29 CHF"},
+        {"name":"Document check before submission","price":"39 CHF"},
+        {"name":"Form filling support","price":"from 29 CHF"},
+        {"name":"Appeal / objection drafting support","price":"19 CHF per page"}
+      ]'>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <rect x="4" y="3" width="16" height="18" rx="2"/>
@@ -2163,16 +2565,24 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <circle cx="17" cy="16" r="2.2"/>
         </g>
       </svg>
-      <h3 data-i18n="service_permits_title">
-      Residence permits
-      </h3>
-      <p data-i18n="service_permits_text">Permits, extensions, status clarification and migration procedures.</p>
+      <h3>Residence permits</h3>
+      <p>Permits, extensions, migration procedures and case support.</p>
     </div>
 
-    <!-- Registration & Authorities -->
+    <!-- Authorities -->
     <div class="card" tabindex="0"
-      data-title="Registration & Authorities"
-      data-desc="Gemeinde registration and administrative coordination: Anmeldung preparation, appointment readiness, required documents checklist, and structured communication with local offices.">
+      data-title="Authorities & administration"
+      data-desc="Support with Gemeinde, migration office and other institutions, including preparation, calls and accompaniment."
+      data-details='[
+        {"name":"Phone call to Gemeinde / institution","price":"29 CHF"},
+        {"name":"Appointment preparation","price":"39 CHF"},
+        {"name":"Administrative accompaniment","price":"79 CHF / hour"},
+        {"name":"Gemeinde registration support","price":"from 49 CHF"},
+        {"name":"Wohnungsanmeldung support","price":"from 49 CHF"},
+        {"name":"Follow-up inquiry after no response","price":"29 CHF"},
+        {"name":"Administrative inquiry drafting","price":"19 CHF per page"},
+        {"name":"Deadline check and next-step guidance","price":"19 CHF"}
+      ]'>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 10h16"/>
@@ -2184,28 +2594,46 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <path d="M5 10 12 4l7 6"/>
         </g>
       </svg>
-      <h3 data-i18n="service_registration_title">Registration & Authorities</h3>
-      <p data-i18n="service_registration_text">Gemeinde registration, coordination with migration and administrative offices.</p>
+      <h3>Registration & Authorities</h3>
+      <p>Gemeinde, institutions, calls, appointments and administrative support.</p>
     </div>
 
-    <!-- Documents & Correspondence -->
+    <!-- Documents -->
     <div class="card" tabindex="0"
-      data-title="Documents & Correspondence"
-      data-desc="Drafting and reviewing official letters and emails: clear structure, correct tone, and precise wording for authorities, landlords, employers, insurance, and administrative requests.">
+      data-title="Documents, letters & translations"
+      data-desc="Document explanation, official letters, replies, translations and practical writing support."
+      data-details='[
+        {"name":"Document / letter explanation","price":"19 CHF"},
+        {"name":"Reply to official letter","price":"29 CHF"},
+        {"name":"Letter drafting","price":"29 CHF"},
+        {"name":"Inquiry drafting","price":"19 CHF per page"},
+        {"name":"Translation / simple document adaptation","price":"15 CHF per page"},
+        {"name":"Email drafting to institution / landlord / insurance","price":"19 CHF"},
+        {"name":"Case summary preparation","price":"19 CHF"},
+        {"name":"Document organization for submission","price":"from 29 CHF"}
+      ]'>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="5" width="18" height="14" rx="2"/>
           <path d="M3 7l9 6 9-6"/>
         </g>
       </svg>
-      <h3 data-i18n="service_documents_title">Documents & Correspondence</h3>
-      <p data-i18n="service_documents_text">Official letters, formal communication, document drafting and review.</p>
+      <h3>Documents & Correspondence</h3>
+      <p>Letters, replies, translations, explanations and document support.</p>
     </div>
 
-    <!-- Employment -->
+    <!-- Work -->
     <div class="card" tabindex="0"
-      data-title="Employment"
-      data-desc="CV and job application support plus contract review: Swiss-style CV structure, cover letters, and a clear check of employment terms (role, salary, notice periods, clauses).">
+      data-title="Work, CV & applications"
+      data-desc="Career support for Switzerland: CV, cover letter and application preparation."
+      data-details='[
+        {"name":"CV creation","price":"69 CHF"},
+        {"name":"CV correction / Swiss adaptation","price":"39 CHF"},
+        {"name":"Cover letter drafting","price":"39 CHF"},
+        {"name":"Job application package","price":"89 CHF"},
+        {"name":"Employment contract review","price":"from 49 CHF"},
+        {"name":"Job inquiry drafting","price":"29 CHF"}
+      ]'>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <rect x="4" y="7" width="16" height="12" rx="2"/>
@@ -2213,35 +2641,56 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
           <line x1="4" y1="13" x2="20" y2="13"/>
         </g>
       </svg>
-      <h3 data-i18n="service_employment_title">Employment</h3>
-      <p data-i18n="service_employment_text">CV preparation, job applications and employment contract review.</p>
+      <h3>Employment</h3>
+      <p>CVs, cover letters, applications and contract review.</p>
     </div>
 
-    <!-- Insurance -->
+    <!-- Insurance / courses / housing -->
     <div class="card" tabindex="0"
-      data-title="Insurance"
-      data-desc="Health insurance setup and clarification: registration steps, deadlines, obligations, and practical guidance to understand coverage and administrative requirements.">
+      data-title="Insurance, courses & housing"
+      data-desc="Practical support with insurance, course search, housing communication and subsidized options."
+      data-details='[
+        {"name":"Health insurance inquiry","price":"29 CHF"},
+        {"name":"Insurance registration support","price":"39 CHF"},
+        {"name":"Course / language school inquiry","price":"29 CHF"},
+        {"name":"Integration / subsidized course search","price":"39 CHF"},
+        {"name":"Housing inquiry support","price":"29 CHF"},
+        {"name":"Rental application support","price":"49 CHF"},
+        {"name":"Subsidized housing / social support inquiry","price":"29 CHF"},
+        {"name":"Landlord / agency communication support","price":"29 CHF"}
+      ]'>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4Z"/>
           <path d="M9 12h6"/>
         </g>
       </svg>
-      <h3 data-i18n="service_insurance_title">Insurance</h3>
-      <p data-i18n="service_insurance_text">Health insurance setup, legal obligations and clarification of coverage.</p>
+      <h3>Insurance, Courses & Housing</h3>
+      <p>Insurance, schools, courses, housing requests and social options.</p>
     </div>
 
-    <!-- Family Matters -->
+    <!-- Extra support -->
     <div class="card" tabindex="0"
-      data-title="Family Matters"
-      data-desc="Marriage procedures and family reunification support: document preparation, administrative steps, and structured guidance for residence options for family members.">
+      data-title="Additional practical support"
+      data-desc="Useful add-ons for clients who need urgent or ongoing help."
+      data-details='[
+        {"name":"Free first consultation","price":"Free"},
+        {"name":"Urgent same-day response","price":"29 CHF"},
+        {"name":"WhatsApp follow-up support","price":"from 29 CHF"},
+        {"name":"Phone call preparation","price":"19 CHF"},
+        {"name":"Extra hour of accompaniment","price":"79 CHF"},
+        {"name":"Additional document page","price":"15 CHF"},
+        {"name":"Additional letter / inquiry","price":"19 CHF"},
+        {"name":"Individual support on request","price":"Custom"}
+      ]'>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <g stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 0 0 0 0-7.8Z"/>
+          <circle cx="12" cy="12" r="8"/>
+          <path d="M12 8v4l2.5 2.5"/>
         </g>
       </svg>
-      <h3 data-i18n="service_family_title">Family Matters</h3>
-      <p data-i18n="service_family_text">Marriage procedures, family reunification and residence for relatives.</p>
+      <h3>Additional Support</h3>
+      <p>Urgent requests, add-ons and practical follow-up help.</p>
     </div>
 
   </div>
@@ -2503,67 +2952,81 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     <div class="pricing-premium-grid">
 
       <article class="pricing-premium-card">
-        <div class="pricing-plan" data-i18n="pricing_card1_plan">Essential</div>
-        <h3 data-i18n="pricing_card1_title">Single consultation</h3>
-        <div class="pricing-amount" data-i18n="pricing_card1_price">CHF 59</div>
-        <p class="pricing-sub" data-i18n="pricing_card1_sub">
-          For clients who need one clear answer, orientation, and next steps.
-        </p>
+  <div class="pricing-plan">Quick Start</div>
 
-        <ul class="pricing-points">
-          <li data-i18n="pricing_card1_point1">30-minute consultation</li>
-          <li data-i18n="pricing_card1_point2">Case overview</li>
-          <li data-i18n="pricing_card1_point3">Required documents explained</li>
-          <li data-i18n="pricing_card1_point4">Clear next-step guidance</li>
-        </ul>
+  <h3>Quick Consultation</h3>
 
-        <a class="btn dark" href="booking.html" target="_blank" rel="noopener" data-i18n="pricing_card1_cta">
-          Book package
-        </a>
-      </article>
+  <div class="pricing-amount">CHF 79</div>
+
+  <p class="pricing-sub">
+    Perfect if you need quick guidance on a specific question.
+  </p>
+
+  <ul class="pricing-points">
+    <li>30-minute consultation (online)</li>
+    <li>Personalised checklist for your situation</li>
+    <li>One written inquiry or clarification</li>
+    <li>WhatsApp follow-up for 3 days</li>
+  </ul>
+
+  <a class="btn dark" href="booking.html" target="_blank" rel="noopener">
+    Book package
+  </a>
+</article>
 
       <article class="pricing-premium-card featured">
-        <div class="pricing-badge" data-i18n="pricing_card2_badge">Most requested</div>
-        <div class="pricing-plan" data-i18n="pricing_card2_plan">Practical</div>
-        <h3 data-i18n="pricing_card2_title">Consultation + document review</h3>
-        <div class="pricing-amount" data-i18n="pricing_card2_price">CHF 129</div>
-        <p class="pricing-sub" data-i18n="pricing_card2_sub">
-          For clients who want guidance plus help checking paperwork before taking action.
-        </p>
 
-        <ul class="pricing-points">
-          <li data-i18n="pricing_card2_point1">60-minute consultation</li>
-          <li data-i18n="pricing_card2_point2">Review of your documents</li>
-          <li data-i18n="pricing_card2_point3">Personal checklist</li>
-          <li data-i18n="pricing_card2_point4">Written follow-up summary</li>
-          <li data-i18n="pricing_card2_point5">Administrative route explained</li>
-        </ul>
+  <div class="pricing-badge">Most popular</div>
 
-        <a class="btn primary" href="booking.html" target="_blank" rel="noopener" data-i18n="pricing_card2_cta">
-          Book package
-        </a>
-      </article>
+  <div class="pricing-plan">Core</div>
+
+  <h3>Relocation Support</h3>
+
+  <div class="pricing-amount">CHF 189</div>
+
+  <p class="pricing-sub">
+    Ideal if you are preparing documents or starting relocation steps.
+  </p>
+
+  <ul class="pricing-points">
+    <li>Consultation and situation review</li>
+    <li>Personal relocation checklist</li>
+    <li>Up to 2 written inquiries or letters</li>
+    <li>Assistance with one application or administrative step</li>
+    <li>One follow-up document review</li>
+  </ul>
+
+  <a class="btn primary" href="booking.html" target="_blank" rel="noopener">
+    Book package
+  </a>
+
+</article>
 
       <article class="pricing-premium-card">
-        <div class="pricing-plan" data-i18n="pricing_card3_plan">Complete</div>
-        <h3 data-i18n="pricing_card3_title">Relocation support package</h3>
-        <div class="pricing-amount" data-i18n="pricing_card3_price">from CHF 290</div>
-        <p class="pricing-sub" data-i18n="pricing_card3_sub">
-          For more complex situations involving several steps, forms, authorities, or letters.
-        </p>
 
-        <ul class="pricing-points">
-          <li data-i18n="pricing_card3_point1">Full case review</li>
-          <li data-i18n="pricing_card3_point2">Document preparation support</li>
-          <li data-i18n="pricing_card3_point3">Letter / email drafting help</li>
-          <li data-i18n="pricing_card3_point4">Anmeldung / authority preparation</li>
-          <li data-i18n="pricing_card3_point5">Follow-up guidance during the process</li>
-        </ul>
+  <div class="pricing-plan">Premium</div>
 
-        <a class="btn dark" href="booking.html" data-i18n="pricing_card3_cta">
-          Book package
-        </a>
-      </article>
+  <h3>Settlement Strategy</h3>
+
+  <div class="pricing-amount">CHF 349</div>
+
+  <p class="pricing-sub">
+    Comprehensive guidance for settling in Switzerland.
+  </p>
+
+  <ul class="pricing-points">
+    <li>Extended consultation (up to 60 minutes)</li>
+    <li>Personal relocation and document strategy</li>
+    <li>Guidance on Anmeldung, insurance, courses or housing inquiries</li>
+    <li>Up to 5 written inquiries or template letters</li>
+    <li>Follow-up support for 2 weeks</li>
+  </ul>
+
+  <a class="btn dark" href="booking.html">
+    Book package
+  </a>
+
+</article>
 
     </div>
 
@@ -2616,6 +3079,77 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   </div>
 </section>
 
+<section class="clients-map" id="clients-map">
+  <div class="container">
+    <div class="clients-map-head">
+      <div class="services-label">International clients</div>
+      <h2>Clients from different countries trust my support</h2>
+      <p>
+        I work with people relocating to Switzerland from different parts of the world.
+        This helps me understand common migration situations, documents, and practical concerns.
+      </p>
+    </div>
+
+    <div class="clients-map-grid">
+      <div class="clients-map-visual">
+        <div class="map-wrap">
+
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+            alt="World map"
+            class="map-image"
+          />
+
+          <!-- Latin America / Caribbean -->
+<!-- North / Central / South America -->
+<!-- Latin America / Europe -->
+<button class="map-pin" style="top:42.5%; left:18.2%;" data-country="Mexico"></button>
+<button class="map-pin" style="top:44.5%; left:24.2%;" data-country="Cuba"></button>
+<button class="map-pin" style="top:51.9%; left:25.5%;" data-country="Colombia"></button>
+<button class="map-pin" style="top:50.8%; left:28.2%;" data-country="Venezuela"></button>
+<button class="map-pin" style="top:61.5%; left:33%;" data-country="Brazil"></button>
+<button class="map-pin" style="top:75.0%; left:29%;" data-country="Argentina"></button>
+
+<button class="map-pin" style="top:35%; left:46.8%;" data-country="Spain"></button>
+<button class="map-pin" style="top:29%; left:52.5%;" data-country="Poland"></button>
+<button class="map-pin" style="top:30%; left:55.2%;" data-country="Ukraine"></button>
+
+          <div class="map-tooltip" id="mapTooltip">Colombia</div>
+        </div>
+      </div>
+
+      <div class="clients-map-content">
+        <div class="map-stat-card">
+          <span class="map-stat-number">9+</span>
+          <span class="map-stat-label">countries represented</span>
+        </div>
+
+        <div class="map-country-list">
+          <div class="map-country-item">Colombia</div>
+          <div class="map-country-item">Brazil</div>
+          <div class="map-country-item">Cuba</div>
+          <div class="map-country-item">Venezuela</div>
+          <div class="map-country-item">Mexico</div>
+          <div class="map-country-item">Argentina</div>
+          <div class="map-country-item">Spain</div>
+          <div class="map-country-item">Poland</div>
+          <div class="map-country-item">Ukraine</div>
+        </div>
+
+        <p class="map-note">
+          Every relocation case is individual, but international experience helps identify common risks,
+          prepare documents more clearly, and communicate more effectively.
+        </p>
+
+        <div class="map-actions">
+          <a href="free-consultation.html" class="btn primary">Book consultation</a>
+          <a href="https://wa.me/41764497581" class="btn dark" target="_blank" rel="noopener">Ask on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="faq-hover" id="faq">
   <div class="faq-premium-bg"></div>
 
@@ -2632,46 +3166,52 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
     <div class="faq-hover-list">
 
       <div class="faq-hover-item">
-        <div class="faq-question" data-i18n="faq_q1">
-          Is the first consultation free of charge?
-        </div>
-        <div class="faq-answer" data-i18n="faq_a1">
-          Yes. The first consultation is free of charge. During this initial
-          conversation we briefly analyse your case and discuss the possible
-          next steps.
-        </div>
+        <button class="faq-question">
+  Do you only work with migration cases?
+</button>
+        <div class="faq-answer">
+  <p>
+    No. I also provide consultations in administration, study opportunities,
+    business questions and integration in Switzerland.
+  </p>
+</div>
       </div>
 
       <div class="faq-hover-item">
-        <div class="faq-question" data-i18n="faq_q2">
-          Do you provide legal representation?
-        </div>
-        <div class="faq-answer" data-i18n="faq_a2">
-          No. I provide structured guidance, administrative support and
-          document preparation. Where formal representation is required,
-          I can refer clients to licensed lawyers.
-        </div>
+        <button class="faq-question">
+  If I already live in Switzerland, can you help me improve my situation?
+</button>
+        <div class="faq-answer">
+  <p>
+    Yes. We can work on your next steps in Switzerland — job, education,
+    business or administrative matters.
+  </p>
+</div>
       </div>
 
       <div class="faq-hover-item">
-        <div class="faq-question" data-i18n="faq_q3">
-          Are consultations available online or in person?
-        </div>
-        <div class="faq-answer" data-i18n="faq_a3">
-          Both options are available. Consultations can take place online
-          or in person in Zürich depending on your preference.
-        </div>
+        <button class="faq-question">
+  Do you provide translation services?
+</button>
+        <div class="faq-answer">
+  <p>
+    Yes. I can help translate documents and explain official letters
+    from authorities or organisations.
+  </p>
+</div>
       </div>
 
       <div class="faq-hover-item">
-        <div class="faq-question" data-i18n="faq_q4">
-          Do you only work with migration matters?
-        </div>
-        <div class="faq-answer" data-i18n="faq_a4">
-          Migration and relocation matters are the main focus. In some cases
-          related administrative questions can also be addressed, while
-          specialised areas may require referral to a qualified lawyer.
-        </div>
+        <button class="faq-question">
+  Can you help with taxes or Quellensteuer?
+</button>
+        <div class="faq-answer">
+  <p>
+    Yes. I can help review calculations, communicate with the Steueramt,
+    and prepare explanations or appeals if taxation seems incorrect.
+  </p>
+</div>
+
       </div>
 
     </div>
@@ -2823,147 +3363,7 @@ h1{margin:0 0 14px;font-size:46px; line-height:1.12;}
   </div>
 </section>
 
-<!-- MODAL -->
-<div class="modal" id="serviceModal" aria-hidden="true">
-  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-head">
-      <h3 class="modal-title" id="modalTitle">Service</h3>
-      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-    </div>
-    <div class="modal-body" id="modalDesc"></div>
-    <div class="modal-actions">
-      <button class="btn dark" id="modalCloseBottom" type="button">Close</button>
-    </div>
-  </div>
-</div>
 
-  <script>
-  const servicesDetails = {
-    "Visas & Residence": {
-      description: "Support with residence permits and migration procedures in Switzerland.",
-      items: [
-        "Residence permit application guidance",
-        "Permit extension preparation",
-        "Status clarification",
-        "Document checklist for migration procedures",
-        "Form preparation guidance",
-        "Submission preparation",
-        "Follow-up communication support"
-      ]
-    },
-    "Registration & Authorities": {
-      description: "Support with local registration and communication with Swiss authorities.",
-      items: [
-        "Anmeldung preparation",
-        "Required document checklist",
-        "Gemeinde appointment preparation",
-        "Administrative coordination",
-        "Guidance for migration office steps",
-        "Support with authority correspondence"
-      ]
-    },
-    "Documents & Correspondence": {
-      description: "Drafting and reviewing formal letters, emails, and administrative documents.",
-      items: [
-        "Official letters to authorities",
-        "Email drafting and review",
-        "Requests to landlords or employers",
-        "Insurance correspondence",
-        "Administrative communication review",
-        "Improving wording and structure"
-      ]
-    },
-    "Employment": {
-      description: "Support with job applications and employment-related documents.",
-      items: [
-        "Swiss-style CV preparation",
-        "Cover letter drafting",
-        "Job application review",
-        "Employment contract review",
-        "Explanation of important clauses",
-        "Notice period clarification"
-      ]
-    },
-    "Insurance": {
-      description: "Practical guidance on Swiss health insurance setup and obligations.",
-      items: [
-        "Health insurance registration guidance",
-        "Explanation of legal deadlines",
-        "Clarification of obligations",
-        "Basic coverage explanation",
-        "Administrative steps overview",
-        "Support with insurance communication"
-      ]
-    },
-    "Family Matters": {
-      description: "Support with family-related migration and administrative procedures.",
-      items: [
-        "Marriage procedure guidance",
-        "Family reunification support",
-        "Document preparation overview",
-        "Residence options for relatives",
-        "Administrative process explanation",
-        "Submission and follow-up preparation"
-      ]
-    }
-  };
-
-  const modal = document.getElementById("serviceModal");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalDesc = document.getElementById("modalDesc");
-  const modalClose = document.getElementById("modalClose");
-  const modalCloseBottom = document.getElementById("modalCloseBottom");
-
-  function openModal(title) {
-    const service = servicesDetails[title];
-    if (!service) return;
-
-    modalTitle.textContent = title;
-    modalDesc.innerHTML = `
-      <p>${service.description}</p>
-      <ul>
-        ${service.items.map(item => `<li>${item}</li>`).join("")}
-      </ul>
-    `;
-
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-  }
-
-  function closeModal() {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-  }
-
-  document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-      openModal(card.dataset.title);
-    });
-
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openModal(card.dataset.title);
-      }
-    });
-  });
-
-  modalClose.addEventListener("click", closeModal);
-
-  if (modalCloseBottom) {
-    modalCloseBottom.addEventListener("click", closeModal);
-  }
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("open")) {
-      closeModal();
-    }
-  });
-</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -3195,6 +3595,391 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Escape") closeAssessmentModal();
   });
 });
+</script>
+<div class="ai-assistant" id="aiAssistant">
+
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <div class="ai-header-main">
+        <h3>AI Relocation Assistant</h3>
+        <p>Quick route guidance, client qualification, and WhatsApp handoff.</p>
+      </div>
+      <button class="ai-close" type="button" id="aiClose">×</button>
+    </div>
+
+    <div class="ai-body">
+      <div class="ai-messages" id="aiMessages"></div>
+      <div class="ai-choices" id="aiChoices"></div>
+    </div>
+
+    <div class="ai-footer">
+      <p class="ai-disclaimer">
+        AI provides general orientation only and does not replace an individual legal assessment.
+      </p>
+
+      <div class="ai-actions">
+        <a href="free-consultation.html" class="btn dark" id="aiBookBtn">Book consultation</a>
+        <a href="https://wa.me/41764497581" class="btn primary" target="_blank" rel="noopener" id="aiWhatsappBtn">Open WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="ai-launcher" type="button" id="aiLauncher">
+    <span class="ai-launcher-icon">✦</span>
+    <span class="ai-launcher-copy">
+      <strong>Ask AI assistant</strong>
+      <span>Get route guidance in 60 sec</span>
+    </span>
+  </button>
+
+</div>
+
+<script>
+(function () {
+  const launcher = document.getElementById("aiLauncher");
+  const panel = document.getElementById("aiPanel");
+  const closeBtn = document.getElementById("aiClose");
+  const messages = document.getElementById("aiMessages");
+  const choices = document.getElementById("aiChoices");
+  const whatsappBtn = document.getElementById("aiWhatsappBtn");
+
+  const state = {
+    route: "",
+    location: "",
+    nationality: "",
+    urgency: "",
+    goal: ""
+  };
+
+  const flow = {
+    start: {
+      text:
+`Hi — I’m the AI assistant for Polina’s relocation website.
+
+I can help with:
+• choosing the right service
+• quick route orientation
+• preparing a WhatsApp message for your case
+
+What best describes your situation?`,
+      chips: [
+        { label: "Work / Job offer", value: "work", next: "location" },
+        { label: "Study", value: "study", next: "location" },
+        { label: "Marriage / Family", value: "family", next: "location" },
+        { label: "Permit / Documents", value: "documents", next: "location" }
+      ],
+      saveAs: "route"
+    },
+
+    location: {
+      text: "Are you already in Switzerland, or are you planning the move from abroad?",
+      chips: [
+        { label: "Already in Switzerland", value: "already in Switzerland", next: "nationality" },
+        { label: "Planning from abroad", value: "planning from abroad", next: "nationality" }
+      ],
+      saveAs: "location"
+    },
+
+    nationality: {
+      text: "Are you an EU citizen or a non-EU citizen?",
+      chips: [
+        { label: "EU citizen", value: "EU citizen", next: "urgency" },
+        { label: "Non-EU citizen", value: "Non-EU citizen", next: "urgency" }
+      ],
+      saveAs: "nationality"
+    },
+
+    urgency: {
+      text: "How urgent is your situation?",
+      chips: [
+        { label: "Urgent — this week", value: "urgent this week", next: "goal" },
+        { label: "Soon — this month", value: "this month", next: "goal" },
+        { label: "Planning ahead", value: "planning ahead", next: "result" }
+      ],
+      saveAs: "urgency"
+    },
+
+    goal: {
+      text: "What would you prefer as the next step?",
+      chips: [
+        { label: "WhatsApp first", value: "WhatsApp first", next: "result" },
+        { label: "Book consultation", value: "Book consultation", next: "result" },
+        { label: "I need more information", value: "Need more information", next: "result" }
+      ],
+      saveAs: "goal"
+    }
+  };
+
+  function openPanel() {
+    panel.classList.add("open");
+    launcher.classList.remove("pulse");
+    if (!messages.dataset.started) {
+      startChat();
+      messages.dataset.started = "true";
+    }
+  }
+
+  function closePanel() {
+    panel.classList.remove("open");
+  }
+
+  function addMessage(type, text) {
+    const el = document.createElement("div");
+    el.className = "ai-msg " + type;
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function renderChoices(stepName) {
+    choices.innerHTML = "";
+    const step = flow[stepName];
+    if (!step || !step.chips) return;
+
+    step.chips.forEach((chip) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "ai-chip";
+      btn.textContent = chip.label;
+      btn.addEventListener("click", function () {
+        addMessage("user", chip.label);
+
+        if (step.saveAs) {
+          state[step.saveAs] = chip.value;
+        }
+
+        if (chip.next === "result") {
+          showResult();
+        } else {
+          setTimeout(function () {
+            goToStep(chip.next);
+          }, 300);
+        }
+      });
+      choices.appendChild(btn);
+    });
+  }
+
+  function goToStep(stepName) {
+    const step = flow[stepName];
+    if (!step) return;
+    addMessage("bot", step.text);
+    renderChoices(stepName);
+  }
+
+  function routeLabel(value) {
+    const labels = {
+      work: "Work / Job offer",
+      study: "Study",
+      family: "Marriage / Family",
+      documents: "Permit / Documents"
+    };
+    return labels[value] || value;
+  }
+
+  function recommendationText() {
+    const map = {
+      work: "Your route looks best suited for a focused consultation on employment-based relocation, employer communication, and permit preparation.",
+      study: "Your route looks best suited for a student relocation review with documents, finances, and canton-specific preparation.",
+      family: "Your route looks best suited for a family / marriage consultation with document strategy and timeline review.",
+      documents: "Your route looks best suited for a practical document and authority communication review."
+    };
+    return map[state.route] || "A short consultation would help clarify your next best route.";
+  }
+
+  function nextStepAdvice() {
+    if (state.goal === "WhatsApp first") {
+      return "Best next step: send your case summary on WhatsApp for a quick first review.";
+    }
+    if (state.goal === "Book consultation") {
+      return "Best next step: book a consultation so your documents and timeline can be reviewed properly.";
+    }
+    return "Best next step: start with WhatsApp or a consultation, depending on how detailed your case is.";
+  }
+
+  function buildWhatsappText() {
+    const parts = [
+      "Hello Polina,",
+      "I came from your website and I would like help with relocation to Switzerland.",
+      `Topic: ${routeLabel(state.route)}.`,
+      `Situation: ${state.location}.`,
+      `Status: ${state.nationality}.`,
+      `Urgency: ${state.urgency}.`,
+      `Preferred next step: ${state.goal || "not specified"}.`
+    ];
+    return encodeURIComponent(parts.join("\n"));
+  }
+
+  function showResult() {
+    choices.innerHTML = "";
+
+    const summary =
+`${recommendationText()}
+
+Case summary:
+• Topic: ${routeLabel(state.route)}
+• Situation: ${state.location}
+• Status: ${state.nationality}
+• Urgency: ${state.urgency}
+
+${nextStepAdvice()}`;
+
+    setTimeout(function () {
+      addMessage("bot", summary);
+      whatsappBtn.href = `https://wa.me/41764497581?text=${buildWhatsappText()}`;
+    }, 300);
+  }
+
+  function startChat() {
+    messages.innerHTML = "";
+    choices.innerHTML = "";
+    state.route = "";
+    state.location = "";
+    state.nationality = "";
+    state.urgency = "";
+    state.goal = "";
+    goToStep("start");
+  }
+
+  launcher.addEventListener("click", function () {
+    if (panel.classList.contains("open")) {
+      closePanel();
+    } else {
+      openPanel();
+    }
+  });
+
+  closeBtn.addEventListener("click", closePanel);
+
+  setTimeout(function () {
+    if (!panel.classList.contains("open")) {
+      launcher.classList.add("pulse");
+    }
+  }, 6000);
+})();
+</script>
+
+<script>
+(function () {
+  const pins = document.querySelectorAll(".map-pin");
+  const tooltip = document.getElementById("mapTooltip");
+
+  if (!pins.length || !tooltip) return;
+
+  pins.forEach((pin) => {
+    pin.addEventListener("mouseenter", function () {
+      const country = pin.getAttribute("data-country") || "";
+      tooltip.textContent = country;
+      tooltip.classList.add("show");
+
+      const rect = pin.getBoundingClientRect();
+      const parentRect = pin.parentElement.getBoundingClientRect();
+
+      tooltip.style.left = (rect.left - parentRect.left + 18) + "px";
+      tooltip.style.top = (rect.top - parentRect.top - 8) + "px";
+      tooltip.style.transform = "translate(0,-100%)";
+    });
+
+    pin.addEventListener("mouseleave", function () {
+      tooltip.classList.remove("show");
+    });
+  });
+})();
+</script>
+
+<div class="modal" id="serviceModal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 class="modal-title" id="modalTitle">Service details</h3>
+      <button class="modal-close" type="button" id="modalClose">×</button>
+    </div>
+
+    <div class="modal-body" id="modalBody"></div>
+
+    <div class="modal-actions">
+      <a href="free-consultation.html" class="btn primary">Book free consultation</a>
+      <a href="https://wa.me/41764497581" target="_blank" rel="noopener" class="btn dark">Ask on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const cards = document.querySelectorAll(".services .card");
+  const modal = document.getElementById("serviceModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalBody = document.getElementById("modalBody");
+  const modalClose = document.getElementById("modalClose");
+
+  if (!cards.length || !modal || !modalTitle || !modalBody || !modalClose) return;
+
+  function openModal(card) {
+    const title = card.getAttribute("data-title") || "Service details";
+    const desc = card.getAttribute("data-desc") || "";
+    const detailsRaw = card.getAttribute("data-details") || "[]";
+
+    let details = [];
+    try {
+      details = JSON.parse(detailsRaw);
+    } catch (e) {
+      details = [];
+    }
+
+    let html = "";
+    if (desc) {
+      html += `<p>${desc}</p>`;
+    }
+
+    if (details.length) {
+      html += `<ul>`;
+      details.forEach((item) => {
+        html += `<li><strong>${item.name}</strong> — ${item.price}</li>`;
+      });
+      html += `</ul>`;
+    }
+
+    html += `<p><strong>Not sure which service fits your case?</strong> Start with the free first consultation and choose the right next step afterwards.</p>`;
+
+    modalTitle.textContent = title;
+    modalBody.innerHTML = html;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", function () {
+      openModal(card);
+    });
+
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openModal(card);
+      }
+    });
+  });
+
+  modalClose.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.classList.contains("open")) {
+      closeModal();
+    }
+  });
+})();
 </script>
 
 </body>
